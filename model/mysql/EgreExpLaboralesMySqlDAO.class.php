@@ -1,0 +1,329 @@
+<?php
+/**
+ * Class that operate on table 'egre_exp_laborales'. Database Mysql.
+ *
+ * @author: http://phpdao.com
+ * @date: 2015-07-27 23:14
+ */
+class EgreExpLaboralesMySqlDAO implements EgreExpLaboralesDAO{
+
+	/**
+	 * Get Domain object by primry key
+	 *
+	 * @param String $id primary key
+	 * @return EgreExpLaboralesMySql 
+	 */
+	public function load($id){
+		$sql = 'SELECT * FROM egre_exp_laborales WHERE ID_EXP_LABORAL = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($id);
+		return $this->getRow($sqlQuery);
+	}
+
+	/**
+	 * Get all records from table
+	 */
+	public function queryAll(){
+		$sql = 'SELECT * FROM egre_exp_laborales';
+		$sqlQuery = new SqlQuery($sql);
+		return $this->getList($sqlQuery);
+	}
+	
+	/**
+	 * Get all records from table ordered by field
+	 *
+	 * @param $orderColumn column name
+	 */
+	public function queryAllOrderBy($orderColumn){
+		$sql = 'SELECT * FROM egre_exp_laborales ORDER BY '.$orderColumn;
+		$sqlQuery = new SqlQuery($sql);
+		return $this->getList($sqlQuery);
+	}
+	
+	/**
+ 	 * Delete record from table
+ 	 * @param egreExpLaborale primary key
+ 	 */
+	public function delete($ID_EXP_LABORAL){
+		$sql = 'DELETE FROM egre_exp_laborales WHERE ID_EXP_LABORAL = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($ID_EXP_LABORAL);
+		return $this->executeUpdate($sqlQuery);
+	}
+	
+	/**
+ 	 * Insert record to table
+ 	 *
+ 	 * @param EgreExpLaboralesMySql egreExpLaborale
+ 	 */
+	public function insert($egreExpLaborale){
+		$sql = 'INSERT INTO egre_exp_laborales (ID_EGRESADO, NOMBRE_EMPRESA, URL_EMPRESA, PUESTO, FECHA_INGRESO, FECHA_EGRESO, RESPONSABILIDADES, JEFE_INMEDIATO, TEL_REFERENCIA, CORREO_REFERENCIA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		$sqlQuery = new SqlQuery($sql);
+		
+		$sqlQuery->setNumber($egreExpLaborale->iDEGRESADO);
+		$sqlQuery->set($egreExpLaborale->nOMBREEMPRESA);
+		$sqlQuery->set($egreExpLaborale->uRLEMPRESA);
+		$sqlQuery->set($egreExpLaborale->pUESTO);
+		$sqlQuery->set($egreExpLaborale->fECHAINGRESO);
+		$sqlQuery->set($egreExpLaborale->fECHAEGRESO);
+		$sqlQuery->set($egreExpLaborale->rESPONSABILIDADES);
+		$sqlQuery->set($egreExpLaborale->jEFEINMEDIATO);
+		$sqlQuery->set($egreExpLaborale->tELREFERENCIA);
+		$sqlQuery->set($egreExpLaborale->cORREOREFERENCIA);
+
+		$id = $this->executeInsert($sqlQuery);	
+		$egreExpLaborale->iDEXPLABORAL = $id;
+		return $id;
+	}
+	
+	/**
+ 	 * Update record in table
+ 	 *
+ 	 * @param EgreExpLaboralesMySql egreExpLaborale
+ 	 */
+	public function update($egreExpLaborale){
+		$sql = 'UPDATE egre_exp_laborales SET ID_EGRESADO = ?, NOMBRE_EMPRESA = ?, URL_EMPRESA = ?, PUESTO = ?, FECHA_INGRESO = ?, FECHA_EGRESO = ?, RESPONSABILIDADES = ?, JEFE_INMEDIATO = ?, TEL_REFERENCIA = ?, CORREO_REFERENCIA = ? WHERE ID_EXP_LABORAL = ?';
+		$sqlQuery = new SqlQuery($sql);
+		
+		$sqlQuery->setNumber($egreExpLaborale->iDEGRESADO);
+		$sqlQuery->set($egreExpLaborale->nOMBREEMPRESA);
+		$sqlQuery->set($egreExpLaborale->uRLEMPRESA);
+		$sqlQuery->set($egreExpLaborale->pUESTO);
+		$sqlQuery->set($egreExpLaborale->fECHAINGRESO);
+		$sqlQuery->set($egreExpLaborale->fECHAEGRESO);
+		$sqlQuery->set($egreExpLaborale->rESPONSABILIDADES);
+		$sqlQuery->set($egreExpLaborale->jEFEINMEDIATO);
+		$sqlQuery->set($egreExpLaborale->tELREFERENCIA);
+		$sqlQuery->set($egreExpLaborale->cORREOREFERENCIA);
+
+		$sqlQuery->setNumber($egreExpLaborale->iDEXPLABORAL);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	/**
+ 	 * Delete all rows
+ 	 */
+	public function clean(){
+		$sql = 'DELETE FROM egre_exp_laborales';
+		$sqlQuery = new SqlQuery($sql);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function queryByIDEGRESADO($value){
+		$sql = 'SELECT * FROM egre_exp_laborales WHERE ID_EGRESADO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByNOMBREEMPRESA($value){
+		$sql = 'SELECT * FROM egre_exp_laborales WHERE NOMBRE_EMPRESA = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByURLEMPRESA($value){
+		$sql = 'SELECT * FROM egre_exp_laborales WHERE URL_EMPRESA = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByPUESTO($value){
+		$sql = 'SELECT * FROM egre_exp_laborales WHERE PUESTO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByFECHAINGRESO($value){
+		$sql = 'SELECT * FROM egre_exp_laborales WHERE FECHA_INGRESO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByFECHAEGRESO($value){
+		$sql = 'SELECT * FROM egre_exp_laborales WHERE FECHA_EGRESO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByRESPONSABILIDADES($value){
+		$sql = 'SELECT * FROM egre_exp_laborales WHERE RESPONSABILIDADES = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByJEFEINMEDIATO($value){
+		$sql = 'SELECT * FROM egre_exp_laborales WHERE JEFE_INMEDIATO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByTELREFERENCIA($value){
+		$sql = 'SELECT * FROM egre_exp_laborales WHERE TEL_REFERENCIA = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByCORREOREFERENCIA($value){
+		$sql = 'SELECT * FROM egre_exp_laborales WHERE CORREO_REFERENCIA = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+
+	public function deleteByIDEGRESADO($value){
+		$sql = 'DELETE FROM egre_exp_laborales WHERE ID_EGRESADO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByNOMBREEMPRESA($value){
+		$sql = 'DELETE FROM egre_exp_laborales WHERE NOMBRE_EMPRESA = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByURLEMPRESA($value){
+		$sql = 'DELETE FROM egre_exp_laborales WHERE URL_EMPRESA = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByPUESTO($value){
+		$sql = 'DELETE FROM egre_exp_laborales WHERE PUESTO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByFECHAINGRESO($value){
+		$sql = 'DELETE FROM egre_exp_laborales WHERE FECHA_INGRESO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByFECHAEGRESO($value){
+		$sql = 'DELETE FROM egre_exp_laborales WHERE FECHA_EGRESO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByRESPONSABILIDADES($value){
+		$sql = 'DELETE FROM egre_exp_laborales WHERE RESPONSABILIDADES = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByJEFEINMEDIATO($value){
+		$sql = 'DELETE FROM egre_exp_laborales WHERE JEFE_INMEDIATO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByTELREFERENCIA($value){
+		$sql = 'DELETE FROM egre_exp_laborales WHERE TEL_REFERENCIA = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByCORREOREFERENCIA($value){
+		$sql = 'DELETE FROM egre_exp_laborales WHERE CORREO_REFERENCIA = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+
+	
+	/**
+	 * Read row
+	 *
+	 * @return EgreExpLaboralesMySql 
+	 */
+	protected function readRow($row){
+		$egreExpLaborale = new EgreExpLaborale();
+		
+		$egreExpLaborale->iDEXPLABORAL = $row['ID_EXP_LABORAL'];
+		$egreExpLaborale->iDEGRESADO = $row['ID_EGRESADO'];
+		$egreExpLaborale->nOMBREEMPRESA = $row['NOMBRE_EMPRESA'];
+		$egreExpLaborale->uRLEMPRESA = $row['URL_EMPRESA'];
+		$egreExpLaborale->pUESTO = $row['PUESTO'];
+		$egreExpLaborale->fECHAINGRESO = $row['FECHA_INGRESO'];
+		$egreExpLaborale->fECHAEGRESO = $row['FECHA_EGRESO'];
+		$egreExpLaborale->rESPONSABILIDADES = $row['RESPONSABILIDADES'];
+		$egreExpLaborale->jEFEINMEDIATO = $row['JEFE_INMEDIATO'];
+		$egreExpLaborale->tELREFERENCIA = $row['TEL_REFERENCIA'];
+		$egreExpLaborale->cORREOREFERENCIA = $row['CORREO_REFERENCIA'];
+
+		return $egreExpLaborale;
+	}
+	
+	protected function getList($sqlQuery){
+		$tab = QueryExecutor::execute($sqlQuery);
+		$ret = array();
+		for($i=0;$i<count($tab);$i++){
+			$ret[$i] = $this->readRow($tab[$i]);
+		}
+		return $ret;
+	}
+	
+	/**
+	 * Get row
+	 *
+	 * @return EgreExpLaboralesMySql 
+	 */
+	protected function getRow($sqlQuery){
+		$tab = QueryExecutor::execute($sqlQuery);
+		if(count($tab)==0){
+			return null;
+		}
+		return $this->readRow($tab[0]);		
+	}
+	
+	/**
+	 * Execute sql query
+	 */
+	protected function execute($sqlQuery){
+		return QueryExecutor::execute($sqlQuery);
+	}
+	
+		
+	/**
+	 * Execute sql query
+	 */
+	protected function executeUpdate($sqlQuery){
+		return QueryExecutor::executeUpdate($sqlQuery);
+	}
+
+	/**
+	 * Query for one row and one column
+	 */
+	protected function querySingleResult($sqlQuery){
+		return QueryExecutor::queryForString($sqlQuery);
+	}
+
+	/**
+	 * Insert row to table
+	 */
+	protected function executeInsert($sqlQuery){
+		return QueryExecutor::executeInsert($sqlQuery);
+	}
+}
+?>
