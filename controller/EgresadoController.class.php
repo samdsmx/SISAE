@@ -11,13 +11,26 @@ class EgresadoController extends _BaseController{
         include ('templates/main.php');
     }
     
-    public function ejemplo ($p1, $p2, $p3){
-        if (!isset ($_SESSION[USUARIO]) ){
-            print 'error';
-            die();
+    public function add ($seccion){
+//        if (!isset ($_SESSION[USUARIO]) ){
+//            print 'error';
+//            die();
+//        }
+        switch ($seccion){
+            case 'personal':
+                $_SESSION[VISTA] = 'view/registroEgresadoDatos.php';
+                break;
+            case 'academico':
+                $_SESSION[VISTA] = 'view/registroEgresadoAcademico.php';
+                break;
+            case 'contacto':
+                $_SESSION[VISTA] = 'view/registroEgresadoContacto.php';
+                break;
+            default:
+                $_SESSION[VISTA] = 'view/registroEgresadoDatos.php';
+                break;
         }
-        print $p1 . $p2 . $p3;
-        $_SESSION[CONTENIDO] = file_get_contents('view/ejemplo.php');
-        include ('templates/main.php');
+        
+        include ('templates/formularios.php');
     }
 }

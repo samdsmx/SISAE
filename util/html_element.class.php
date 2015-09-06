@@ -19,12 +19,16 @@ class html_element
 	var $type;
 	var $attributes;
 	var $self_closers;
+        var $required = false;
+        
+        
 	
 	/* constructor */
 	function html_element($type,$self_closers = array('input','img','hr','br','meta','link'))
 	{
 		$this->type = strtolower($type);
 		$this->self_closers = $self_closers;
+                $this->attributes['text'] = '';
 	}
 	
 	/* get */
@@ -32,6 +36,10 @@ class html_element
 	{
 		return $this->attributes[$attribute];
 	}
+        
+        function setRequired ($required){
+            $this->required = $required;
+        }
 	
 	/* set -- array or key,value */
 	function set($attribute,$value = '')
@@ -84,15 +92,17 @@ class html_element
 				if($key != 'text') { $build.= ' '.$key.'="'.$value.'"'; }
 			}
 		}
-		
+		if ($this->required){
+                    $build.= ' required';
+                }
 		//closing
 		if(!in_array($this->type,$this->self_closers))
 		{
-			$build.= '>'.$this->attributes['text'].'</'.$this->type.'>';
+			$build.= '>'.$this->attributes['text'].'</'.$this->type.'>'."\n";
 		}
 		else
 		{
-			$build.= ' />';
+			$build.= ' />'."\n";
 		}
 		
 		//return it
