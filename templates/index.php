@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <base href="http://<?php print SERVER_URL; ?>" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SISAE</title>
+    <title>Modern Business - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SISAE</a>
+                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -94,10 +93,10 @@
                     <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li class="active">
+                            <li>
                                 <a href="full-width.html">Full Width Page</a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="sidebar.html">Sidebar Page</a>
                             </li>
                             <li>
@@ -124,25 +123,13 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Full Width Page
+                <h1 class="page-header">Sidebar Page
                     <small>Subheading</small>
                 </h1>
-                
                 <ol class="breadcrumb">
-                    <li><a href="<?php print 'http://'.SERVER_URL;?>">Home</a>
+                    <li><a href="index.html">Home</a>
                     </li>
-                    <?php                     
-//                    print $_SERVER['REQUEST_URI'];
-                    $secciones = split('/', $_SERVER['REQUEST_URI']);
-                    $url = '';
-                    foreach ($secciones as $seccion){                        
-                        if (! $seccion ) continue;// Si está vacío no pongas nada
-                        $url .= $seccion."/";
-                        print '<li>';
-                        print '<a href="'.$url.'">'.$seccion."</a>";
-                        print '</li>';
-                    }
-                    ?> 
+                    <li class="active">Sidebar Page</li>
                 </ol>
             </div>
         </div>
@@ -150,11 +137,41 @@
 
         <!-- Content Row -->
         <div class="row">
-            
-        <?php include_once $_SESSION[VISTA]; ;?>    
-            
+            <!-- Sidebar Column -->
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="index.html" class="list-group-item">Home</a>
+                    <a href="about.html" class="list-group-item">About</a>
+                    <a href="services.html" class="list-group-item">Services</a>
+                    <a href="contact.html" class="list-group-item">Contact</a>
+                    <a href="portfolio-1-col.html" class="list-group-item">1 Column Portfolio</a>
+                    <a href="portfolio-2-col.html" class="list-group-item">2 Column Portfolio</a>
+                    <a href="portfolio-3-col.html" class="list-group-item">3 Column Portfolio</a>
+                    <a href="portfolio-4-col.html" class="list-group-item">4 Column Portfolio</a>
+                    <a href="portfolio-item.html" class="list-group-item">Single Portfolio Item</a>
+                    <a href="blog-home-1.html" class="list-group-item">Blog Home 1</a>
+                    <a href="blog-home-2.html" class="list-group-item">Blog Home 2</a>
+                    <a href="blog-post.html" class="list-group-item">Blog Post</a>
+                    <a href="full-width.html" class="list-group-item">Full Width Page</a>
+                    <a href="sidebar.html" class="list-group-item active">Sidebar Page</a>
+                    <a href="faq.html" class="list-group-item">FAQ</a>
+                    <a href="404.html" class="list-group-item">404</a>
+                    <a href="pricing.html" class="list-group-item">Pricing Table</a>
+                </div>
+            </div>
+            <?php
+            if (isset($_SESSION[MENSAJE_EXITO])){
+                print '<div class="alert alert-success alert-dismissible" role="alert">';
+                print $_SESSION[MENSAJE_EXITO];
+                print '</div>';
+                unset($_SESSION[MENSAJE_EXITO]);
+            }
+            ?>
+            <!-- Content Column -->
+            <div class="col-md-9">
+                <?php include_once $_SESSION[VISTA];?>
+            </div>
         </div>
-        
         <!-- /.row -->
 
         <hr>
