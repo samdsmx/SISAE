@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:15
+ * @date: 2015-09-09 23:54
  */
 interface EgreAsoCarrerasUrDAO{
 
@@ -13,7 +13,7 @@ interface EgreAsoCarrerasUrDAO{
 	 * @param String $id primary key
 	 * @Return EgreAsoCarrerasUr 
 	 */
-	public function load($iDUNIDADRESPONSABLE, $iDCARRERA);
+	public function load($idUnidadResponsable, $idCarrera);
 
 	/**
 	 * Get all records from table
@@ -30,7 +30,7 @@ interface EgreAsoCarrerasUrDAO{
  	 * Delete record from table
  	 * @param egreAsoCarrerasUr primary key
  	 */
-	public function delete($iDUNIDADRESPONSABLE, $iDCARRERA);
+	public function delete($idUnidadResponsable, $idCarrera);
 	
 	/**
  	 * Insert record to table

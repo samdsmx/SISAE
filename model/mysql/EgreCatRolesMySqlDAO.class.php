@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_cat_roles'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreCatRolesMySqlDAO implements EgreCatRolesDAO{
 
@@ -60,10 +60,10 @@ class EgreCatRolesMySqlDAO implements EgreCatRolesDAO{
 		$sql = 'INSERT INTO egre_cat_roles (ROL) VALUES (?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatRole->rOL);
+		$sqlQuery->set($egreCatRole->rol);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreCatRole->iDROL = $id;
+		$egreCatRole->idRol = $id;
 		return $id;
 	}
 	
@@ -76,9 +76,9 @@ class EgreCatRolesMySqlDAO implements EgreCatRolesDAO{
 		$sql = 'UPDATE egre_cat_roles SET ROL = ? WHERE ID_ROL = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatRole->rOL);
+		$sqlQuery->set($egreCatRole->rol);
 
-		$sqlQuery->setNumber($egreCatRole->iDROL);
+		$sqlQuery->setNumber($egreCatRole->idRol);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -116,8 +116,8 @@ class EgreCatRolesMySqlDAO implements EgreCatRolesDAO{
 	protected function readRow($row){
 		$egreCatRole = new EgreCatRole();
 		
-		$egreCatRole->iDROL = $row['ID_ROL'];
-		$egreCatRole->rOL = $row['ROL'];
+		$egreCatRole->idRol = $row['ID_ROL'];
+		$egreCatRole->rol = $row['ROL'];
 
 		return $egreCatRole;
 	}

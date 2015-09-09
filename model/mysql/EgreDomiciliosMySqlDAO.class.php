@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_domicilios'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreDomiciliosMySqlDAO implements EgreDomiciliosDAO{
 
@@ -60,13 +60,13 @@ class EgreDomiciliosMySqlDAO implements EgreDomiciliosDAO{
 		$sql = 'INSERT INTO egre_domicilios (ID_ASENTAMIENTO, CALLE, NUM_EXT, NUM_INT) VALUES (?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreDomicilio->iDASENTAMIENTO);
-		$sqlQuery->set($egreDomicilio->cALLE);
-		$sqlQuery->setNumber($egreDomicilio->nUMEXT);
-		$sqlQuery->setNumber($egreDomicilio->nUMINT);
+		$sqlQuery->setNumber($egreDomicilio->idAsentamiento);
+		$sqlQuery->set($egreDomicilio->calle);
+		$sqlQuery->setNumber($egreDomicilio->numExt);
+		$sqlQuery->setNumber($egreDomicilio->numInt);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreDomicilio->iDDOMICILIO = $id;
+		$egreDomicilio->idDomicilio = $id;
 		return $id;
 	}
 	
@@ -79,12 +79,12 @@ class EgreDomiciliosMySqlDAO implements EgreDomiciliosDAO{
 		$sql = 'UPDATE egre_domicilios SET ID_ASENTAMIENTO = ?, CALLE = ?, NUM_EXT = ?, NUM_INT = ? WHERE ID_DOMICILIO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreDomicilio->iDASENTAMIENTO);
-		$sqlQuery->set($egreDomicilio->cALLE);
-		$sqlQuery->setNumber($egreDomicilio->nUMEXT);
-		$sqlQuery->setNumber($egreDomicilio->nUMINT);
+		$sqlQuery->setNumber($egreDomicilio->idAsentamiento);
+		$sqlQuery->set($egreDomicilio->calle);
+		$sqlQuery->setNumber($egreDomicilio->numExt);
+		$sqlQuery->setNumber($egreDomicilio->numInt);
 
-		$sqlQuery->setNumber($egreDomicilio->iDDOMICILIO);
+		$sqlQuery->setNumber($egreDomicilio->idDomicilio);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -164,11 +164,11 @@ class EgreDomiciliosMySqlDAO implements EgreDomiciliosDAO{
 	protected function readRow($row){
 		$egreDomicilio = new EgreDomicilio();
 		
-		$egreDomicilio->iDDOMICILIO = $row['ID_DOMICILIO'];
-		$egreDomicilio->iDASENTAMIENTO = $row['ID_ASENTAMIENTO'];
-		$egreDomicilio->cALLE = $row['CALLE'];
-		$egreDomicilio->nUMEXT = $row['NUM_EXT'];
-		$egreDomicilio->nUMINT = $row['NUM_INT'];
+		$egreDomicilio->idDomicilio = $row['ID_DOMICILIO'];
+		$egreDomicilio->idAsentamiento = $row['ID_ASENTAMIENTO'];
+		$egreDomicilio->calle = $row['CALLE'];
+		$egreDomicilio->numExt = $row['NUM_EXT'];
+		$egreDomicilio->numInt = $row['NUM_INT'];
 
 		return $egreDomicilio;
 	}

@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:15
+ * @date: 2015-09-09 23:54
  */
 interface EgreAsoEgreDomiciliosDAO{
 
@@ -13,7 +13,7 @@ interface EgreAsoEgreDomiciliosDAO{
 	 * @param String $id primary key
 	 * @Return EgreAsoEgreDomicilios 
 	 */
-	public function load($iDEGRESADO, $iDDOMICILIO);
+	public function load($idEgresado, $idDomicilio);
 
 	/**
 	 * Get all records from table
@@ -30,7 +30,7 @@ interface EgreAsoEgreDomiciliosDAO{
  	 * Delete record from table
  	 * @param egreAsoEgreDomicilio primary key
  	 */
-	public function delete($iDEGRESADO, $iDDOMICILIO);
+	public function delete($idEgresado, $idDomicilio);
 	
 	/**
  	 * Insert record to table

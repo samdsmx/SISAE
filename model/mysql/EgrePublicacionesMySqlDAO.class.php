@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_publicaciones'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgrePublicacionesMySqlDAO implements EgrePublicacionesDAO{
 
@@ -60,12 +60,12 @@ class EgrePublicacionesMySqlDAO implements EgrePublicacionesDAO{
 		$sql = 'INSERT INTO egre_publicaciones (ID_EGRESADO, PUBLICACION, FECHA) VALUES (?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egrePublicacione->iDEGRESADO);
-		$sqlQuery->set($egrePublicacione->pUBLICACION);
-		$sqlQuery->set($egrePublicacione->fECHA);
+		$sqlQuery->setNumber($egrePublicacione->idEgresado);
+		$sqlQuery->set($egrePublicacione->publicacion);
+		$sqlQuery->set($egrePublicacione->fecha);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egrePublicacione->iDPUBLICACION = $id;
+		$egrePublicacione->idPublicacion = $id;
 		return $id;
 	}
 	
@@ -78,11 +78,11 @@ class EgrePublicacionesMySqlDAO implements EgrePublicacionesDAO{
 		$sql = 'UPDATE egre_publicaciones SET ID_EGRESADO = ?, PUBLICACION = ?, FECHA = ? WHERE ID_PUBLICACION = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egrePublicacione->iDEGRESADO);
-		$sqlQuery->set($egrePublicacione->pUBLICACION);
-		$sqlQuery->set($egrePublicacione->fECHA);
+		$sqlQuery->setNumber($egrePublicacione->idEgresado);
+		$sqlQuery->set($egrePublicacione->publicacion);
+		$sqlQuery->set($egrePublicacione->fecha);
 
-		$sqlQuery->setNumber($egrePublicacione->iDPUBLICACION);
+		$sqlQuery->setNumber($egrePublicacione->idPublicacion);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -148,10 +148,10 @@ class EgrePublicacionesMySqlDAO implements EgrePublicacionesDAO{
 	protected function readRow($row){
 		$egrePublicacione = new EgrePublicacione();
 		
-		$egrePublicacione->iDPUBLICACION = $row['ID_PUBLICACION'];
-		$egrePublicacione->iDEGRESADO = $row['ID_EGRESADO'];
-		$egrePublicacione->pUBLICACION = $row['PUBLICACION'];
-		$egrePublicacione->fECHA = $row['FECHA'];
+		$egrePublicacione->idPublicacion = $row['ID_PUBLICACION'];
+		$egrePublicacione->idEgresado = $row['ID_EGRESADO'];
+		$egrePublicacione->publicacion = $row['PUBLICACION'];
+		$egrePublicacione->fecha = $row['FECHA'];
 
 		return $egrePublicacione;
 	}

@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_cat_carreras'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreCatCarrerasMySqlDAO implements EgreCatCarrerasDAO{
 
@@ -60,12 +60,12 @@ class EgreCatCarrerasMySqlDAO implements EgreCatCarrerasDAO{
 		$sql = 'INSERT INTO egre_cat_carreras (ID_OFERTA_EDUCATIVA, ID_NIVEL_EDUCATIVO, CARRERA) VALUES (?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreCatCarrera->iDOFERTAEDUCATIVA);
-		$sqlQuery->setNumber($egreCatCarrera->iDNIVELEDUCATIVO);
-		$sqlQuery->set($egreCatCarrera->cARRERA);
+		$sqlQuery->setNumber($egreCatCarrera->idOfertaEducativa);
+		$sqlQuery->setNumber($egreCatCarrera->idNivelEducativo);
+		$sqlQuery->set($egreCatCarrera->carrera);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreCatCarrera->iDCARRERA = $id;
+		$egreCatCarrera->idCarrera = $id;
 		return $id;
 	}
 	
@@ -78,11 +78,11 @@ class EgreCatCarrerasMySqlDAO implements EgreCatCarrerasDAO{
 		$sql = 'UPDATE egre_cat_carreras SET ID_OFERTA_EDUCATIVA = ?, ID_NIVEL_EDUCATIVO = ?, CARRERA = ? WHERE ID_CARRERA = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreCatCarrera->iDOFERTAEDUCATIVA);
-		$sqlQuery->setNumber($egreCatCarrera->iDNIVELEDUCATIVO);
-		$sqlQuery->set($egreCatCarrera->cARRERA);
+		$sqlQuery->setNumber($egreCatCarrera->idOfertaEducativa);
+		$sqlQuery->setNumber($egreCatCarrera->idNivelEducativo);
+		$sqlQuery->set($egreCatCarrera->carrera);
 
-		$sqlQuery->setNumber($egreCatCarrera->iDCARRERA);
+		$sqlQuery->setNumber($egreCatCarrera->idCarrera);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -148,10 +148,10 @@ class EgreCatCarrerasMySqlDAO implements EgreCatCarrerasDAO{
 	protected function readRow($row){
 		$egreCatCarrera = new EgreCatCarrera();
 		
-		$egreCatCarrera->iDCARRERA = $row['ID_CARRERA'];
-		$egreCatCarrera->iDOFERTAEDUCATIVA = $row['ID_OFERTA_EDUCATIVA'];
-		$egreCatCarrera->iDNIVELEDUCATIVO = $row['ID_NIVEL_EDUCATIVO'];
-		$egreCatCarrera->cARRERA = $row['CARRERA'];
+		$egreCatCarrera->idCarrera = $row['ID_CARRERA'];
+		$egreCatCarrera->idOfertaEducativa = $row['ID_OFERTA_EDUCATIVA'];
+		$egreCatCarrera->idNivelEducativo = $row['ID_NIVEL_EDUCATIVO'];
+		$egreCatCarrera->carrera = $row['CARRERA'];
 
 		return $egreCatCarrera;
 	}

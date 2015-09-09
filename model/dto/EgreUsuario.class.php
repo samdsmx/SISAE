@@ -3,15 +3,15 @@
 	 * Object represents table 'egre_usuarios'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2015-07-27 23:14	 
+     	 * @date: 2015-09-09 23:54	 
 	 */
 	class EgreUsuario{
 		
-		var $iDUSUARIO;
-		var $iDROL;
-		var $uSUARIO;
-		var $cONTRASENIA;
-		var $fOTO;
+		var $idUsuario;
+		var $idRol;
+		var $usuario;
+		var $contrasenia;
+		var $foto;
 		
 	}
 ?>

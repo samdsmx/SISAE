@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_idiomas_egresados'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreIdiomasEgresadosMySqlDAO implements EgreIdiomasEgresadosDAO{
 
@@ -60,13 +60,13 @@ class EgreIdiomasEgresadosMySqlDAO implements EgreIdiomasEgresadosDAO{
 		$sql = 'INSERT INTO egre_idiomas_egresados (ID_IDIOMA, ID_EGRESADO, PORCENTAJE, INSTITUCION) VALUES (?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreIdiomasEgresado->iDIDIOMA);
-		$sqlQuery->setNumber($egreIdiomasEgresado->iDEGRESADO);
-		$sqlQuery->setNumber($egreIdiomasEgresado->pORCENTAJE);
-		$sqlQuery->set($egreIdiomasEgresado->iNSTITUCION);
+		$sqlQuery->setNumber($egreIdiomasEgresado->idIdioma);
+		$sqlQuery->setNumber($egreIdiomasEgresado->idEgresado);
+		$sqlQuery->setNumber($egreIdiomasEgresado->porcentaje);
+		$sqlQuery->set($egreIdiomasEgresado->institucion);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreIdiomasEgresado->iDIDIOMAEGRESADO = $id;
+		$egreIdiomasEgresado->idIdiomaEgresado = $id;
 		return $id;
 	}
 	
@@ -79,12 +79,12 @@ class EgreIdiomasEgresadosMySqlDAO implements EgreIdiomasEgresadosDAO{
 		$sql = 'UPDATE egre_idiomas_egresados SET ID_IDIOMA = ?, ID_EGRESADO = ?, PORCENTAJE = ?, INSTITUCION = ? WHERE ID_IDIOMA_EGRESADO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreIdiomasEgresado->iDIDIOMA);
-		$sqlQuery->setNumber($egreIdiomasEgresado->iDEGRESADO);
-		$sqlQuery->setNumber($egreIdiomasEgresado->pORCENTAJE);
-		$sqlQuery->set($egreIdiomasEgresado->iNSTITUCION);
+		$sqlQuery->setNumber($egreIdiomasEgresado->idIdioma);
+		$sqlQuery->setNumber($egreIdiomasEgresado->idEgresado);
+		$sqlQuery->setNumber($egreIdiomasEgresado->porcentaje);
+		$sqlQuery->set($egreIdiomasEgresado->institucion);
 
-		$sqlQuery->setNumber($egreIdiomasEgresado->iDIDIOMAEGRESADO);
+		$sqlQuery->setNumber($egreIdiomasEgresado->idIdiomaEgresado);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -164,11 +164,11 @@ class EgreIdiomasEgresadosMySqlDAO implements EgreIdiomasEgresadosDAO{
 	protected function readRow($row){
 		$egreIdiomasEgresado = new EgreIdiomasEgresado();
 		
-		$egreIdiomasEgresado->iDIDIOMAEGRESADO = $row['ID_IDIOMA_EGRESADO'];
-		$egreIdiomasEgresado->iDIDIOMA = $row['ID_IDIOMA'];
-		$egreIdiomasEgresado->iDEGRESADO = $row['ID_EGRESADO'];
-		$egreIdiomasEgresado->pORCENTAJE = $row['PORCENTAJE'];
-		$egreIdiomasEgresado->iNSTITUCION = $row['INSTITUCION'];
+		$egreIdiomasEgresado->idIdiomaEgresado = $row['ID_IDIOMA_EGRESADO'];
+		$egreIdiomasEgresado->idIdioma = $row['ID_IDIOMA'];
+		$egreIdiomasEgresado->idEgresado = $row['ID_EGRESADO'];
+		$egreIdiomasEgresado->porcentaje = $row['PORCENTAJE'];
+		$egreIdiomasEgresado->institucion = $row['INSTITUCION'];
 
 		return $egreIdiomasEgresado;
 	}

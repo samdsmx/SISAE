@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_capacitaciones'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreCapacitacionesMySqlDAO implements EgreCapacitacionesDAO{
 
@@ -60,16 +60,16 @@ class EgreCapacitacionesMySqlDAO implements EgreCapacitacionesDAO{
 		$sql = 'INSERT INTO egre_capacitaciones (ID_TIPO_CAPACITACION, ID_EGRESADO, NOMBRE_CURSO, INSTITUCION, HORAS, FECHA_INICIO, FECHA_FIN) VALUES (?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreCapacitacione->iDTIPOCAPACITACION);
-		$sqlQuery->setNumber($egreCapacitacione->iDEGRESADO);
-		$sqlQuery->set($egreCapacitacione->nOMBRECURSO);
-		$sqlQuery->set($egreCapacitacione->iNSTITUCION);
-		$sqlQuery->setNumber($egreCapacitacione->hORAS);
-		$sqlQuery->set($egreCapacitacione->fECHAINICIO);
-		$sqlQuery->set($egreCapacitacione->fECHAFIN);
+		$sqlQuery->setNumber($egreCapacitacione->idTipoCapacitacion);
+		$sqlQuery->setNumber($egreCapacitacione->idEgresado);
+		$sqlQuery->set($egreCapacitacione->nombreCurso);
+		$sqlQuery->set($egreCapacitacione->institucion);
+		$sqlQuery->setNumber($egreCapacitacione->horas);
+		$sqlQuery->set($egreCapacitacione->fechaInicio);
+		$sqlQuery->set($egreCapacitacione->fechaFin);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreCapacitacione->iDCAPACITACION = $id;
+		$egreCapacitacione->idCapacitacion = $id;
 		return $id;
 	}
 	
@@ -82,15 +82,15 @@ class EgreCapacitacionesMySqlDAO implements EgreCapacitacionesDAO{
 		$sql = 'UPDATE egre_capacitaciones SET ID_TIPO_CAPACITACION = ?, ID_EGRESADO = ?, NOMBRE_CURSO = ?, INSTITUCION = ?, HORAS = ?, FECHA_INICIO = ?, FECHA_FIN = ? WHERE ID_CAPACITACION = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreCapacitacione->iDTIPOCAPACITACION);
-		$sqlQuery->setNumber($egreCapacitacione->iDEGRESADO);
-		$sqlQuery->set($egreCapacitacione->nOMBRECURSO);
-		$sqlQuery->set($egreCapacitacione->iNSTITUCION);
-		$sqlQuery->setNumber($egreCapacitacione->hORAS);
-		$sqlQuery->set($egreCapacitacione->fECHAINICIO);
-		$sqlQuery->set($egreCapacitacione->fECHAFIN);
+		$sqlQuery->setNumber($egreCapacitacione->idTipoCapacitacion);
+		$sqlQuery->setNumber($egreCapacitacione->idEgresado);
+		$sqlQuery->set($egreCapacitacione->nombreCurso);
+		$sqlQuery->set($egreCapacitacione->institucion);
+		$sqlQuery->setNumber($egreCapacitacione->horas);
+		$sqlQuery->set($egreCapacitacione->fechaInicio);
+		$sqlQuery->set($egreCapacitacione->fechaFin);
 
-		$sqlQuery->setNumber($egreCapacitacione->iDCAPACITACION);
+		$sqlQuery->setNumber($egreCapacitacione->idCapacitacion);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -212,14 +212,14 @@ class EgreCapacitacionesMySqlDAO implements EgreCapacitacionesDAO{
 	protected function readRow($row){
 		$egreCapacitacione = new EgreCapacitacione();
 		
-		$egreCapacitacione->iDCAPACITACION = $row['ID_CAPACITACION'];
-		$egreCapacitacione->iDTIPOCAPACITACION = $row['ID_TIPO_CAPACITACION'];
-		$egreCapacitacione->iDEGRESADO = $row['ID_EGRESADO'];
-		$egreCapacitacione->nOMBRECURSO = $row['NOMBRE_CURSO'];
-		$egreCapacitacione->iNSTITUCION = $row['INSTITUCION'];
-		$egreCapacitacione->hORAS = $row['HORAS'];
-		$egreCapacitacione->fECHAINICIO = $row['FECHA_INICIO'];
-		$egreCapacitacione->fECHAFIN = $row['FECHA_FIN'];
+		$egreCapacitacione->idCapacitacion = $row['ID_CAPACITACION'];
+		$egreCapacitacione->idTipoCapacitacion = $row['ID_TIPO_CAPACITACION'];
+		$egreCapacitacione->idEgresado = $row['ID_EGRESADO'];
+		$egreCapacitacione->nombreCurso = $row['NOMBRE_CURSO'];
+		$egreCapacitacione->institucion = $row['INSTITUCION'];
+		$egreCapacitacione->horas = $row['HORAS'];
+		$egreCapacitacione->fechaInicio = $row['FECHA_INICIO'];
+		$egreCapacitacione->fechaFin = $row['FECHA_FIN'];
 
 		return $egreCapacitacione;
 	}

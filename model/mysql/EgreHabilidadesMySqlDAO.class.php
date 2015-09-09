@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_habilidades'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreHabilidadesMySqlDAO implements EgreHabilidadesDAO{
 
@@ -60,12 +60,12 @@ class EgreHabilidadesMySqlDAO implements EgreHabilidadesDAO{
 		$sql = 'INSERT INTO egre_habilidades (ID_EGRESADO, HABILIDAD, NIVEL) VALUES (?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreHabilidade->iDEGRESADO);
-		$sqlQuery->set($egreHabilidade->hABILIDAD);
-		$sqlQuery->setNumber($egreHabilidade->nIVEL);
+		$sqlQuery->setNumber($egreHabilidade->idEgresado);
+		$sqlQuery->set($egreHabilidade->habilidad);
+		$sqlQuery->setNumber($egreHabilidade->nivel);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreHabilidade->iDHABILIDAD = $id;
+		$egreHabilidade->idHabilidad = $id;
 		return $id;
 	}
 	
@@ -78,11 +78,11 @@ class EgreHabilidadesMySqlDAO implements EgreHabilidadesDAO{
 		$sql = 'UPDATE egre_habilidades SET ID_EGRESADO = ?, HABILIDAD = ?, NIVEL = ? WHERE ID_HABILIDAD = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreHabilidade->iDEGRESADO);
-		$sqlQuery->set($egreHabilidade->hABILIDAD);
-		$sqlQuery->setNumber($egreHabilidade->nIVEL);
+		$sqlQuery->setNumber($egreHabilidade->idEgresado);
+		$sqlQuery->set($egreHabilidade->habilidad);
+		$sqlQuery->setNumber($egreHabilidade->nivel);
 
-		$sqlQuery->setNumber($egreHabilidade->iDHABILIDAD);
+		$sqlQuery->setNumber($egreHabilidade->idHabilidad);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -148,10 +148,10 @@ class EgreHabilidadesMySqlDAO implements EgreHabilidadesDAO{
 	protected function readRow($row){
 		$egreHabilidade = new EgreHabilidade();
 		
-		$egreHabilidade->iDHABILIDAD = $row['ID_HABILIDAD'];
-		$egreHabilidade->iDEGRESADO = $row['ID_EGRESADO'];
-		$egreHabilidade->hABILIDAD = $row['HABILIDAD'];
-		$egreHabilidade->nIVEL = $row['NIVEL'];
+		$egreHabilidade->idHabilidad = $row['ID_HABILIDAD'];
+		$egreHabilidade->idEgresado = $row['ID_EGRESADO'];
+		$egreHabilidade->habilidad = $row['HABILIDAD'];
+		$egreHabilidade->nivel = $row['NIVEL'];
 
 		return $egreHabilidade;
 	}

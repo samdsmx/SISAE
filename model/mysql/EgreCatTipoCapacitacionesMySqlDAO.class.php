@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_cat_tipo_capacitaciones'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreCatTipoCapacitacionesMySqlDAO implements EgreCatTipoCapacitacionesDAO{
 
@@ -60,10 +60,10 @@ class EgreCatTipoCapacitacionesMySqlDAO implements EgreCatTipoCapacitacionesDAO{
 		$sql = 'INSERT INTO egre_cat_tipo_capacitaciones (DESCRIPCION) VALUES (?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatTipoCapacitacione->dESCRIPCION);
+		$sqlQuery->set($egreCatTipoCapacitacione->descripcion);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreCatTipoCapacitacione->iDTIPOCAPACITACION = $id;
+		$egreCatTipoCapacitacione->idTipoCapacitacion = $id;
 		return $id;
 	}
 	
@@ -76,9 +76,9 @@ class EgreCatTipoCapacitacionesMySqlDAO implements EgreCatTipoCapacitacionesDAO{
 		$sql = 'UPDATE egre_cat_tipo_capacitaciones SET DESCRIPCION = ? WHERE ID_TIPO_CAPACITACION = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatTipoCapacitacione->dESCRIPCION);
+		$sqlQuery->set($egreCatTipoCapacitacione->descripcion);
 
-		$sqlQuery->setNumber($egreCatTipoCapacitacione->iDTIPOCAPACITACION);
+		$sqlQuery->setNumber($egreCatTipoCapacitacione->idTipoCapacitacion);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -116,8 +116,8 @@ class EgreCatTipoCapacitacionesMySqlDAO implements EgreCatTipoCapacitacionesDAO{
 	protected function readRow($row){
 		$egreCatTipoCapacitacione = new EgreCatTipoCapacitacione();
 		
-		$egreCatTipoCapacitacione->iDTIPOCAPACITACION = $row['ID_TIPO_CAPACITACION'];
-		$egreCatTipoCapacitacione->dESCRIPCION = $row['DESCRIPCION'];
+		$egreCatTipoCapacitacione->idTipoCapacitacion = $row['ID_TIPO_CAPACITACION'];
+		$egreCatTipoCapacitacione->descripcion = $row['DESCRIPCION'];
 
 		return $egreCatTipoCapacitacione;
 	}

@@ -3,12 +3,12 @@
 	 * Object represents table 'egre_aso_carreras_ur'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2015-07-27 23:14	 
+     	 * @date: 2015-09-09 23:54	 
 	 */
 	class EgreAsoCarrerasUr{
 		
-		var $iDUNIDADRESPONSABLE;
-		var $iDCARRERA;
+		var $idUnidadResponsable;
+		var $idCarrera;
 		
 	}
 ?>

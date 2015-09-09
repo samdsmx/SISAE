@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_datos_acads_externos'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreDatosAcadsExternosMySqlDAO implements EgreDatosAcadsExternosDAO{
 
@@ -60,16 +60,16 @@ class EgreDatosAcadsExternosMySqlDAO implements EgreDatosAcadsExternosDAO{
 		$sql = 'INSERT INTO egre_datos_acads_externos (ESCUELA, ID_EGRESADO, CARRERA, ANIO_INGRESO, ANIO_EGRESO, PROMEDIO, NIVEL) VALUES (?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreDatosAcadsExterno->eSCUELA);
-		$sqlQuery->setNumber($egreDatosAcadsExterno->iDEGRESADO);
-		$sqlQuery->set($egreDatosAcadsExterno->cARRERA);
-		$sqlQuery->set($egreDatosAcadsExterno->aNIOINGRESO);
-		$sqlQuery->set($egreDatosAcadsExterno->aNIOEGRESO);
-		$sqlQuery->set($egreDatosAcadsExterno->pROMEDIO);
-		$sqlQuery->set($egreDatosAcadsExterno->nIVEL);
+		$sqlQuery->setNumber($egreDatosAcadsExterno->escuela);
+		$sqlQuery->setNumber($egreDatosAcadsExterno->idEgresado);
+		$sqlQuery->set($egreDatosAcadsExterno->carrera);
+		$sqlQuery->set($egreDatosAcadsExterno->anioIngreso);
+		$sqlQuery->set($egreDatosAcadsExterno->anioEgreso);
+		$sqlQuery->set($egreDatosAcadsExterno->promedio);
+		$sqlQuery->set($egreDatosAcadsExterno->nivel);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreDatosAcadsExterno->iDDATOACADEXTERNO = $id;
+		$egreDatosAcadsExterno->idDatoAcadExterno = $id;
 		return $id;
 	}
 	
@@ -82,15 +82,15 @@ class EgreDatosAcadsExternosMySqlDAO implements EgreDatosAcadsExternosDAO{
 		$sql = 'UPDATE egre_datos_acads_externos SET ESCUELA = ?, ID_EGRESADO = ?, CARRERA = ?, ANIO_INGRESO = ?, ANIO_EGRESO = ?, PROMEDIO = ?, NIVEL = ? WHERE ID_DATO_ACAD_EXTERNO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreDatosAcadsExterno->eSCUELA);
-		$sqlQuery->setNumber($egreDatosAcadsExterno->iDEGRESADO);
-		$sqlQuery->set($egreDatosAcadsExterno->cARRERA);
-		$sqlQuery->set($egreDatosAcadsExterno->aNIOINGRESO);
-		$sqlQuery->set($egreDatosAcadsExterno->aNIOEGRESO);
-		$sqlQuery->set($egreDatosAcadsExterno->pROMEDIO);
-		$sqlQuery->set($egreDatosAcadsExterno->nIVEL);
+		$sqlQuery->setNumber($egreDatosAcadsExterno->escuela);
+		$sqlQuery->setNumber($egreDatosAcadsExterno->idEgresado);
+		$sqlQuery->set($egreDatosAcadsExterno->carrera);
+		$sqlQuery->set($egreDatosAcadsExterno->anioIngreso);
+		$sqlQuery->set($egreDatosAcadsExterno->anioEgreso);
+		$sqlQuery->set($egreDatosAcadsExterno->promedio);
+		$sqlQuery->set($egreDatosAcadsExterno->nivel);
 
-		$sqlQuery->setNumber($egreDatosAcadsExterno->iDDATOACADEXTERNO);
+		$sqlQuery->setNumber($egreDatosAcadsExterno->idDatoAcadExterno);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -212,14 +212,14 @@ class EgreDatosAcadsExternosMySqlDAO implements EgreDatosAcadsExternosDAO{
 	protected function readRow($row){
 		$egreDatosAcadsExterno = new EgreDatosAcadsExterno();
 		
-		$egreDatosAcadsExterno->iDDATOACADEXTERNO = $row['ID_DATO_ACAD_EXTERNO'];
-		$egreDatosAcadsExterno->eSCUELA = $row['ESCUELA'];
-		$egreDatosAcadsExterno->iDEGRESADO = $row['ID_EGRESADO'];
-		$egreDatosAcadsExterno->cARRERA = $row['CARRERA'];
-		$egreDatosAcadsExterno->aNIOINGRESO = $row['ANIO_INGRESO'];
-		$egreDatosAcadsExterno->aNIOEGRESO = $row['ANIO_EGRESO'];
-		$egreDatosAcadsExterno->pROMEDIO = $row['PROMEDIO'];
-		$egreDatosAcadsExterno->nIVEL = $row['NIVEL'];
+		$egreDatosAcadsExterno->idDatoAcadExterno = $row['ID_DATO_ACAD_EXTERNO'];
+		$egreDatosAcadsExterno->escuela = $row['ESCUELA'];
+		$egreDatosAcadsExterno->idEgresado = $row['ID_EGRESADO'];
+		$egreDatosAcadsExterno->carrera = $row['CARRERA'];
+		$egreDatosAcadsExterno->anioIngreso = $row['ANIO_INGRESO'];
+		$egreDatosAcadsExterno->anioEgreso = $row['ANIO_EGRESO'];
+		$egreDatosAcadsExterno->promedio = $row['PROMEDIO'];
+		$egreDatosAcadsExterno->nivel = $row['NIVEL'];
 
 		return $egreDatosAcadsExterno;
 	}

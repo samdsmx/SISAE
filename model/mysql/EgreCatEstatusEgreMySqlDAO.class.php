@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_cat_estatus_egre'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreCatEstatusEgreMySqlDAO implements EgreCatEstatusEgreDAO{
 
@@ -60,10 +60,10 @@ class EgreCatEstatusEgreMySqlDAO implements EgreCatEstatusEgreDAO{
 		$sql = 'INSERT INTO egre_cat_estatus_egre (ESTATUS) VALUES (?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatEstatusEgre->eSTATUS);
+		$sqlQuery->set($egreCatEstatusEgre->estatus);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreCatEstatusEgre->iDESTATUSEGRE = $id;
+		$egreCatEstatusEgre->idEstatusEgre = $id;
 		return $id;
 	}
 	
@@ -76,9 +76,9 @@ class EgreCatEstatusEgreMySqlDAO implements EgreCatEstatusEgreDAO{
 		$sql = 'UPDATE egre_cat_estatus_egre SET ESTATUS = ? WHERE ID_ESTATUS_EGRE = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatEstatusEgre->eSTATUS);
+		$sqlQuery->set($egreCatEstatusEgre->estatus);
 
-		$sqlQuery->setNumber($egreCatEstatusEgre->iDESTATUSEGRE);
+		$sqlQuery->setNumber($egreCatEstatusEgre->idEstatusEgre);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -116,8 +116,8 @@ class EgreCatEstatusEgreMySqlDAO implements EgreCatEstatusEgreDAO{
 	protected function readRow($row){
 		$egreCatEstatusEgre = new EgreCatEstatusEgre();
 		
-		$egreCatEstatusEgre->iDESTATUSEGRE = $row['ID_ESTATUS_EGRE'];
-		$egreCatEstatusEgre->eSTATUS = $row['ESTATUS'];
+		$egreCatEstatusEgre->idEstatusEgre = $row['ID_ESTATUS_EGRE'];
+		$egreCatEstatusEgre->estatus = $row['ESTATUS'];
 
 		return $egreCatEstatusEgre;
 	}

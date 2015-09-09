@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_cat_motivos_notitulacion'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreCatMotivosNotitulacionMySqlDAO implements EgreCatMotivosNotitulacionDAO{
 
@@ -60,10 +60,10 @@ class EgreCatMotivosNotitulacionMySqlDAO implements EgreCatMotivosNotitulacionDA
 		$sql = 'INSERT INTO egre_cat_motivos_notitulacion (MOTIVO_NOTITULACION) VALUES (?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatMotivosNotitulacion->mOTIVONOTITULACION);
+		$sqlQuery->set($egreCatMotivosNotitulacion->motivoNotitulacion);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreCatMotivosNotitulacion->iDMOTIVONOTITULACION = $id;
+		$egreCatMotivosNotitulacion->idMotivoNotitulacion = $id;
 		return $id;
 	}
 	
@@ -76,9 +76,9 @@ class EgreCatMotivosNotitulacionMySqlDAO implements EgreCatMotivosNotitulacionDA
 		$sql = 'UPDATE egre_cat_motivos_notitulacion SET MOTIVO_NOTITULACION = ? WHERE ID_MOTIVO_NOTITULACION = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatMotivosNotitulacion->mOTIVONOTITULACION);
+		$sqlQuery->set($egreCatMotivosNotitulacion->motivoNotitulacion);
 
-		$sqlQuery->setNumber($egreCatMotivosNotitulacion->iDMOTIVONOTITULACION);
+		$sqlQuery->setNumber($egreCatMotivosNotitulacion->idMotivoNotitulacion);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -116,8 +116,8 @@ class EgreCatMotivosNotitulacionMySqlDAO implements EgreCatMotivosNotitulacionDA
 	protected function readRow($row){
 		$egreCatMotivosNotitulacion = new EgreCatMotivosNotitulacion();
 		
-		$egreCatMotivosNotitulacion->iDMOTIVONOTITULACION = $row['ID_MOTIVO_NOTITULACION'];
-		$egreCatMotivosNotitulacion->mOTIVONOTITULACION = $row['MOTIVO_NOTITULACION'];
+		$egreCatMotivosNotitulacion->idMotivoNotitulacion = $row['ID_MOTIVO_NOTITULACION'];
+		$egreCatMotivosNotitulacion->motivoNotitulacion = $row['MOTIVO_NOTITULACION'];
 
 		return $egreCatMotivosNotitulacion;
 	}

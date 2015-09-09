@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_hashtags'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreHashtagsMySqlDAO implements EgreHashtagsDAO{
 
@@ -60,10 +60,10 @@ class EgreHashtagsMySqlDAO implements EgreHashtagsDAO{
 		$sql = 'INSERT INTO egre_hashtags (HASHTAG) VALUES (?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreHashtag->hASHTAG);
+		$sqlQuery->set($egreHashtag->hashtag);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreHashtag->iDHASHTAG = $id;
+		$egreHashtag->idHashtag = $id;
 		return $id;
 	}
 	
@@ -76,9 +76,9 @@ class EgreHashtagsMySqlDAO implements EgreHashtagsDAO{
 		$sql = 'UPDATE egre_hashtags SET HASHTAG = ? WHERE ID_HASHTAG = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreHashtag->hASHTAG);
+		$sqlQuery->set($egreHashtag->hashtag);
 
-		$sqlQuery->setNumber($egreHashtag->iDHASHTAG);
+		$sqlQuery->setNumber($egreHashtag->idHashtag);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -116,8 +116,8 @@ class EgreHashtagsMySqlDAO implements EgreHashtagsDAO{
 	protected function readRow($row){
 		$egreHashtag = new EgreHashtag();
 		
-		$egreHashtag->iDHASHTAG = $row['ID_HASHTAG'];
-		$egreHashtag->hASHTAG = $row['HASHTAG'];
+		$egreHashtag->idHashtag = $row['ID_HASHTAG'];
+		$egreHashtag->hashtag = $row['HASHTAG'];
 
 		return $egreHashtag;
 	}

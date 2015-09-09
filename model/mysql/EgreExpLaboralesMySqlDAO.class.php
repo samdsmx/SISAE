@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_exp_laborales'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreExpLaboralesMySqlDAO implements EgreExpLaboralesDAO{
 
@@ -60,19 +60,19 @@ class EgreExpLaboralesMySqlDAO implements EgreExpLaboralesDAO{
 		$sql = 'INSERT INTO egre_exp_laborales (ID_EGRESADO, NOMBRE_EMPRESA, URL_EMPRESA, PUESTO, FECHA_INGRESO, FECHA_EGRESO, RESPONSABILIDADES, JEFE_INMEDIATO, TEL_REFERENCIA, CORREO_REFERENCIA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreExpLaborale->iDEGRESADO);
-		$sqlQuery->set($egreExpLaborale->nOMBREEMPRESA);
-		$sqlQuery->set($egreExpLaborale->uRLEMPRESA);
-		$sqlQuery->set($egreExpLaborale->pUESTO);
-		$sqlQuery->set($egreExpLaborale->fECHAINGRESO);
-		$sqlQuery->set($egreExpLaborale->fECHAEGRESO);
-		$sqlQuery->set($egreExpLaborale->rESPONSABILIDADES);
-		$sqlQuery->set($egreExpLaborale->jEFEINMEDIATO);
-		$sqlQuery->set($egreExpLaborale->tELREFERENCIA);
-		$sqlQuery->set($egreExpLaborale->cORREOREFERENCIA);
+		$sqlQuery->setNumber($egreExpLaborale->idEgresado);
+		$sqlQuery->set($egreExpLaborale->nombreEmpresa);
+		$sqlQuery->set($egreExpLaborale->urlEmpresa);
+		$sqlQuery->set($egreExpLaborale->puesto);
+		$sqlQuery->set($egreExpLaborale->fechaIngreso);
+		$sqlQuery->set($egreExpLaborale->fechaEgreso);
+		$sqlQuery->set($egreExpLaborale->responsabilidades);
+		$sqlQuery->set($egreExpLaborale->jefeInmediato);
+		$sqlQuery->set($egreExpLaborale->telReferencia);
+		$sqlQuery->set($egreExpLaborale->correoReferencia);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreExpLaborale->iDEXPLABORAL = $id;
+		$egreExpLaborale->idExpLaboral = $id;
 		return $id;
 	}
 	
@@ -85,18 +85,18 @@ class EgreExpLaboralesMySqlDAO implements EgreExpLaboralesDAO{
 		$sql = 'UPDATE egre_exp_laborales SET ID_EGRESADO = ?, NOMBRE_EMPRESA = ?, URL_EMPRESA = ?, PUESTO = ?, FECHA_INGRESO = ?, FECHA_EGRESO = ?, RESPONSABILIDADES = ?, JEFE_INMEDIATO = ?, TEL_REFERENCIA = ?, CORREO_REFERENCIA = ? WHERE ID_EXP_LABORAL = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreExpLaborale->iDEGRESADO);
-		$sqlQuery->set($egreExpLaborale->nOMBREEMPRESA);
-		$sqlQuery->set($egreExpLaborale->uRLEMPRESA);
-		$sqlQuery->set($egreExpLaborale->pUESTO);
-		$sqlQuery->set($egreExpLaborale->fECHAINGRESO);
-		$sqlQuery->set($egreExpLaborale->fECHAEGRESO);
-		$sqlQuery->set($egreExpLaborale->rESPONSABILIDADES);
-		$sqlQuery->set($egreExpLaborale->jEFEINMEDIATO);
-		$sqlQuery->set($egreExpLaborale->tELREFERENCIA);
-		$sqlQuery->set($egreExpLaborale->cORREOREFERENCIA);
+		$sqlQuery->setNumber($egreExpLaborale->idEgresado);
+		$sqlQuery->set($egreExpLaborale->nombreEmpresa);
+		$sqlQuery->set($egreExpLaborale->urlEmpresa);
+		$sqlQuery->set($egreExpLaborale->puesto);
+		$sqlQuery->set($egreExpLaborale->fechaIngreso);
+		$sqlQuery->set($egreExpLaborale->fechaEgreso);
+		$sqlQuery->set($egreExpLaborale->responsabilidades);
+		$sqlQuery->set($egreExpLaborale->jefeInmediato);
+		$sqlQuery->set($egreExpLaborale->telReferencia);
+		$sqlQuery->set($egreExpLaborale->correoReferencia);
 
-		$sqlQuery->setNumber($egreExpLaborale->iDEXPLABORAL);
+		$sqlQuery->setNumber($egreExpLaborale->idExpLaboral);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -260,17 +260,17 @@ class EgreExpLaboralesMySqlDAO implements EgreExpLaboralesDAO{
 	protected function readRow($row){
 		$egreExpLaborale = new EgreExpLaborale();
 		
-		$egreExpLaborale->iDEXPLABORAL = $row['ID_EXP_LABORAL'];
-		$egreExpLaborale->iDEGRESADO = $row['ID_EGRESADO'];
-		$egreExpLaborale->nOMBREEMPRESA = $row['NOMBRE_EMPRESA'];
-		$egreExpLaborale->uRLEMPRESA = $row['URL_EMPRESA'];
-		$egreExpLaborale->pUESTO = $row['PUESTO'];
-		$egreExpLaborale->fECHAINGRESO = $row['FECHA_INGRESO'];
-		$egreExpLaborale->fECHAEGRESO = $row['FECHA_EGRESO'];
-		$egreExpLaborale->rESPONSABILIDADES = $row['RESPONSABILIDADES'];
-		$egreExpLaborale->jEFEINMEDIATO = $row['JEFE_INMEDIATO'];
-		$egreExpLaborale->tELREFERENCIA = $row['TEL_REFERENCIA'];
-		$egreExpLaborale->cORREOREFERENCIA = $row['CORREO_REFERENCIA'];
+		$egreExpLaborale->idExpLaboral = $row['ID_EXP_LABORAL'];
+		$egreExpLaborale->idEgresado = $row['ID_EGRESADO'];
+		$egreExpLaborale->nombreEmpresa = $row['NOMBRE_EMPRESA'];
+		$egreExpLaborale->urlEmpresa = $row['URL_EMPRESA'];
+		$egreExpLaborale->puesto = $row['PUESTO'];
+		$egreExpLaborale->fechaIngreso = $row['FECHA_INGRESO'];
+		$egreExpLaborale->fechaEgreso = $row['FECHA_EGRESO'];
+		$egreExpLaborale->responsabilidades = $row['RESPONSABILIDADES'];
+		$egreExpLaborale->jefeInmediato = $row['JEFE_INMEDIATO'];
+		$egreExpLaborale->telReferencia = $row['TEL_REFERENCIA'];
+		$egreExpLaborale->correoReferencia = $row['CORREO_REFERENCIA'];
 
 		return $egreExpLaborale;
 	}

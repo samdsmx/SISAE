@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_cat_medios_contacto'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreCatMediosContactoMySqlDAO implements EgreCatMediosContactoDAO{
 
@@ -60,10 +60,10 @@ class EgreCatMediosContactoMySqlDAO implements EgreCatMediosContactoDAO{
 		$sql = 'INSERT INTO egre_cat_medios_contacto (MEDIO_CONTACTO) VALUES (?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatMediosContacto->mEDIOCONTACTO);
+		$sqlQuery->set($egreCatMediosContacto->medioContacto);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreCatMediosContacto->iDMEDIOCONTACTO = $id;
+		$egreCatMediosContacto->idMedioContacto = $id;
 		return $id;
 	}
 	
@@ -76,9 +76,9 @@ class EgreCatMediosContactoMySqlDAO implements EgreCatMediosContactoDAO{
 		$sql = 'UPDATE egre_cat_medios_contacto SET MEDIO_CONTACTO = ? WHERE ID_MEDIO_CONTACTO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatMediosContacto->mEDIOCONTACTO);
+		$sqlQuery->set($egreCatMediosContacto->medioContacto);
 
-		$sqlQuery->setNumber($egreCatMediosContacto->iDMEDIOCONTACTO);
+		$sqlQuery->setNumber($egreCatMediosContacto->idMedioContacto);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -116,8 +116,8 @@ class EgreCatMediosContactoMySqlDAO implements EgreCatMediosContactoDAO{
 	protected function readRow($row){
 		$egreCatMediosContacto = new EgreCatMediosContacto();
 		
-		$egreCatMediosContacto->iDMEDIOCONTACTO = $row['ID_MEDIO_CONTACTO'];
-		$egreCatMediosContacto->mEDIOCONTACTO = $row['MEDIO_CONTACTO'];
+		$egreCatMediosContacto->idMedioContacto = $row['ID_MEDIO_CONTACTO'];
+		$egreCatMediosContacto->medioContacto = $row['MEDIO_CONTACTO'];
 
 		return $egreCatMediosContacto;
 	}

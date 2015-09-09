@@ -3,14 +3,14 @@
 	 * Object represents table 'egre_bitacora_validaciones'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2015-07-27 23:14	 
+     	 * @date: 2015-09-09 23:54	 
 	 */
 	class EgreBitacoraValidacione{
 		
-		var $iDBITACORAVALIDACION;
-		var $iDDATOSACADIPN;
-		var $iDUSUARIO;
-		var $fECHA;
+		var $idBitacoraValidacion;
+		var $idDatosAcadIpn;
+		var $idUsuario;
+		var $fecha;
 		
 	}
 ?>

@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_aso_egre_domicilios'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreAsoEgreDomiciliosMySqlDAO implements EgreAsoEgreDomiciliosDAO{
 
@@ -13,11 +13,11 @@ class EgreAsoEgreDomiciliosMySqlDAO implements EgreAsoEgreDomiciliosDAO{
 	 * @param String $id primary key
 	 * @return EgreAsoEgreDomiciliosMySql 
 	 */
-	public function load($iDEGRESADO, $iDDOMICILIO){
+	public function load($idEgresado, $idDomicilio){
 		$sql = 'SELECT * FROM egre_aso_egre_domicilios WHERE ID_EGRESADO = ?  AND ID_DOMICILIO = ? ';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($iDEGRESADO);
-		$sqlQuery->setNumber($iDDOMICILIO);
+		$sqlQuery->setNumber($idEgresado);
+		$sqlQuery->setNumber($idDomicilio);
 
 		return $this->getRow($sqlQuery);
 	}
@@ -46,11 +46,11 @@ class EgreAsoEgreDomiciliosMySqlDAO implements EgreAsoEgreDomiciliosDAO{
  	 * Delete record from table
  	 * @param egreAsoEgreDomicilio primary key
  	 */
-	public function delete($iDEGRESADO, $iDDOMICILIO){
+	public function delete($idEgresado, $idDomicilio){
 		$sql = 'DELETE FROM egre_aso_egre_domicilios WHERE ID_EGRESADO = ?  AND ID_DOMICILIO = ? ';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($iDEGRESADO);
-		$sqlQuery->setNumber($iDDOMICILIO);
+		$sqlQuery->setNumber($idEgresado);
+		$sqlQuery->setNumber($idDomicilio);
 
 		return $this->executeUpdate($sqlQuery);
 	}
@@ -66,9 +66,9 @@ class EgreAsoEgreDomiciliosMySqlDAO implements EgreAsoEgreDomiciliosDAO{
 		
 
 		
-		$sqlQuery->setNumber($egreAsoEgreDomicilio->iDEGRESADO);
+		$sqlQuery->setNumber($egreAsoEgreDomicilio->idEgresado);
 
-		$sqlQuery->setNumber($egreAsoEgreDomicilio->iDDOMICILIO);
+		$sqlQuery->setNumber($egreAsoEgreDomicilio->idDomicilio);
 
 		$this->executeInsert($sqlQuery);	
 		//$egreAsoEgreDomicilio->id = $id;
@@ -86,9 +86,9 @@ class EgreAsoEgreDomiciliosMySqlDAO implements EgreAsoEgreDomiciliosDAO{
 		
 
 		
-		$sqlQuery->setNumber($egreAsoEgreDomicilio->iDEGRESADO);
+		$sqlQuery->setNumber($egreAsoEgreDomicilio->idEgresado);
 
-		$sqlQuery->setNumber($egreAsoEgreDomicilio->iDDOMICILIO);
+		$sqlQuery->setNumber($egreAsoEgreDomicilio->idDomicilio);
 
 		return $this->executeUpdate($sqlQuery);
 	}
@@ -113,8 +113,8 @@ class EgreAsoEgreDomiciliosMySqlDAO implements EgreAsoEgreDomiciliosDAO{
 	protected function readRow($row){
 		$egreAsoEgreDomicilio = new EgreAsoEgreDomicilio();
 		
-		$egreAsoEgreDomicilio->iDEGRESADO = $row['ID_EGRESADO'];
-		$egreAsoEgreDomicilio->iDDOMICILIO = $row['ID_DOMICILIO'];
+		$egreAsoEgreDomicilio->idEgresado = $row['ID_EGRESADO'];
+		$egreAsoEgreDomicilio->idDomicilio = $row['ID_DOMICILIO'];
 
 		return $egreAsoEgreDomicilio;
 	}

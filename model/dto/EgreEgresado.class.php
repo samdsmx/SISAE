@@ -3,22 +3,22 @@
 	 * Object represents table 'egre_egresados'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2015-07-27 23:14	 
+     	 * @date: 2015-09-09 23:54	 
 	 */
 	class EgreEgresado{
 		
-		var $iDEGRESADO;
-		var $aPPATERNO;
-		var $aPMATERNO;
-		var $nOMBRE;
-		var $cURP;
-		var $iDGENERO;
-		var $iDESTADOCIVIL;
-		var $iDGENTILICIO;
-		var $rESIDEMEXICO;
-		var $iDESTADONAC;
-		var $iDUSUARIO;
-		var $fECHAREGISTRO;
+		var $idEgresado;
+		var $apPaterno;
+		var $apMaterno;
+		var $nombre;
+		var $curp;
+		var $idGenero;
+		var $idEstadoCivil;
+		var $idGentilicio;
+		var $resideMexico;
+		var $idEstadoNac;
+		var $idUsuario;
+		var $fechaRegistro;
 		
 	}
 ?>

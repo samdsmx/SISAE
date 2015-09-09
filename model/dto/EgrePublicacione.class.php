@@ -3,14 +3,14 @@
 	 * Object represents table 'egre_publicaciones'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2015-07-27 23:14	 
+     	 * @date: 2015-09-09 23:54	 
 	 */
 	class EgrePublicacione{
 		
-		var $iDPUBLICACION;
-		var $iDEGRESADO;
-		var $pUBLICACION;
-		var $fECHA;
+		var $idPublicacion;
+		var $idEgresado;
+		var $publicacion;
+		var $fecha;
 		
 	}
 ?>

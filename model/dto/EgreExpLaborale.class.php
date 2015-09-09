@@ -3,21 +3,21 @@
 	 * Object represents table 'egre_exp_laborales'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2015-07-27 23:14	 
+     	 * @date: 2015-09-09 23:54	 
 	 */
 	class EgreExpLaborale{
 		
-		var $iDEXPLABORAL;
-		var $iDEGRESADO;
-		var $nOMBREEMPRESA;
-		var $uRLEMPRESA;
-		var $pUESTO;
-		var $fECHAINGRESO;
-		var $fECHAEGRESO;
-		var $rESPONSABILIDADES;
-		var $jEFEINMEDIATO;
-		var $tELREFERENCIA;
-		var $cORREOREFERENCIA;
+		var $idExpLaboral;
+		var $idEgresado;
+		var $nombreEmpresa;
+		var $urlEmpresa;
+		var $puesto;
+		var $fechaIngreso;
+		var $fechaEgreso;
+		var $responsabilidades;
+		var $jefeInmediato;
+		var $telReferencia;
+		var $correoReferencia;
 		
 	}
 ?>

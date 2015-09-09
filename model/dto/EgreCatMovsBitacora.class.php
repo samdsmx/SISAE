@@ -3,12 +3,12 @@
 	 * Object represents table 'egre_cat_movs_bitacora'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2015-07-27 23:14	 
+     	 * @date: 2015-09-09 23:54	 
 	 */
 	class EgreCatMovsBitacora{
 		
-		var $iDMOVBITACORA;
-		var $mOVIMIENTO;
+		var $idMovBitacora;
+		var $movimiento;
 		
 	}
 ?>

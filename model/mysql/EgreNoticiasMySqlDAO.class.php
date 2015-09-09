@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_noticias'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreNoticiasMySqlDAO implements EgreNoticiasDAO{
 
@@ -60,14 +60,14 @@ class EgreNoticiasMySqlDAO implements EgreNoticiasDAO{
 		$sql = 'INSERT INTO egre_noticias (ID_RESPONSABLE_UR, NOTICIA, IMAGEN, FECHA, VISIBILIDAD) VALUES (?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreNoticia->iDRESPONSABLEUR);
-		$sqlQuery->set($egreNoticia->nOTICIA);
-		$sqlQuery->set($egreNoticia->iMAGEN);
-		$sqlQuery->set($egreNoticia->fECHA);
-		$sqlQuery->setNumber($egreNoticia->vISIBILIDAD);
+		$sqlQuery->setNumber($egreNoticia->idResponsableUr);
+		$sqlQuery->set($egreNoticia->noticia);
+		$sqlQuery->set($egreNoticia->imagen);
+		$sqlQuery->set($egreNoticia->fecha);
+		$sqlQuery->setNumber($egreNoticia->visibilidad);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreNoticia->iDNOTICIA = $id;
+		$egreNoticia->idNoticia = $id;
 		return $id;
 	}
 	
@@ -80,13 +80,13 @@ class EgreNoticiasMySqlDAO implements EgreNoticiasDAO{
 		$sql = 'UPDATE egre_noticias SET ID_RESPONSABLE_UR = ?, NOTICIA = ?, IMAGEN = ?, FECHA = ?, VISIBILIDAD = ? WHERE ID_NOTICIA = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreNoticia->iDRESPONSABLEUR);
-		$sqlQuery->set($egreNoticia->nOTICIA);
-		$sqlQuery->set($egreNoticia->iMAGEN);
-		$sqlQuery->set($egreNoticia->fECHA);
-		$sqlQuery->setNumber($egreNoticia->vISIBILIDAD);
+		$sqlQuery->setNumber($egreNoticia->idResponsableUr);
+		$sqlQuery->set($egreNoticia->noticia);
+		$sqlQuery->set($egreNoticia->imagen);
+		$sqlQuery->set($egreNoticia->fecha);
+		$sqlQuery->setNumber($egreNoticia->visibilidad);
 
-		$sqlQuery->setNumber($egreNoticia->iDNOTICIA);
+		$sqlQuery->setNumber($egreNoticia->idNoticia);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -180,12 +180,12 @@ class EgreNoticiasMySqlDAO implements EgreNoticiasDAO{
 	protected function readRow($row){
 		$egreNoticia = new EgreNoticia();
 		
-		$egreNoticia->iDNOTICIA = $row['ID_NOTICIA'];
-		$egreNoticia->iDRESPONSABLEUR = $row['ID_RESPONSABLE_UR'];
-		$egreNoticia->nOTICIA = $row['NOTICIA'];
-		$egreNoticia->iMAGEN = $row['IMAGEN'];
-		$egreNoticia->fECHA = $row['FECHA'];
-		$egreNoticia->vISIBILIDAD = $row['VISIBILIDAD'];
+		$egreNoticia->idNoticia = $row['ID_NOTICIA'];
+		$egreNoticia->idResponsableUr = $row['ID_RESPONSABLE_UR'];
+		$egreNoticia->noticia = $row['NOTICIA'];
+		$egreNoticia->imagen = $row['IMAGEN'];
+		$egreNoticia->fecha = $row['FECHA'];
+		$egreNoticia->visibilidad = $row['VISIBILIDAD'];
 
 		return $egreNoticia;
 	}

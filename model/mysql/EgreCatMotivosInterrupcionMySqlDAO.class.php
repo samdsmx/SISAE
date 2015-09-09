@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_cat_motivos_interrupcion'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreCatMotivosInterrupcionMySqlDAO implements EgreCatMotivosInterrupcionDAO{
 
@@ -60,10 +60,10 @@ class EgreCatMotivosInterrupcionMySqlDAO implements EgreCatMotivosInterrupcionDA
 		$sql = 'INSERT INTO egre_cat_motivos_interrupcion (MOTIVO_INTERRUPCION) VALUES (?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatMotivosInterrupcion->mOTIVOINTERRUPCION);
+		$sqlQuery->set($egreCatMotivosInterrupcion->motivoInterrupcion);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreCatMotivosInterrupcion->iDMOTIVOINTERRUPCION = $id;
+		$egreCatMotivosInterrupcion->idMotivoInterrupcion = $id;
 		return $id;
 	}
 	
@@ -76,9 +76,9 @@ class EgreCatMotivosInterrupcionMySqlDAO implements EgreCatMotivosInterrupcionDA
 		$sql = 'UPDATE egre_cat_motivos_interrupcion SET MOTIVO_INTERRUPCION = ? WHERE ID_MOTIVO_INTERRUPCION = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatMotivosInterrupcion->mOTIVOINTERRUPCION);
+		$sqlQuery->set($egreCatMotivosInterrupcion->motivoInterrupcion);
 
-		$sqlQuery->setNumber($egreCatMotivosInterrupcion->iDMOTIVOINTERRUPCION);
+		$sqlQuery->setNumber($egreCatMotivosInterrupcion->idMotivoInterrupcion);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -116,8 +116,8 @@ class EgreCatMotivosInterrupcionMySqlDAO implements EgreCatMotivosInterrupcionDA
 	protected function readRow($row){
 		$egreCatMotivosInterrupcion = new EgreCatMotivosInterrupcion();
 		
-		$egreCatMotivosInterrupcion->iDMOTIVOINTERRUPCION = $row['ID_MOTIVO_INTERRUPCION'];
-		$egreCatMotivosInterrupcion->mOTIVOINTERRUPCION = $row['MOTIVO_INTERRUPCION'];
+		$egreCatMotivosInterrupcion->idMotivoInterrupcion = $row['ID_MOTIVO_INTERRUPCION'];
+		$egreCatMotivosInterrupcion->motivoInterrupcion = $row['MOTIVO_INTERRUPCION'];
 
 		return $egreCatMotivosInterrupcion;
 	}

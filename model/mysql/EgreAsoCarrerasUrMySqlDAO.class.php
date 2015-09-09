@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_aso_carreras_ur'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreAsoCarrerasUrMySqlDAO implements EgreAsoCarrerasUrDAO{
 
@@ -13,11 +13,11 @@ class EgreAsoCarrerasUrMySqlDAO implements EgreAsoCarrerasUrDAO{
 	 * @param String $id primary key
 	 * @return EgreAsoCarrerasUrMySql 
 	 */
-	public function load($iDUNIDADRESPONSABLE, $iDCARRERA){
+	public function load($idUnidadResponsable, $idCarrera){
 		$sql = 'SELECT * FROM egre_aso_carreras_ur WHERE ID_UNIDAD_RESPONSABLE = ?  AND ID_CARRERA = ? ';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($iDUNIDADRESPONSABLE);
-		$sqlQuery->setNumber($iDCARRERA);
+		$sqlQuery->setNumber($idUnidadResponsable);
+		$sqlQuery->setNumber($idCarrera);
 
 		return $this->getRow($sqlQuery);
 	}
@@ -46,11 +46,11 @@ class EgreAsoCarrerasUrMySqlDAO implements EgreAsoCarrerasUrDAO{
  	 * Delete record from table
  	 * @param egreAsoCarrerasUr primary key
  	 */
-	public function delete($iDUNIDADRESPONSABLE, $iDCARRERA){
+	public function delete($idUnidadResponsable, $idCarrera){
 		$sql = 'DELETE FROM egre_aso_carreras_ur WHERE ID_UNIDAD_RESPONSABLE = ?  AND ID_CARRERA = ? ';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($iDUNIDADRESPONSABLE);
-		$sqlQuery->setNumber($iDCARRERA);
+		$sqlQuery->setNumber($idUnidadResponsable);
+		$sqlQuery->setNumber($idCarrera);
 
 		return $this->executeUpdate($sqlQuery);
 	}
@@ -66,9 +66,9 @@ class EgreAsoCarrerasUrMySqlDAO implements EgreAsoCarrerasUrDAO{
 		
 
 		
-		$sqlQuery->setNumber($egreAsoCarrerasUr->iDUNIDADRESPONSABLE);
+		$sqlQuery->setNumber($egreAsoCarrerasUr->idUnidadResponsable);
 
-		$sqlQuery->setNumber($egreAsoCarrerasUr->iDCARRERA);
+		$sqlQuery->setNumber($egreAsoCarrerasUr->idCarrera);
 
 		$this->executeInsert($sqlQuery);	
 		//$egreAsoCarrerasUr->id = $id;
@@ -86,9 +86,9 @@ class EgreAsoCarrerasUrMySqlDAO implements EgreAsoCarrerasUrDAO{
 		
 
 		
-		$sqlQuery->setNumber($egreAsoCarrerasUr->iDUNIDADRESPONSABLE);
+		$sqlQuery->setNumber($egreAsoCarrerasUr->idUnidadResponsable);
 
-		$sqlQuery->setNumber($egreAsoCarrerasUr->iDCARRERA);
+		$sqlQuery->setNumber($egreAsoCarrerasUr->idCarrera);
 
 		return $this->executeUpdate($sqlQuery);
 	}
@@ -113,8 +113,8 @@ class EgreAsoCarrerasUrMySqlDAO implements EgreAsoCarrerasUrDAO{
 	protected function readRow($row){
 		$egreAsoCarrerasUr = new EgreAsoCarrerasUr();
 		
-		$egreAsoCarrerasUr->iDUNIDADRESPONSABLE = $row['ID_UNIDAD_RESPONSABLE'];
-		$egreAsoCarrerasUr->iDCARRERA = $row['ID_CARRERA'];
+		$egreAsoCarrerasUr->idUnidadResponsable = $row['ID_UNIDAD_RESPONSABLE'];
+		$egreAsoCarrerasUr->idCarrera = $row['ID_CARRERA'];
 
 		return $egreAsoCarrerasUr;
 	}

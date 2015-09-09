@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_asociaciones'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreAsociacionesMySqlDAO implements EgreAsociacionesDAO{
 
@@ -60,13 +60,13 @@ class EgreAsociacionesMySqlDAO implements EgreAsociacionesDAO{
 		$sql = 'INSERT INTO egre_asociaciones (ID_EGRESADO, NOMBRE_ASOCIACION, FECHA_AFILIACION, SIGLAS) VALUES (?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreAsociacione->iDEGRESADO);
-		$sqlQuery->set($egreAsociacione->nOMBREASOCIACION);
-		$sqlQuery->set($egreAsociacione->fECHAAFILIACION);
-		$sqlQuery->set($egreAsociacione->sIGLAS);
+		$sqlQuery->setNumber($egreAsociacione->idEgresado);
+		$sqlQuery->set($egreAsociacione->nombreAsociacion);
+		$sqlQuery->set($egreAsociacione->fechaAfiliacion);
+		$sqlQuery->set($egreAsociacione->siglas);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreAsociacione->iDASOCIACION = $id;
+		$egreAsociacione->idAsociacion = $id;
 		return $id;
 	}
 	
@@ -79,12 +79,12 @@ class EgreAsociacionesMySqlDAO implements EgreAsociacionesDAO{
 		$sql = 'UPDATE egre_asociaciones SET ID_EGRESADO = ?, NOMBRE_ASOCIACION = ?, FECHA_AFILIACION = ?, SIGLAS = ? WHERE ID_ASOCIACION = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreAsociacione->iDEGRESADO);
-		$sqlQuery->set($egreAsociacione->nOMBREASOCIACION);
-		$sqlQuery->set($egreAsociacione->fECHAAFILIACION);
-		$sqlQuery->set($egreAsociacione->sIGLAS);
+		$sqlQuery->setNumber($egreAsociacione->idEgresado);
+		$sqlQuery->set($egreAsociacione->nombreAsociacion);
+		$sqlQuery->set($egreAsociacione->fechaAfiliacion);
+		$sqlQuery->set($egreAsociacione->siglas);
 
-		$sqlQuery->setNumber($egreAsociacione->iDASOCIACION);
+		$sqlQuery->setNumber($egreAsociacione->idAsociacion);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -164,11 +164,11 @@ class EgreAsociacionesMySqlDAO implements EgreAsociacionesDAO{
 	protected function readRow($row){
 		$egreAsociacione = new EgreAsociacione();
 		
-		$egreAsociacione->iDASOCIACION = $row['ID_ASOCIACION'];
-		$egreAsociacione->iDEGRESADO = $row['ID_EGRESADO'];
-		$egreAsociacione->nOMBREASOCIACION = $row['NOMBRE_ASOCIACION'];
-		$egreAsociacione->fECHAAFILIACION = $row['FECHA_AFILIACION'];
-		$egreAsociacione->sIGLAS = $row['SIGLAS'];
+		$egreAsociacione->idAsociacion = $row['ID_ASOCIACION'];
+		$egreAsociacione->idEgresado = $row['ID_EGRESADO'];
+		$egreAsociacione->nombreAsociacion = $row['NOMBRE_ASOCIACION'];
+		$egreAsociacione->fechaAfiliacion = $row['FECHA_AFILIACION'];
+		$egreAsociacione->siglas = $row['SIGLAS'];
 
 		return $egreAsociacione;
 	}

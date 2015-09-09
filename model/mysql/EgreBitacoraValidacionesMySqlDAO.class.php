@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_bitacora_validaciones'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreBitacoraValidacionesMySqlDAO implements EgreBitacoraValidacionesDAO{
 
@@ -60,12 +60,12 @@ class EgreBitacoraValidacionesMySqlDAO implements EgreBitacoraValidacionesDAO{
 		$sql = 'INSERT INTO egre_bitacora_validaciones (ID_DATOS_ACAD_IPN, ID_USUARIO, FECHA) VALUES (?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreBitacoraValidacione->iDDATOSACADIPN);
-		$sqlQuery->setNumber($egreBitacoraValidacione->iDUSUARIO);
-		$sqlQuery->set($egreBitacoraValidacione->fECHA);
+		$sqlQuery->setNumber($egreBitacoraValidacione->idDatosAcadIpn);
+		$sqlQuery->setNumber($egreBitacoraValidacione->idUsuario);
+		$sqlQuery->set($egreBitacoraValidacione->fecha);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreBitacoraValidacione->iDBITACORAVALIDACION = $id;
+		$egreBitacoraValidacione->idBitacoraValidacion = $id;
 		return $id;
 	}
 	
@@ -78,11 +78,11 @@ class EgreBitacoraValidacionesMySqlDAO implements EgreBitacoraValidacionesDAO{
 		$sql = 'UPDATE egre_bitacora_validaciones SET ID_DATOS_ACAD_IPN = ?, ID_USUARIO = ?, FECHA = ? WHERE ID_BITACORA_VALIDACION = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreBitacoraValidacione->iDDATOSACADIPN);
-		$sqlQuery->setNumber($egreBitacoraValidacione->iDUSUARIO);
-		$sqlQuery->set($egreBitacoraValidacione->fECHA);
+		$sqlQuery->setNumber($egreBitacoraValidacione->idDatosAcadIpn);
+		$sqlQuery->setNumber($egreBitacoraValidacione->idUsuario);
+		$sqlQuery->set($egreBitacoraValidacione->fecha);
 
-		$sqlQuery->setNumber($egreBitacoraValidacione->iDBITACORAVALIDACION);
+		$sqlQuery->setNumber($egreBitacoraValidacione->idBitacoraValidacion);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -148,10 +148,10 @@ class EgreBitacoraValidacionesMySqlDAO implements EgreBitacoraValidacionesDAO{
 	protected function readRow($row){
 		$egreBitacoraValidacione = new EgreBitacoraValidacione();
 		
-		$egreBitacoraValidacione->iDBITACORAVALIDACION = $row['ID_BITACORA_VALIDACION'];
-		$egreBitacoraValidacione->iDDATOSACADIPN = $row['ID_DATOS_ACAD_IPN'];
-		$egreBitacoraValidacione->iDUSUARIO = $row['ID_USUARIO'];
-		$egreBitacoraValidacione->fECHA = $row['FECHA'];
+		$egreBitacoraValidacione->idBitacoraValidacion = $row['ID_BITACORA_VALIDACION'];
+		$egreBitacoraValidacione->idDatosAcadIpn = $row['ID_DATOS_ACAD_IPN'];
+		$egreBitacoraValidacione->idUsuario = $row['ID_USUARIO'];
+		$egreBitacoraValidacione->fecha = $row['FECHA'];
 
 		return $egreBitacoraValidacione;
 	}

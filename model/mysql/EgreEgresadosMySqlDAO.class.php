@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_egresados'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreEgresadosMySqlDAO implements EgreEgresadosDAO{
 
@@ -60,20 +60,20 @@ class EgreEgresadosMySqlDAO implements EgreEgresadosDAO{
 		$sql = 'INSERT INTO egre_egresados (AP_PATERNO, AP_MATERNO, NOMBRE, CURP, ID_GENERO, ID_ESTADO_CIVIL, ID_GENTILICIO, RESIDE_MEXICO, ID_ESTADO_NAC, ID_USUARIO, FECHA_REGISTRO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreEgresado->aPPATERNO);
-		$sqlQuery->set($egreEgresado->aPMATERNO);
-		$sqlQuery->set($egreEgresado->nOMBRE);
-		$sqlQuery->set($egreEgresado->cURP);
-		$sqlQuery->setNumber($egreEgresado->iDGENERO);
-		$sqlQuery->setNumber($egreEgresado->iDESTADOCIVIL);
-		$sqlQuery->setNumber($egreEgresado->iDGENTILICIO);
-		$sqlQuery->setNumber($egreEgresado->rESIDEMEXICO);
-		$sqlQuery->setNumber($egreEgresado->iDESTADONAC);
-		$sqlQuery->setNumber($egreEgresado->iDUSUARIO);
-		$sqlQuery->set($egreEgresado->fECHAREGISTRO);
+		$sqlQuery->set($egreEgresado->apPaterno);
+		$sqlQuery->set($egreEgresado->apMaterno);
+		$sqlQuery->set($egreEgresado->nombre);
+		$sqlQuery->set($egreEgresado->curp);
+		$sqlQuery->setNumber($egreEgresado->idGenero);
+		$sqlQuery->setNumber($egreEgresado->idEstadoCivil);
+		$sqlQuery->setNumber($egreEgresado->idGentilicio);
+		$sqlQuery->setNumber($egreEgresado->resideMexico);
+		$sqlQuery->setNumber($egreEgresado->idEstadoNac);
+		$sqlQuery->setNumber($egreEgresado->idUsuario);
+		$sqlQuery->set($egreEgresado->fechaRegistro);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreEgresado->iDEGRESADO = $id;
+		$egreEgresado->idEgresado = $id;
 		return $id;
 	}
 	
@@ -86,19 +86,19 @@ class EgreEgresadosMySqlDAO implements EgreEgresadosDAO{
 		$sql = 'UPDATE egre_egresados SET AP_PATERNO = ?, AP_MATERNO = ?, NOMBRE = ?, CURP = ?, ID_GENERO = ?, ID_ESTADO_CIVIL = ?, ID_GENTILICIO = ?, RESIDE_MEXICO = ?, ID_ESTADO_NAC = ?, ID_USUARIO = ?, FECHA_REGISTRO = ? WHERE ID_EGRESADO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreEgresado->aPPATERNO);
-		$sqlQuery->set($egreEgresado->aPMATERNO);
-		$sqlQuery->set($egreEgresado->nOMBRE);
-		$sqlQuery->set($egreEgresado->cURP);
-		$sqlQuery->setNumber($egreEgresado->iDGENERO);
-		$sqlQuery->setNumber($egreEgresado->iDESTADOCIVIL);
-		$sqlQuery->setNumber($egreEgresado->iDGENTILICIO);
-		$sqlQuery->setNumber($egreEgresado->rESIDEMEXICO);
-		$sqlQuery->setNumber($egreEgresado->iDESTADONAC);
-		$sqlQuery->setNumber($egreEgresado->iDUSUARIO);
-		$sqlQuery->set($egreEgresado->fECHAREGISTRO);
+		$sqlQuery->set($egreEgresado->apPaterno);
+		$sqlQuery->set($egreEgresado->apMaterno);
+		$sqlQuery->set($egreEgresado->nombre);
+		$sqlQuery->set($egreEgresado->curp);
+		$sqlQuery->setNumber($egreEgresado->idGenero);
+		$sqlQuery->setNumber($egreEgresado->idEstadoCivil);
+		$sqlQuery->setNumber($egreEgresado->idGentilicio);
+		$sqlQuery->setNumber($egreEgresado->resideMexico);
+		$sqlQuery->setNumber($egreEgresado->idEstadoNac);
+		$sqlQuery->setNumber($egreEgresado->idUsuario);
+		$sqlQuery->set($egreEgresado->fechaRegistro);
 
-		$sqlQuery->setNumber($egreEgresado->iDEGRESADO);
+		$sqlQuery->setNumber($egreEgresado->idEgresado);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -276,18 +276,18 @@ class EgreEgresadosMySqlDAO implements EgreEgresadosDAO{
 	protected function readRow($row){
 		$egreEgresado = new EgreEgresado();
 		
-		$egreEgresado->iDEGRESADO = $row['ID_EGRESADO'];
-		$egreEgresado->aPPATERNO = $row['AP_PATERNO'];
-		$egreEgresado->aPMATERNO = $row['AP_MATERNO'];
-		$egreEgresado->nOMBRE = $row['NOMBRE'];
-		$egreEgresado->cURP = $row['CURP'];
-		$egreEgresado->iDGENERO = $row['ID_GENERO'];
-		$egreEgresado->iDESTADOCIVIL = $row['ID_ESTADO_CIVIL'];
-		$egreEgresado->iDGENTILICIO = $row['ID_GENTILICIO'];
-		$egreEgresado->rESIDEMEXICO = $row['RESIDE_MEXICO'];
-		$egreEgresado->iDESTADONAC = $row['ID_ESTADO_NAC'];
-		$egreEgresado->iDUSUARIO = $row['ID_USUARIO'];
-		$egreEgresado->fECHAREGISTRO = $row['FECHA_REGISTRO'];
+		$egreEgresado->idEgresado = $row['ID_EGRESADO'];
+		$egreEgresado->apPaterno = $row['AP_PATERNO'];
+		$egreEgresado->apMaterno = $row['AP_MATERNO'];
+		$egreEgresado->nombre = $row['NOMBRE'];
+		$egreEgresado->curp = $row['CURP'];
+		$egreEgresado->idGenero = $row['ID_GENERO'];
+		$egreEgresado->idEstadoCivil = $row['ID_ESTADO_CIVIL'];
+		$egreEgresado->idGentilicio = $row['ID_GENTILICIO'];
+		$egreEgresado->resideMexico = $row['RESIDE_MEXICO'];
+		$egreEgresado->idEstadoNac = $row['ID_ESTADO_NAC'];
+		$egreEgresado->idUsuario = $row['ID_USUARIO'];
+		$egreEgresado->fechaRegistro = $row['FECHA_REGISTRO'];
 
 		return $egreEgresado;
 	}

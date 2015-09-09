@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_contactos_egresados'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreContactosEgresadosMySqlDAO implements EgreContactosEgresadosDAO{
 
@@ -60,12 +60,12 @@ class EgreContactosEgresadosMySqlDAO implements EgreContactosEgresadosDAO{
 		$sql = 'INSERT INTO egre_contactos_egresados (ID_MEDIO_CONTACTO, ID_EGRESADO, DESCRIPCION) VALUES (?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreContactosEgresado->iDMEDIOCONTACTO);
-		$sqlQuery->setNumber($egreContactosEgresado->iDEGRESADO);
-		$sqlQuery->set($egreContactosEgresado->dESCRIPCION);
+		$sqlQuery->setNumber($egreContactosEgresado->idMedioContacto);
+		$sqlQuery->setNumber($egreContactosEgresado->idEgresado);
+		$sqlQuery->set($egreContactosEgresado->descripcion);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreContactosEgresado->iDCONTACTOEGRESADO = $id;
+		$egreContactosEgresado->idContactoEgresado = $id;
 		return $id;
 	}
 	
@@ -78,11 +78,11 @@ class EgreContactosEgresadosMySqlDAO implements EgreContactosEgresadosDAO{
 		$sql = 'UPDATE egre_contactos_egresados SET ID_MEDIO_CONTACTO = ?, ID_EGRESADO = ?, DESCRIPCION = ? WHERE ID_CONTACTO_EGRESADO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreContactosEgresado->iDMEDIOCONTACTO);
-		$sqlQuery->setNumber($egreContactosEgresado->iDEGRESADO);
-		$sqlQuery->set($egreContactosEgresado->dESCRIPCION);
+		$sqlQuery->setNumber($egreContactosEgresado->idMedioContacto);
+		$sqlQuery->setNumber($egreContactosEgresado->idEgresado);
+		$sqlQuery->set($egreContactosEgresado->descripcion);
 
-		$sqlQuery->setNumber($egreContactosEgresado->iDCONTACTOEGRESADO);
+		$sqlQuery->setNumber($egreContactosEgresado->idContactoEgresado);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -148,10 +148,10 @@ class EgreContactosEgresadosMySqlDAO implements EgreContactosEgresadosDAO{
 	protected function readRow($row){
 		$egreContactosEgresado = new EgreContactosEgresado();
 		
-		$egreContactosEgresado->iDCONTACTOEGRESADO = $row['ID_CONTACTO_EGRESADO'];
-		$egreContactosEgresado->iDMEDIOCONTACTO = $row['ID_MEDIO_CONTACTO'];
-		$egreContactosEgresado->iDEGRESADO = $row['ID_EGRESADO'];
-		$egreContactosEgresado->dESCRIPCION = $row['DESCRIPCION'];
+		$egreContactosEgresado->idContactoEgresado = $row['ID_CONTACTO_EGRESADO'];
+		$egreContactosEgresado->idMedioContacto = $row['ID_MEDIO_CONTACTO'];
+		$egreContactosEgresado->idEgresado = $row['ID_EGRESADO'];
+		$egreContactosEgresado->descripcion = $row['DESCRIPCION'];
 
 		return $egreContactosEgresado;
 	}

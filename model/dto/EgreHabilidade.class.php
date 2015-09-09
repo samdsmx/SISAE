@@ -3,14 +3,14 @@
 	 * Object represents table 'egre_habilidades'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2015-07-27 23:14	 
+     	 * @date: 2015-09-09 23:54	 
 	 */
 	class EgreHabilidade{
 		
-		var $iDHABILIDAD;
-		var $iDEGRESADO;
-		var $hABILIDAD;
-		var $nIVEL;
+		var $idHabilidad;
+		var $idEgresado;
+		var $habilidad;
+		var $nivel;
 		
 	}
 ?>

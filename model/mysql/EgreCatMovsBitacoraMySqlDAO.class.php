@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_cat_movs_bitacora'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreCatMovsBitacoraMySqlDAO implements EgreCatMovsBitacoraDAO{
 
@@ -60,10 +60,10 @@ class EgreCatMovsBitacoraMySqlDAO implements EgreCatMovsBitacoraDAO{
 		$sql = 'INSERT INTO egre_cat_movs_bitacora (MOVIMIENTO) VALUES (?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatMovsBitacora->mOVIMIENTO);
+		$sqlQuery->set($egreCatMovsBitacora->movimiento);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreCatMovsBitacora->iDMOVBITACORA = $id;
+		$egreCatMovsBitacora->idMovBitacora = $id;
 		return $id;
 	}
 	
@@ -76,9 +76,9 @@ class EgreCatMovsBitacoraMySqlDAO implements EgreCatMovsBitacoraDAO{
 		$sql = 'UPDATE egre_cat_movs_bitacora SET MOVIMIENTO = ? WHERE ID_MOV_BITACORA = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatMovsBitacora->mOVIMIENTO);
+		$sqlQuery->set($egreCatMovsBitacora->movimiento);
 
-		$sqlQuery->setNumber($egreCatMovsBitacora->iDMOVBITACORA);
+		$sqlQuery->setNumber($egreCatMovsBitacora->idMovBitacora);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -116,8 +116,8 @@ class EgreCatMovsBitacoraMySqlDAO implements EgreCatMovsBitacoraDAO{
 	protected function readRow($row){
 		$egreCatMovsBitacora = new EgreCatMovsBitacora();
 		
-		$egreCatMovsBitacora->iDMOVBITACORA = $row['ID_MOV_BITACORA'];
-		$egreCatMovsBitacora->mOVIMIENTO = $row['MOVIMIENTO'];
+		$egreCatMovsBitacora->idMovBitacora = $row['ID_MOV_BITACORA'];
+		$egreCatMovsBitacora->movimiento = $row['MOVIMIENTO'];
 
 		return $egreCatMovsBitacora;
 	}

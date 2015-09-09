@@ -3,15 +3,15 @@
 	 * Object represents table 'egre_asociaciones'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2015-07-27 23:14	 
+     	 * @date: 2015-09-09 23:54	 
 	 */
 	class EgreAsociacione{
 		
-		var $iDASOCIACION;
-		var $iDEGRESADO;
-		var $nOMBREASOCIACION;
-		var $fECHAAFILIACION;
-		var $sIGLAS;
+		var $idAsociacion;
+		var $idEgresado;
+		var $nombreAsociacion;
+		var $fechaAfiliacion;
+		var $siglas;
 		
 	}
 ?>

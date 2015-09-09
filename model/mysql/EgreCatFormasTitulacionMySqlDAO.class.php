@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_cat_formas_titulacion'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreCatFormasTitulacionMySqlDAO implements EgreCatFormasTitulacionDAO{
 
@@ -60,10 +60,10 @@ class EgreCatFormasTitulacionMySqlDAO implements EgreCatFormasTitulacionDAO{
 		$sql = 'INSERT INTO egre_cat_formas_titulacion (FORMA_TITULACION) VALUES (?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatFormasTitulacion->fORMATITULACION);
+		$sqlQuery->set($egreCatFormasTitulacion->formaTitulacion);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreCatFormasTitulacion->iDFORMATITULACION = $id;
+		$egreCatFormasTitulacion->idFormaTitulacion = $id;
 		return $id;
 	}
 	
@@ -76,9 +76,9 @@ class EgreCatFormasTitulacionMySqlDAO implements EgreCatFormasTitulacionDAO{
 		$sql = 'UPDATE egre_cat_formas_titulacion SET FORMA_TITULACION = ? WHERE ID_FORMA_TITULACION = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($egreCatFormasTitulacion->fORMATITULACION);
+		$sqlQuery->set($egreCatFormasTitulacion->formaTitulacion);
 
-		$sqlQuery->setNumber($egreCatFormasTitulacion->iDFORMATITULACION);
+		$sqlQuery->setNumber($egreCatFormasTitulacion->idFormaTitulacion);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -116,8 +116,8 @@ class EgreCatFormasTitulacionMySqlDAO implements EgreCatFormasTitulacionDAO{
 	protected function readRow($row){
 		$egreCatFormasTitulacion = new EgreCatFormasTitulacion();
 		
-		$egreCatFormasTitulacion->iDFORMATITULACION = $row['ID_FORMA_TITULACION'];
-		$egreCatFormasTitulacion->fORMATITULACION = $row['FORMA_TITULACION'];
+		$egreCatFormasTitulacion->idFormaTitulacion = $row['ID_FORMA_TITULACION'];
+		$egreCatFormasTitulacion->formaTitulacion = $row['FORMA_TITULACION'];
 
 		return $egreCatFormasTitulacion;
 	}

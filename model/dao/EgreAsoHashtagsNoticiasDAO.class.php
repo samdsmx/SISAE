@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:15
+ * @date: 2015-09-09 23:54
  */
 interface EgreAsoHashtagsNoticiasDAO{
 
@@ -13,7 +13,7 @@ interface EgreAsoHashtagsNoticiasDAO{
 	 * @param String $id primary key
 	 * @Return EgreAsoHashtagsNoticias 
 	 */
-	public function load($iDHASHTAG, $iDNOTICIA);
+	public function load($idHashtag, $idNoticia);
 
 	/**
 	 * Get all records from table
@@ -30,7 +30,7 @@ interface EgreAsoHashtagsNoticiasDAO{
  	 * Delete record from table
  	 * @param egreAsoHashtagsNoticia primary key
  	 */
-	public function delete($iDHASHTAG, $iDNOTICIA);
+	public function delete($idHashtag, $idNoticia);
 	
 	/**
  	 * Insert record to table

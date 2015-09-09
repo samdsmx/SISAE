@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_datos_acads_ipn'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreDatosAcadsIpnMySqlDAO implements EgreDatosAcadsIpnDAO{
 
@@ -60,22 +60,22 @@ class EgreDatosAcadsIpnMySqlDAO implements EgreDatosAcadsIpnDAO{
 		$sql = 'INSERT INTO egre_datos_acads_ipn (ID_MOTIVO_INTERRUPCION, ID_ESTATUS_EGRE, ID_MOTIVO_NOTITULACION, ID_FORMA_TITULACION, ID_CARRERA, ID_EGRESADO, ID_UNIDAD_RESPONSABLE, ANIO_INGRESO, ANIO_EGRESO, BOLETA, PROMEDIO, VALIDADO_ECU, FECHA_REGISTRO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDMOTIVOINTERRUPCION);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDESTATUSEGRE);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDMOTIVONOTITULACION);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDFORMATITULACION);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDCARRERA);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDEGRESADO);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDUNIDADRESPONSABLE);
-		$sqlQuery->set($egreDatosAcadsIpn->aNIOINGRESO);
-		$sqlQuery->set($egreDatosAcadsIpn->aNIOEGRESO);
-		$sqlQuery->set($egreDatosAcadsIpn->bOLETA);
-		$sqlQuery->set($egreDatosAcadsIpn->pROMEDIO);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->vALIDADOECU);
-		$sqlQuery->set($egreDatosAcadsIpn->fECHAREGISTRO);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idMotivoInterrupcion);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idEstatusEgre);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idMotivoNotitulacion);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idFormaTitulacion);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idCarrera);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idEgresado);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idUnidadResponsable);
+		$sqlQuery->set($egreDatosAcadsIpn->anioIngreso);
+		$sqlQuery->set($egreDatosAcadsIpn->anioEgreso);
+		$sqlQuery->set($egreDatosAcadsIpn->boleta);
+		$sqlQuery->set($egreDatosAcadsIpn->promedio);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->validadoEcu);
+		$sqlQuery->set($egreDatosAcadsIpn->fechaRegistro);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreDatosAcadsIpn->iDDATOACADIPN = $id;
+		$egreDatosAcadsIpn->idDatoAcadIpn = $id;
 		return $id;
 	}
 	
@@ -88,21 +88,21 @@ class EgreDatosAcadsIpnMySqlDAO implements EgreDatosAcadsIpnDAO{
 		$sql = 'UPDATE egre_datos_acads_ipn SET ID_MOTIVO_INTERRUPCION = ?, ID_ESTATUS_EGRE = ?, ID_MOTIVO_NOTITULACION = ?, ID_FORMA_TITULACION = ?, ID_CARRERA = ?, ID_EGRESADO = ?, ID_UNIDAD_RESPONSABLE = ?, ANIO_INGRESO = ?, ANIO_EGRESO = ?, BOLETA = ?, PROMEDIO = ?, VALIDADO_ECU = ?, FECHA_REGISTRO = ? WHERE ID_DATO_ACAD_IPN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDMOTIVOINTERRUPCION);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDESTATUSEGRE);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDMOTIVONOTITULACION);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDFORMATITULACION);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDCARRERA);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDEGRESADO);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDUNIDADRESPONSABLE);
-		$sqlQuery->set($egreDatosAcadsIpn->aNIOINGRESO);
-		$sqlQuery->set($egreDatosAcadsIpn->aNIOEGRESO);
-		$sqlQuery->set($egreDatosAcadsIpn->bOLETA);
-		$sqlQuery->set($egreDatosAcadsIpn->pROMEDIO);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->vALIDADOECU);
-		$sqlQuery->set($egreDatosAcadsIpn->fECHAREGISTRO);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idMotivoInterrupcion);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idEstatusEgre);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idMotivoNotitulacion);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idFormaTitulacion);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idCarrera);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idEgresado);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idUnidadResponsable);
+		$sqlQuery->set($egreDatosAcadsIpn->anioIngreso);
+		$sqlQuery->set($egreDatosAcadsIpn->anioEgreso);
+		$sqlQuery->set($egreDatosAcadsIpn->boleta);
+		$sqlQuery->set($egreDatosAcadsIpn->promedio);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->validadoEcu);
+		$sqlQuery->set($egreDatosAcadsIpn->fechaRegistro);
 
-		$sqlQuery->setNumber($egreDatosAcadsIpn->iDDATOACADIPN);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->idDatoAcadIpn);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -308,20 +308,20 @@ class EgreDatosAcadsIpnMySqlDAO implements EgreDatosAcadsIpnDAO{
 	protected function readRow($row){
 		$egreDatosAcadsIpn = new EgreDatosAcadsIpn();
 		
-		$egreDatosAcadsIpn->iDDATOACADIPN = $row['ID_DATO_ACAD_IPN'];
-		$egreDatosAcadsIpn->iDMOTIVOINTERRUPCION = $row['ID_MOTIVO_INTERRUPCION'];
-		$egreDatosAcadsIpn->iDESTATUSEGRE = $row['ID_ESTATUS_EGRE'];
-		$egreDatosAcadsIpn->iDMOTIVONOTITULACION = $row['ID_MOTIVO_NOTITULACION'];
-		$egreDatosAcadsIpn->iDFORMATITULACION = $row['ID_FORMA_TITULACION'];
-		$egreDatosAcadsIpn->iDCARRERA = $row['ID_CARRERA'];
-		$egreDatosAcadsIpn->iDEGRESADO = $row['ID_EGRESADO'];
-		$egreDatosAcadsIpn->iDUNIDADRESPONSABLE = $row['ID_UNIDAD_RESPONSABLE'];
-		$egreDatosAcadsIpn->aNIOINGRESO = $row['ANIO_INGRESO'];
-		$egreDatosAcadsIpn->aNIOEGRESO = $row['ANIO_EGRESO'];
-		$egreDatosAcadsIpn->bOLETA = $row['BOLETA'];
-		$egreDatosAcadsIpn->pROMEDIO = $row['PROMEDIO'];
-		$egreDatosAcadsIpn->vALIDADOECU = $row['VALIDADO_ECU'];
-		$egreDatosAcadsIpn->fECHAREGISTRO = $row['FECHA_REGISTRO'];
+		$egreDatosAcadsIpn->idDatoAcadIpn = $row['ID_DATO_ACAD_IPN'];
+		$egreDatosAcadsIpn->idMotivoInterrupcion = $row['ID_MOTIVO_INTERRUPCION'];
+		$egreDatosAcadsIpn->idEstatusEgre = $row['ID_ESTATUS_EGRE'];
+		$egreDatosAcadsIpn->idMotivoNotitulacion = $row['ID_MOTIVO_NOTITULACION'];
+		$egreDatosAcadsIpn->idFormaTitulacion = $row['ID_FORMA_TITULACION'];
+		$egreDatosAcadsIpn->idCarrera = $row['ID_CARRERA'];
+		$egreDatosAcadsIpn->idEgresado = $row['ID_EGRESADO'];
+		$egreDatosAcadsIpn->idUnidadResponsable = $row['ID_UNIDAD_RESPONSABLE'];
+		$egreDatosAcadsIpn->anioIngreso = $row['ANIO_INGRESO'];
+		$egreDatosAcadsIpn->anioEgreso = $row['ANIO_EGRESO'];
+		$egreDatosAcadsIpn->boleta = $row['BOLETA'];
+		$egreDatosAcadsIpn->promedio = $row['PROMEDIO'];
+		$egreDatosAcadsIpn->validadoEcu = $row['VALIDADO_ECU'];
+		$egreDatosAcadsIpn->fechaRegistro = $row['FECHA_REGISTRO'];
 
 		return $egreDatosAcadsIpn;
 	}

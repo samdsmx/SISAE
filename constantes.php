@@ -6,3 +6,6 @@ define ('VISTA', 'vista');
 define ('FORMULARIO', 'formulario');
 define ('USUARIO', 'usuario');
 define ('MENSAJE_EXITO', 'mensaje_exito');
+define ('EGRESADO', 'egresado');
+define ('PERSONAL', 'personal');
+define ('ACADEMICO', 'academico');

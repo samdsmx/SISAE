@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:15
+ * @date: 2015-09-09 23:54
  */
 interface EgreCatRolesDAO{
 

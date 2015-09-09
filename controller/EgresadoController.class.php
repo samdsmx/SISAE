@@ -39,14 +39,10 @@ class EgresadoController extends _BaseController{
         
         switch ($seccion){
             case 'personal':
-                $this->guardarPersonal ();
-                $_SESSION[VISTA] = 'view/egresado/registroEgresadoAcademico.php';
-                include ('templates/formularios.php');
+                $this->guardarPersonal ();                   
                 break;
             case 'academico':
-                $this->guardarAcademico ();
-                $_SESSION[VISTA] = 'view/egresado/registroEgresadoContacto.php';
-                include ('templates/formularios.php');
+                $this->guardarAcademico ();                
                 break;
             case 'contacto':
                 $this->guardarContacto ();
@@ -62,40 +58,65 @@ class EgresadoController extends _BaseController{
     }
     
     private function guardarPersonal (){
-        var_dump ($_POST);
+        $_SESSION[EGRESADO][PERSONAL] = $_POST;        
+        header("Location: http://".SERVER_URL."egresado/agregar/academico");
+    }
+    
+    private function guardarAcademico (){
+        $_SESSION[EGRESADO][ACADEMICO] = $_POST;        
+        header("Location: http://".SERVER_URL."egresado/agregar/contacto");
     }
     
     private function formularioContacto (){
         
-        $form = new FormGenerator(new EgreEgresado(), 'egresado/guardar/personal');
+        $form = new FormGenerator(new EgreContactosEgresado(), 'egresado/guardar/personal');
+        $form->get('idContactoEgresado')->visible = false;
+        $form->get('idEgresado')->visible = false;        
+        return $form->build();
+        
     }
     
     private function formularioDatos (){
+        print_r ($_SESSION[EGRESADO][PERSONAL]);
         $form = new FormGenerator(new EgreEgresado(), 'egresado/guardar/personal');
-        $form->get('iDEGRESADO')->visible = false;
+        $form->get('idEgresado')->visible = false;
+                
+        $form->get('apPaterno')->label = 'Apellido Paterno';
+        $form->get('apPaterno')->placeholder = 'Apellido Paterno';
+        $form->get('apPaterno')->isRequired = true;
+        $form->get('apPaterno')->value = 
+                isset($_SESSION[EGRESADO][PERSONAL]['apPaterno'])? 
+                $_SESSION[EGRESADO][PERSONAL]['apPaterno'] : "";
         
-        $form->get('aPPATERNO')->label = 'Apellido Paterno';
-        $form->get('aPPATERNO')->placeholder = 'Apellido Paterno';
-        $form->get('aPPATERNO')->isRequired = true;
-        $form->get('aPPATERNO')->value = isset($_SESSION['aPPATERNO'])? $_SESSION['aPPATERNO'] : "";
+        $form->get('apMaterno')->label = 'Apellido Materno';
+        $form->get('apMaterno')->placeholder = 'Apellido Materno';
+        $form->get('apMaterno')->isRequired = true;
+        $form->get('apMaterno')->value = 
+                isset($_SESSION[EGRESADO][PERSONAL]['apMaterno'])? 
+                $_SESSION[EGRESADO][PERSONAL]['apMaterno'] : "";
         
-        $form->get('aPMATERNO')->label = 'Apellido Materno';
-        $form->get('aPMATERNO')->placeholder = 'Apellido Materno';
-        $form->get('aPMATERNO')->isRequired = true;
+        $form->get('nombre')->label = 'Nombres';
+        $form->get('nombre')->placeholder = 'Nombres';        
+        $form->get('nombre')->isRequired = true;
+        $form->get('nombre')->value = 
+                isset($_SESSION[EGRESADO][PERSONAL]['nombre'])? 
+                $_SESSION[EGRESADO][PERSONAL]['nombre'] : "";
         
-        $form->get('nOMBRE')->label = 'Nombres';
-        $form->get('nOMBRE')->placeholder = 'Nombres';        
-        $form->get('nOMBRE')->isRequired = true;
-        
-        $form->get('iDGENERO')->label = 'Genero';
-        $form->get('iDGENERO')->placeholder = 'Genero';
-        $form->get('iDGENERO')->type = 'select';
-        $form->get('iDGENERO')->options = array(1=>'Masculino', 2=>'Femenino');
-        
-        $form->get('iDESTADOCIVIL')->label = 'Estado Civil';
-        $form->get('iDESTADOCIVIL')->placeholder = 'Estado Civil';
-        $form->get('iDESTADOCIVIL')->type = 'select';
-        $form->get('iDESTADOCIVIL')->options = array(1=>'Soltero', 2=>'Casado', 3=>'Divorciado');
+        $form->get('idGenero')->label = 'Genero';
+        $form->get('idGenero')->placeholder = 'Genero';
+        $form->get('idGenero')->type = 'select';
+        $form->get('idGenero')->options = array(1=>'Masculino', 2=>'Femenino');
+        $form->get('idGenero')->selected = 
+                isset($_SESSION[EGRESADO][PERSONAL]['idGenero'])?
+                $_SESSION[EGRESADO][PERSONAL]['idGenero'] : "";
+                    
+        $form->get('idEstadoCivil')->label = 'Estado Civil';
+        $form->get('idEstadoCivil')->placeholder = 'Estado Civil';
+        $form->get('idEstadoCivil')->type = 'select';
+        $form->get('idEstadoCivil')->options = array(1=>'Soltero', 2=>'Casado', 3=>'Divorciado');
+        $form->get('idEstadoCivil')->selected = 
+                isset($_SESSION[EGRESADO][PERSONAL]['idEstadoCivil'])?
+                $_SESSION[EGRESADO][PERSONAL]['idEstadoCivil'] : "";
         
         /*
         $dao = DAOFactory::getInstitucionDAO();
@@ -106,20 +127,29 @@ class EgresadoController extends _BaseController{
         }
         $fg->get('idInstitucion')->options = $opciones;
          */
-        $form->get('iDGENTILICIO')->label = 'Nacionalidad';
-        $form->get('iDGENTILICIO')->placeholder = 'Nacionalidad';
-        $form->get('iDGENTILICIO')->type = 'select';
-        $form->get('iDGENTILICIO')->options = array(1=>'Mexicano', 2=>'Extranjero');
+        $form->get('idGentilicio')->label = 'Nacionalidad';
+        $form->get('idGentilicio')->placeholder = 'Nacionalidad';
+        $form->get('idGentilicio')->type = 'select';
+        $form->get('idGentilicio')->options = array(1=>'Mexicano', 2=>'Extranjero');
+        $form->get('idGentilicio')->selected = 
+                isset($_SESSION[EGRESADO][PERSONAL]['idGentilicio'])?
+                $_SESSION[EGRESADO][PERSONAL]['idGentilicio'] : "";
         
-        $form->get('rESIDEMEXICO')->label = 'Reside en México';
-        $form->get('rESIDEMEXICO')->placeholder = 'Reside en México';
-        $form->get('rESIDEMEXICO')->type = 'select';
-        $form->get('rESIDEMEXICO')->options = array(1=>'Si', 2=>'No');
+        $form->get('resideMexico')->label = 'Reside en México';
+        $form->get('resideMexico')->placeholder = 'Reside en México';
+        $form->get('resideMexico')->type = 'select';
+        $form->get('resideMexico')->options = array(1=>'Si', 2=>'No');
+        $form->get('resideMexico')->selected = 
+                isset($_SESSION[EGRESADO][PERSONAL]['resideMexico'])?
+                $_SESSION[EGRESADO][PERSONAL]['resideMexico'] : "";
         
-        $form->get('iDESTADONAC')->label = 'Estado';
-        $form->get('iDESTADONAC')->placeholder = 'Estado';
-        $form->get('iDESTADONAC')->type = 'select';
-        $form->get('iDESTADONAC')->options = array(1=>'DF', 2=>'Morelos');
+        $form->get('idEstadoNac')->label = 'Estado';
+        $form->get('idEstadoNac')->placeholder = 'Estado';
+        $form->get('idEstadoNac')->type = 'select';
+        $form->get('idEstadoNac')->options = array(1=>'DF', 2=>'Morelos');
+        $form->get('idEstadoNac')->selected = 
+                isset($_SESSION[EGRESADO][PERSONAL]['idEstadoNac'])?
+                $_SESSION[EGRESADO][PERSONAL]['idEstadoNac'] : "";
 //        
 //        $correo = new FormElement('email');
 //        $correo->type = "email";
@@ -128,73 +158,73 @@ class EgresadoController extends _BaseController{
 
 //        $form->addInnerElement($correo, 10);
         
-        $form->get('iDUSUARIO')->visible = false;
-        $form->get('fECHAREGISTRO')->visible = false;
+        $form->get('idUsuario')->visible = false;
+        $form->get('fechaRegistro')->visible = false;
         return $form->build();
     }
     
     private function formularioAcademico (){        
        $form = new FormGenerator (new EgreDatosAcadsIpn (), 'egresado/guardar/academico');
        
-       $form->get('iDDATOACADIPN')->visible = false;
+       $form->get('idDatoAcadIpn')->visible = false;
               
-       $form->get('iDMOTIVOINTERRUPCION')->options = 
+       $form->get('idMotivoInterrupcion')->options = 
                $this->getOpciones(DAOFactory::getEgreCatMotivosInterrupcionDAO(), 
-                                    'iDMOTIVOINTERRUPCION', 'mOTIVOINTERRUPCION');
-       $form->get('iDMOTIVOINTERRUPCION')->type = 'select';
-       $form->get('iDMOTIVOINTERRUPCION')->label = 'Motivo Interrupción';
+                                    'idMotivoInterrupcion', 'idMotivoInterrupcion');
+       $form->get('idMotivoInterrupcion')->type = 'select';
+       $form->get('idMotivoInterrupcion')->label = 'Motivo Interrupción';
               
-       $form->get('iDESTATUSEGRE')->options = 
+       $form->get('idEstatusEgre')->options = 
                $this->getOpciones(DAOFactory::getEgreCatEstatusEgreDAO(), 
-                                    'iDESTATUSEGRE', 'eSTATUS');
-       $form->get('iDESTATUSEGRE')->type = 'select';
-       $form->get('iDESTATUSEGRE')->label = 'Status egresado';
+                                    'idEstatusEgre', 'estatus');
+       $form->get('idEstatusEgre')->type = 'select';
+       $form->get('idEstatusEgre')->label = 'Status egresado';
        
-       $form->get('iDMOTIVONOTITULACION')->options = 
+       $form->get('idMotivoNotitulacion')->options = 
                $this->getOpciones(DAOFactory::getEgreCatMotivosNotitulacionDAO(), 
-                                    'iDMOTIVONOTITULACION', 'mOTIVONOTITULACION');
-       $form->get('iDMOTIVONOTITULACION')->type = 'select';
-       $form->get('iDMOTIVONOTITULACION')->label = 'Motivo no titulación';
+                                    'idMotivoNotitulacion', '$motivoNotitulacion');
+       $form->get('idMotivoNotitulacion')->type = 'select';
+       $form->get('idMotivoNotitulacion')->label = 'Motivo no titulación';
        
-       $form->get('iDFORMATITULACION')->options = 
+       $form->get('idFormaTitulacion')->options = 
                $this->getOpciones(DAOFactory::getEgreCatFormasTitulacionDAO(), 
-                                    'iDFORMATITULACION', 'fORMATITULACION');
-       $form->get('iDFORMATITULACION')->type = 'select';
-       $form->get('iDFORMATITULACION')->label = 'Forma de Titulación';
+                                    'idFormaTitulacion', 'formaTitulacion');
+       $form->get('idFormaTitulacion')->type = 'select';
+       $form->get('idFormaTitulacion')->label = 'Forma de Titulación';
        
-       $form->get('iDCARRERA')->options = 
+       $form->get('idCarrera')->options = 
                $this->getOpciones(DAOFactory::getEgreCatCarrerasDAO(), 
-                                    'iDCARRERA', 'cARRERA');
-       $form->get('iDCARRERA')->type = 'select';
-       $form->get('iDCARRERA')->label = 'Carrera';
+                                    'idCarrera', 'carrera');
+       $form->get('idCarrera')->type = 'select';
+       $form->get('idCarrera')->label = 'Carrera';
        
-       $form->get('iDEGRESADO')->visible = false;
+       $form->get('idEgresado')->visible = false;
        
        //TODO falta este catálogo
 //       $form->get('iDUNIDADRESPONSABLE')->options = 
 //               $this->getOpciones(DAOFactory::getEgreCatUnidadResponsable(), 
 //                                    'iDUNIDADRESPONSABLE', 'uNIDADRESPONSABLE');
-       $form->get('iDUNIDADRESPONSABLE')->type = 'select';
-       $form->get('iDUNIDADRESPONSABLE')->label = 'Unidad Responsable';
+       $form->get('idUnidadResponsable')->type = 'select';
+       $form->get('idUnidadResponsable')->label = 'Unidad Responsable';
        
        for ($i = 1936; $i<date("Y"); $i++){
            $anios [$i] = $i;
        }
-       $form->get('aNIOINGRESO')->options = $anios;
-       $form->get('aNIOINGRESO')->type = 'select';
-       $form->get('aNIOINGRESO')->label = 'Año de Ingreso';
+       $form->get('anioIngreso')->options = $anios;
+       $form->get('anioIngreso')->type = 'select';
+       $form->get('anioIngreso')->label = 'Año de Ingreso';
        
-       $form->get('aNIOEGRESO')->options = $anios;
-       $form->get('aNIOEGRESO')->type = 'select';
-       $form->get('aNIOEGRESO')->label = 'Año de Egreso';
+       $form->get('anioEgreso')->options = $anios;
+       $form->get('anioEgreso')->type = 'select';
+       $form->get('anioEgreso')->label = 'Año de Egreso';
        
-       $form->get('bOLETA')->label = 'Boleta';
+       $form->get('boleta')->label = 'Boleta';
        
-       $form->get('pROMEDIO')->label = 'Promedio';
+       $form->get('promedio')->label = 'Promedio';
        
-       $form->get('vALIDADOECU')->visible = false;
+       $form->get('validadoEcu')->visible = false;
        
-       $form->get('fECHAREGISTRO')->visible = false;
+       $form->get('fechaRegistro')->visible = false;
        
        return $form->build();
     }

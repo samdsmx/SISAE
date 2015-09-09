@@ -20,6 +20,7 @@ class html_element
 	var $attributes;
 	var $self_closers;
         var $required = false;
+        var $selected = false;
         
         
 	
@@ -39,6 +40,9 @@ class html_element
         
         function setRequired ($required){
             $this->required = $required;
+        }
+        function setSelected ($selected){
+            $this->selected = $selected;
         }
 	
 	/* set -- array or key,value */
@@ -94,6 +98,9 @@ class html_element
 		}
 		if ($this->required){
                     $build.= ' required';
+                }
+                if ($this->selected){
+                    $build.= ' selected';
                 }
 		//closing
 		if(!in_array($this->type,$this->self_closers))

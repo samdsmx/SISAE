@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_usuarios'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreUsuariosMySqlDAO implements EgreUsuariosDAO{
 
@@ -60,13 +60,13 @@ class EgreUsuariosMySqlDAO implements EgreUsuariosDAO{
 		$sql = 'INSERT INTO egre_usuarios (ID_ROL, USUARIO, CONTRASENIA, FOTO) VALUES (?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreUsuario->iDROL);
-		$sqlQuery->set($egreUsuario->uSUARIO);
-		$sqlQuery->set($egreUsuario->cONTRASENIA);
-		$sqlQuery->set($egreUsuario->fOTO);
+		$sqlQuery->setNumber($egreUsuario->idRol);
+		$sqlQuery->set($egreUsuario->usuario);
+		$sqlQuery->set($egreUsuario->contrasenia);
+		$sqlQuery->set($egreUsuario->foto);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreUsuario->iDUSUARIO = $id;
+		$egreUsuario->idUsuario = $id;
 		return $id;
 	}
 	
@@ -79,12 +79,12 @@ class EgreUsuariosMySqlDAO implements EgreUsuariosDAO{
 		$sql = 'UPDATE egre_usuarios SET ID_ROL = ?, USUARIO = ?, CONTRASENIA = ?, FOTO = ? WHERE ID_USUARIO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreUsuario->iDROL);
-		$sqlQuery->set($egreUsuario->uSUARIO);
-		$sqlQuery->set($egreUsuario->cONTRASENIA);
-		$sqlQuery->set($egreUsuario->fOTO);
+		$sqlQuery->setNumber($egreUsuario->idRol);
+		$sqlQuery->set($egreUsuario->usuario);
+		$sqlQuery->set($egreUsuario->contrasenia);
+		$sqlQuery->set($egreUsuario->foto);
 
-		$sqlQuery->setNumber($egreUsuario->iDUSUARIO);
+		$sqlQuery->setNumber($egreUsuario->idUsuario);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -164,11 +164,11 @@ class EgreUsuariosMySqlDAO implements EgreUsuariosDAO{
 	protected function readRow($row){
 		$egreUsuario = new EgreUsuario();
 		
-		$egreUsuario->iDUSUARIO = $row['ID_USUARIO'];
-		$egreUsuario->iDROL = $row['ID_ROL'];
-		$egreUsuario->uSUARIO = $row['USUARIO'];
-		$egreUsuario->cONTRASENIA = $row['CONTRASENIA'];
-		$egreUsuario->fOTO = $row['FOTO'];
+		$egreUsuario->idUsuario = $row['ID_USUARIO'];
+		$egreUsuario->idRol = $row['ID_ROL'];
+		$egreUsuario->usuario = $row['USUARIO'];
+		$egreUsuario->contrasenia = $row['CONTRASENIA'];
+		$egreUsuario->foto = $row['FOTO'];
 
 		return $egreUsuario;
 	}

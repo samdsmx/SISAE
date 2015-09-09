@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_aso_hashtags_noticias'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreAsoHashtagsNoticiasMySqlDAO implements EgreAsoHashtagsNoticiasDAO{
 
@@ -13,11 +13,11 @@ class EgreAsoHashtagsNoticiasMySqlDAO implements EgreAsoHashtagsNoticiasDAO{
 	 * @param String $id primary key
 	 * @return EgreAsoHashtagsNoticiasMySql 
 	 */
-	public function load($iDHASHTAG, $iDNOTICIA){
+	public function load($idHashtag, $idNoticia){
 		$sql = 'SELECT * FROM egre_aso_hashtags_noticias WHERE ID_HASHTAG = ?  AND ID_NOTICIA = ? ';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($iDHASHTAG);
-		$sqlQuery->setNumber($iDNOTICIA);
+		$sqlQuery->setNumber($idHashtag);
+		$sqlQuery->setNumber($idNoticia);
 
 		return $this->getRow($sqlQuery);
 	}
@@ -46,11 +46,11 @@ class EgreAsoHashtagsNoticiasMySqlDAO implements EgreAsoHashtagsNoticiasDAO{
  	 * Delete record from table
  	 * @param egreAsoHashtagsNoticia primary key
  	 */
-	public function delete($iDHASHTAG, $iDNOTICIA){
+	public function delete($idHashtag, $idNoticia){
 		$sql = 'DELETE FROM egre_aso_hashtags_noticias WHERE ID_HASHTAG = ?  AND ID_NOTICIA = ? ';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($iDHASHTAG);
-		$sqlQuery->setNumber($iDNOTICIA);
+		$sqlQuery->setNumber($idHashtag);
+		$sqlQuery->setNumber($idNoticia);
 
 		return $this->executeUpdate($sqlQuery);
 	}
@@ -66,9 +66,9 @@ class EgreAsoHashtagsNoticiasMySqlDAO implements EgreAsoHashtagsNoticiasDAO{
 		
 
 		
-		$sqlQuery->setNumber($egreAsoHashtagsNoticia->iDHASHTAG);
+		$sqlQuery->setNumber($egreAsoHashtagsNoticia->idHashtag);
 
-		$sqlQuery->setNumber($egreAsoHashtagsNoticia->iDNOTICIA);
+		$sqlQuery->setNumber($egreAsoHashtagsNoticia->idNoticia);
 
 		$this->executeInsert($sqlQuery);	
 		//$egreAsoHashtagsNoticia->id = $id;
@@ -86,9 +86,9 @@ class EgreAsoHashtagsNoticiasMySqlDAO implements EgreAsoHashtagsNoticiasDAO{
 		
 
 		
-		$sqlQuery->setNumber($egreAsoHashtagsNoticia->iDHASHTAG);
+		$sqlQuery->setNumber($egreAsoHashtagsNoticia->idHashtag);
 
-		$sqlQuery->setNumber($egreAsoHashtagsNoticia->iDNOTICIA);
+		$sqlQuery->setNumber($egreAsoHashtagsNoticia->idNoticia);
 
 		return $this->executeUpdate($sqlQuery);
 	}
@@ -113,8 +113,8 @@ class EgreAsoHashtagsNoticiasMySqlDAO implements EgreAsoHashtagsNoticiasDAO{
 	protected function readRow($row){
 		$egreAsoHashtagsNoticia = new EgreAsoHashtagsNoticia();
 		
-		$egreAsoHashtagsNoticia->iDHASHTAG = $row['ID_HASHTAG'];
-		$egreAsoHashtagsNoticia->iDNOTICIA = $row['ID_NOTICIA'];
+		$egreAsoHashtagsNoticia->idHashtag = $row['ID_HASHTAG'];
+		$egreAsoHashtagsNoticia->idNoticia = $row['ID_NOTICIA'];
 
 		return $egreAsoHashtagsNoticia;
 	}

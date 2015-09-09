@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_domicilios_extranjeros'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreDomiciliosExtranjerosMySqlDAO implements EgreDomiciliosExtranjerosDAO{
 
@@ -60,11 +60,11 @@ class EgreDomiciliosExtranjerosMySqlDAO implements EgreDomiciliosExtranjerosDAO{
 		$sql = 'INSERT INTO egre_domicilios_extranjeros (ID_PAIS, DOMICILIO) VALUES (?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreDomiciliosExtranjero->iDPAIS);
-		$sqlQuery->set($egreDomiciliosExtranjero->dOMICILIO);
+		$sqlQuery->setNumber($egreDomiciliosExtranjero->idPais);
+		$sqlQuery->set($egreDomiciliosExtranjero->domicilio);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreDomiciliosExtranjero->iDDOMICILIOEXT = $id;
+		$egreDomiciliosExtranjero->idDomicilioExt = $id;
 		return $id;
 	}
 	
@@ -77,10 +77,10 @@ class EgreDomiciliosExtranjerosMySqlDAO implements EgreDomiciliosExtranjerosDAO{
 		$sql = 'UPDATE egre_domicilios_extranjeros SET ID_PAIS = ?, DOMICILIO = ? WHERE ID_DOMICILIO_EXT = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreDomiciliosExtranjero->iDPAIS);
-		$sqlQuery->set($egreDomiciliosExtranjero->dOMICILIO);
+		$sqlQuery->setNumber($egreDomiciliosExtranjero->idPais);
+		$sqlQuery->set($egreDomiciliosExtranjero->domicilio);
 
-		$sqlQuery->setNumber($egreDomiciliosExtranjero->iDDOMICILIOEXT);
+		$sqlQuery->setNumber($egreDomiciliosExtranjero->idDomicilioExt);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -132,9 +132,9 @@ class EgreDomiciliosExtranjerosMySqlDAO implements EgreDomiciliosExtranjerosDAO{
 	protected function readRow($row){
 		$egreDomiciliosExtranjero = new EgreDomiciliosExtranjero();
 		
-		$egreDomiciliosExtranjero->iDDOMICILIOEXT = $row['ID_DOMICILIO_EXT'];
-		$egreDomiciliosExtranjero->iDPAIS = $row['ID_PAIS'];
-		$egreDomiciliosExtranjero->dOMICILIO = $row['DOMICILIO'];
+		$egreDomiciliosExtranjero->idDomicilioExt = $row['ID_DOMICILIO_EXT'];
+		$egreDomiciliosExtranjero->idPais = $row['ID_PAIS'];
+		$egreDomiciliosExtranjero->domicilio = $row['DOMICILIO'];
 
 		return $egreDomiciliosExtranjero;
 	}

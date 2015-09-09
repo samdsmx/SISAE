@@ -3,12 +3,12 @@
 	 * Object represents table 'egre_hashtags'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2015-07-27 23:14	 
+     	 * @date: 2015-09-09 23:54	 
 	 */
 	class EgreHashtag{
 		
-		var $iDHASHTAG;
-		var $hASHTAG;
+		var $idHashtag;
+		var $hashtag;
 		
 	}
 ?>

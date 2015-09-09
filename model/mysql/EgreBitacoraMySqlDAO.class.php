@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_bitacora'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreBitacoraMySqlDAO implements EgreBitacoraDAO{
 
@@ -60,14 +60,14 @@ class EgreBitacoraMySqlDAO implements EgreBitacoraDAO{
 		$sql = 'INSERT INTO egre_bitacora (ID_MOV_BITACORA, ID_USUARIO, FECHA, OBSERVACIONES, IP) VALUES (?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreBitacora->iDMOVBITACORA);
-		$sqlQuery->setNumber($egreBitacora->iDUSUARIO);
-		$sqlQuery->set($egreBitacora->fECHA);
-		$sqlQuery->set($egreBitacora->oBSERVACIONES);
-		$sqlQuery->set($egreBitacora->iP);
+		$sqlQuery->setNumber($egreBitacora->idMovBitacora);
+		$sqlQuery->setNumber($egreBitacora->idUsuario);
+		$sqlQuery->set($egreBitacora->fecha);
+		$sqlQuery->set($egreBitacora->observaciones);
+		$sqlQuery->set($egreBitacora->ip);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreBitacora->iDBITACORA = $id;
+		$egreBitacora->idBitacora = $id;
 		return $id;
 	}
 	
@@ -80,13 +80,13 @@ class EgreBitacoraMySqlDAO implements EgreBitacoraDAO{
 		$sql = 'UPDATE egre_bitacora SET ID_MOV_BITACORA = ?, ID_USUARIO = ?, FECHA = ?, OBSERVACIONES = ?, IP = ? WHERE ID_BITACORA = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreBitacora->iDMOVBITACORA);
-		$sqlQuery->setNumber($egreBitacora->iDUSUARIO);
-		$sqlQuery->set($egreBitacora->fECHA);
-		$sqlQuery->set($egreBitacora->oBSERVACIONES);
-		$sqlQuery->set($egreBitacora->iP);
+		$sqlQuery->setNumber($egreBitacora->idMovBitacora);
+		$sqlQuery->setNumber($egreBitacora->idUsuario);
+		$sqlQuery->set($egreBitacora->fecha);
+		$sqlQuery->set($egreBitacora->observaciones);
+		$sqlQuery->set($egreBitacora->ip);
 
-		$sqlQuery->setNumber($egreBitacora->iDBITACORA);
+		$sqlQuery->setNumber($egreBitacora->idBitacora);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -180,12 +180,12 @@ class EgreBitacoraMySqlDAO implements EgreBitacoraDAO{
 	protected function readRow($row){
 		$egreBitacora = new EgreBitacora();
 		
-		$egreBitacora->iDBITACORA = $row['ID_BITACORA'];
-		$egreBitacora->iDMOVBITACORA = $row['ID_MOV_BITACORA'];
-		$egreBitacora->iDUSUARIO = $row['ID_USUARIO'];
-		$egreBitacora->fECHA = $row['FECHA'];
-		$egreBitacora->oBSERVACIONES = $row['OBSERVACIONES'];
-		$egreBitacora->iP = $row['IP'];
+		$egreBitacora->idBitacora = $row['ID_BITACORA'];
+		$egreBitacora->idMovBitacora = $row['ID_MOV_BITACORA'];
+		$egreBitacora->idUsuario = $row['ID_USUARIO'];
+		$egreBitacora->fecha = $row['FECHA'];
+		$egreBitacora->observaciones = $row['OBSERVACIONES'];
+		$egreBitacora->ip = $row['IP'];
 
 		return $egreBitacora;
 	}

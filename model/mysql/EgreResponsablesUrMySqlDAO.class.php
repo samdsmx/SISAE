@@ -3,7 +3,7 @@
  * Class that operate on table 'egre_responsables_ur'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-27 23:14
+ * @date: 2015-09-09 23:54
  */
 class EgreResponsablesUrMySqlDAO implements EgreResponsablesUrDAO{
 
@@ -60,13 +60,13 @@ class EgreResponsablesUrMySqlDAO implements EgreResponsablesUrDAO{
 		$sql = 'INSERT INTO egre_responsables_ur (ID_USUARIO, NOMBRE, CORREO, EXTENSION) VALUES (?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreResponsablesUr->iDUSUARIO);
-		$sqlQuery->set($egreResponsablesUr->nOMBRE);
-		$sqlQuery->set($egreResponsablesUr->cORREO);
-		$sqlQuery->set($egreResponsablesUr->eXTENSION);
+		$sqlQuery->setNumber($egreResponsablesUr->idUsuario);
+		$sqlQuery->set($egreResponsablesUr->nombre);
+		$sqlQuery->set($egreResponsablesUr->correo);
+		$sqlQuery->set($egreResponsablesUr->extension);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$egreResponsablesUr->iDRESPONSABLEUR = $id;
+		$egreResponsablesUr->idResponsableUr = $id;
 		return $id;
 	}
 	
@@ -79,12 +79,12 @@ class EgreResponsablesUrMySqlDAO implements EgreResponsablesUrDAO{
 		$sql = 'UPDATE egre_responsables_ur SET ID_USUARIO = ?, NOMBRE = ?, CORREO = ?, EXTENSION = ? WHERE ID_RESPONSABLE_UR = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($egreResponsablesUr->iDUSUARIO);
-		$sqlQuery->set($egreResponsablesUr->nOMBRE);
-		$sqlQuery->set($egreResponsablesUr->cORREO);
-		$sqlQuery->set($egreResponsablesUr->eXTENSION);
+		$sqlQuery->setNumber($egreResponsablesUr->idUsuario);
+		$sqlQuery->set($egreResponsablesUr->nombre);
+		$sqlQuery->set($egreResponsablesUr->correo);
+		$sqlQuery->set($egreResponsablesUr->extension);
 
-		$sqlQuery->setNumber($egreResponsablesUr->iDRESPONSABLEUR);
+		$sqlQuery->setNumber($egreResponsablesUr->idResponsableUr);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -164,11 +164,11 @@ class EgreResponsablesUrMySqlDAO implements EgreResponsablesUrDAO{
 	protected function readRow($row){
 		$egreResponsablesUr = new EgreResponsablesUr();
 		
-		$egreResponsablesUr->iDRESPONSABLEUR = $row['ID_RESPONSABLE_UR'];
-		$egreResponsablesUr->iDUSUARIO = $row['ID_USUARIO'];
-		$egreResponsablesUr->nOMBRE = $row['NOMBRE'];
-		$egreResponsablesUr->cORREO = $row['CORREO'];
-		$egreResponsablesUr->eXTENSION = $row['EXTENSION'];
+		$egreResponsablesUr->idResponsableUr = $row['ID_RESPONSABLE_UR'];
+		$egreResponsablesUr->idUsuario = $row['ID_USUARIO'];
+		$egreResponsablesUr->nombre = $row['NOMBRE'];
+		$egreResponsablesUr->correo = $row['CORREO'];
+		$egreResponsablesUr->extension = $row['EXTENSION'];
 
 		return $egreResponsablesUr;
 	}
