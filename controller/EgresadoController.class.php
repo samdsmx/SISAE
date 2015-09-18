@@ -46,8 +46,7 @@ class EgresadoController extends _BaseController{
                 break;
             case 'contacto':
                 $this->guardarContacto ();
-                $_SESSION[VISTA] = 'view/egresado/index.php';
-                $_SESSION[MENSAJE_EXITO] = 'Datos guardados';
+                $_SESSION[VISTA] = 'view/egresado/index.php';                
                 include ('templates/index.php');
                 break;
             default:
@@ -57,9 +56,26 @@ class EgresadoController extends _BaseController{
         }
     }
     
+    private function guardarContacto (){
+        if ( !isset ($_SESSION[EGRESADO][PERSONAL]) ){
+            $_SESSION[MENSAJE] = 'Te faltaron los datos personales.';
+            header("Location: http://".SERVER_URL."egresado/agregar/personal");
+        }
+        
+        if ( !isset ($_SESSION[EGRESADO][ACADEMICO]) ){
+            $_SESSION[MENSAJE] = 'Te faltaron los datos académicos.';
+            header("Location: http://".SERVER_URL."egresado/agregar/acedemico");
+        }
+        
+        $egresado = new EgreEgresado ();
+        ObjectMap::map($_SESSION[EGRESADO][PERSONAL], $egresado);
+        
+        
+    }
+    
     private function guardarPersonal (){
         $_SESSION[EGRESADO][PERSONAL] = $_POST;        
-        header("Location: http://".SERVER_URL."egresado/agregar/academico");
+        header("Location: http://".SERVER_URL."egresado/agregar/academico");        
     }
     
     private function guardarAcademico (){

@@ -160,11 +160,11 @@
                 </div>
             </div>
             <?php
-            if (isset($_SESSION[MENSAJE_EXITO])){
+            if (isset($_SESSION[MENSAJE])){
                 print '<div class="alert alert-success alert-dismissible" role="alert">';
-                print $_SESSION[MENSAJE_EXITO];
+                print $_SESSION[MENSAJE];
                 print '</div>';
-                unset($_SESSION[MENSAJE_EXITO]);
+                unset($_SESSION[MENSAJE]);
             }
             ?>
             <!-- Content Column -->
