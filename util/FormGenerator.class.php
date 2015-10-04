@@ -17,7 +17,7 @@ class FormGenerator {
      * @var \html_form  
      */
     private $form;
-    
+    private $buttonLabel;
     /**
      * Arreglo de elementos HTML que forman parte del formulario.
      * @var array 
@@ -34,7 +34,7 @@ class FormGenerator {
      * @param _DTO $dto Objeto que tomará como referencia para crear el formulario.
      * @param string $action Acción que se pondrá en el formulario
      */
-    public function __construct($dto, $action) {
+    public function __construct($dto, $action, $buttonLabel) {
 
         $reflect = new ReflectionClass($dto);
         $props = $reflect->getProperties();
@@ -42,7 +42,7 @@ class FormGenerator {
         foreach ($props as $prop) {
             $this->elements[$prop->getName()] = new FormElement ($prop->getName ());
         }
-
+        $this->buttonLabel = $buttonLabel;
         $this->form = new html_element('form');
         $this->form->set('action', $action);
         $this->form->set('method', 'POST');
@@ -73,7 +73,7 @@ class FormGenerator {
         $button = new html_element('button');
         $button->set('type', 'submit');
         $button->set('class', 'btn btn-primary btn-block');
-        $button->set('text', 'Guardar');
+        $button->set('text', $this->buttonLabel);
 
         $div->inject($button);
         return $div;

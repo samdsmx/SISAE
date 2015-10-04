@@ -79,6 +79,10 @@ class SimpleFrontController {
 
   public function run() {
 //      var_dump($this->params);
+
+//      En producción omitir errores.
+    //@call_user_func_array(array(new $this->controller, $this->action), $this->params);
+    
     call_user_func_array(array(new $this->controller, $this->action), $this->params);
   }
 

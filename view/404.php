@@ -2,13 +2,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">404
-                    <small>Page Not Found</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
-                    </li>
-                    <li class="active">404</li>
-                </ol>
+                    <small>Ups te saliste de la matrix</small>
+                </h1>                
             </div>
         </div>
         <!-- /.row -->
@@ -19,7 +14,7 @@
                 <div class="jumbotron">
                     <h1><span class="error-404">404</span>
                     </h1>
-                    <p>The page you're looking for could not be found. Here are some helpful links to get you back on track:</p>
+                    <p>La página que estás buscando no existe. Aquí hay algunas ligas para que regreses al camino correcto.</p>
                     <ul>
                         <li>
                             <a href="index.html">Home</a>

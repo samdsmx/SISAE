@@ -20,6 +20,7 @@ class QueryExecutor{
 		}else{
 			$connection = $transaction->getConnection();
 		}		
+                
 		$query = $sqlQuery->getQuery();
 //                $pos = strpos($query, "null");
 //                if ($pos != false) {
@@ -27,6 +28,7 @@ class QueryExecutor{
 //                      writeToFile($query);
 //                    }
 //                }
+                $connection->executeQuery('SET NAMES utf8');
 		$result = $connection->executeQuery($query);
 		if(!$result){
 			throw new Exception("SQL Error: -->".$query."<--" . mysql_error());
@@ -52,6 +54,7 @@ class QueryExecutor{
 			$connection = $transaction->getConnection();
 		}		
 		$query = $sqlQuery->getQuery();
+                $connection->executeQuery('SET NAMES utf8');
 		$result = $connection->executeQuery($query);
 		if(!$result){
 			throw new Exception("SQL Error: -->".$query."<--" . mysql_error());
@@ -77,6 +80,7 @@ class QueryExecutor{
 		}else{
 			$connection = $transaction->getConnection();
 		}
+                $connection->executeQuery('SET NAMES utf8');
 		$result = $connection->executeQuery($sqlQuery->getQuery());
 		if(!$result){
 			throw new Exception("SQL Error: -->".$sqlQuery->getQuery()."<--" . mysql_error());

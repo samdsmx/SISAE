@@ -9,3 +9,6 @@ define ('MENSAJE', 'mensaje');
 define ('EGRESADO', 'egresado');
 define ('PERSONAL', 'personal');
 define ('ACADEMICO', 'academico');
+define ('CONTACTO', 'contacto');
+define ('DIRECCION', 'direccion');
+define ('NOMBRE_VISTA', 'nombre_vista');
