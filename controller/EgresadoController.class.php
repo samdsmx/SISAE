@@ -8,9 +8,11 @@ class EgresadoController extends _BaseController {
         include ('templates/index.php');
     }
     
+    
+    
     public function cerrar (){        
         session_destroy();
-        header("Location: http://" . SERVER_URL . "egresado/agregar/personal");
+        header("Location: http://" . SERVER_URL );
     }
 
     public function agregar($seccion) {
@@ -20,8 +22,9 @@ class EgresadoController extends _BaseController {
 //            die();
 //        }
         // Si la URL es /sisae/egresado/agregar se va a agregar los datos pesonales
-        if (!isset($seccion))
+        if (!isset($seccion)) {
             $seccion = 'personal';
+        }
         switch ($seccion) {
             case 'personal':
                 $_SESSION[NOMBRE_VISTA] = 'Datos personales';

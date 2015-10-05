@@ -8,10 +8,15 @@
 	class EgreResponsablesUr{
 		
 		var $idResponsableUr;
-		var $idUsuario;
-		var $nombre;
-		var $correo;
-		var $extension;
-		
+
+		var $idUsuario;
+
+		var $nombre;
+
+		var $correo;
+
+		var $extension;
+
+		var $idUnidadResponsable;
 	}
 ?>

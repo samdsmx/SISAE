@@ -7,6 +7,12 @@
  */
 class DAOFactory{
 	
+    /**
+	 * @return CipnCatUnidadesResponsablesDAO
+	 */
+	public static function getCipnCatUnidadesResponsablesDAO(){
+		return new CipnCatUnidadesResponsablesMySqlExtDAO();
+	}
 	/**
 	 * @return EgreAsoCarrerasUrDAO
 	 */

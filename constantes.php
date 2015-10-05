@@ -12,3 +12,6 @@ define ('ACADEMICO', 'academico');
 define ('CONTACTO', 'contacto');
 define ('DIRECCION', 'direccion');
 define ('NOMBRE_VISTA', 'nombre_vista');
+define ('ID_UNIDAD_RESPONSABLE', 'ID_UNIDAD_RESPONSABLE');
+define ('INTENTOS', 'INTENTOS');
+define ('RESPONSABLE', 'responsable');

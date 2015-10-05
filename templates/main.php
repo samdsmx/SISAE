@@ -162,7 +162,7 @@
 
         <!-- Marketing Icons Section -->
         <div class="row">
-            <?php print $_SESSION[CONTENIDO]?>
+            <?php include $_SESSION[VISTA];?>
         </div>
         <!-- /.row -->
 

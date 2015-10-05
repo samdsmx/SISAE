@@ -57,14 +57,15 @@ class EgreResponsablesUrMySqlDAO implements EgreResponsablesUrDAO{
  	 * @param EgreResponsablesUrMySql egreResponsablesUr
  	 */
 	public function insert($egreResponsablesUr){
-		$sql = 'INSERT INTO egre_responsables_ur (ID_USUARIO, NOMBRE, CORREO, EXTENSION) VALUES (?, ?, ?, ?)';
+		$sql = 'INSERT INTO egre_responsables_ur (ID_USUARIO, NOMBRE, CORREO, EXTENSION, ID_UNIDAD_RESPONSABLE) VALUES (?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($egreResponsablesUr->idUsuario);
 		$sqlQuery->set($egreResponsablesUr->nombre);
 		$sqlQuery->set($egreResponsablesUr->correo);
 		$sqlQuery->set($egreResponsablesUr->extension);
-
+                $sqlQuery->setNumber($egreResponsablesUr->idUnidadResponsable);
+                
 		$id = $this->executeInsert($sqlQuery);	
 		$egreResponsablesUr->idResponsableUr = $id;
 		return $id;
@@ -76,13 +77,14 @@ class EgreResponsablesUrMySqlDAO implements EgreResponsablesUrDAO{
  	 * @param EgreResponsablesUrMySql egreResponsablesUr
  	 */
 	public function update($egreResponsablesUr){
-		$sql = 'UPDATE egre_responsables_ur SET ID_USUARIO = ?, NOMBRE = ?, CORREO = ?, EXTENSION = ? WHERE ID_RESPONSABLE_UR = ?';
+		$sql = 'UPDATE egre_responsables_ur SET ID_USUARIO = ?, NOMBRE = ?, CORREO = ?, EXTENSION = ? ID_UNIDAD_RESPONSABLE = ? WHERE ID_RESPONSABLE_UR = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($egreResponsablesUr->idUsuario);
 		$sqlQuery->set($egreResponsablesUr->nombre);
 		$sqlQuery->set($egreResponsablesUr->correo);
 		$sqlQuery->set($egreResponsablesUr->extension);
+                $sqlQuery->setNumber($egreResponsablesUr->idUnidadResponsable);
 
 		$sqlQuery->setNumber($egreResponsablesUr->idResponsableUr);
 		return $this->executeUpdate($sqlQuery);
@@ -169,6 +171,7 @@ class EgreResponsablesUrMySqlDAO implements EgreResponsablesUrDAO{
 		$egreResponsablesUr->nombre = $row['NOMBRE'];
 		$egreResponsablesUr->correo = $row['CORREO'];
 		$egreResponsablesUr->extension = $row['EXTENSION'];
+                $egreResponsablesUr->idUnidadResponsable = $row['ID_UNIDAD_RESPONSABLE'];
 
 		return $egreResponsablesUr;
 	}
