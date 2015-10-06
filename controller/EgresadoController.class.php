@@ -78,8 +78,8 @@ class EgresadoController extends _BaseController {
     }
 
     private function guardarEgresado() {
-        print (!isset($_SESSION[EGRESADO][PERSONAL]));
-        print (isset($_SESSION[EGRESADO][PERSONAL]));
+//        print (!isset($_SESSION[EGRESADO][PERSONAL]));
+//        print (isset($_SESSION[EGRESADO][PERSONAL]));
         if (!isset($_SESSION[EGRESADO][PERSONAL])) {
             $_SESSION[MENSAJE] = 'Te faltaron los datos personales.';
             header("Location: http://" . SERVER_URL . "egresado/agregar/personal");

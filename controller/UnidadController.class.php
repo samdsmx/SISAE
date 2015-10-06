@@ -22,7 +22,9 @@ class UnidadController extends _BaseController {
         $dao = DAOFactory::getEgreDatosAcadsIpnDAO();
         $datosAcad = $dao->load($_POST['id']);
         $datosAcad->validadoEcu = $_POST['status'];
-        print $dao->update($datosAcad);        
+        print $dao->update($datosAcad); 
+        
+        //TODO Agregar a bitacora
     }
     
     private function esUsuarioLoggeado (){
