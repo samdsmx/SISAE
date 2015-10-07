@@ -8,11 +8,11 @@ class UnidadController extends _BaseController {
         include ('templates/unidad.php');
     }
     
-    public function validar (){        
+    public function validar ($status = 0){        
         $this->esUsuarioLoggeado();
         $dao = DAOFactory::getEgreDatosAcadsIpnDAO();
         $responsable = unserialize($_SESSION[RESPONSABLE]);
-        $registros = $dao->queryNoValidados($responsable->idUnidadResponsable);
+        $registros = $dao->queryNoValidados($responsable->idUnidadResponsable, $status);
         $_SESSION[VISTA] = 'view/unidad/verEgresadosStatus.php';
         include_once 'templates/unidad.php';
     }

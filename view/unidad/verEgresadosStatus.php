@@ -7,6 +7,11 @@
 
 <h3> Registros por validar: </h3>
 
+<select onChange="window.location.replace(this.options[this.selectedIndex].value)"> 
+    <option value="">Ver status...</option>
+        <option value="unidad/validar/0"> No validados </option>
+        <option value="unidad/validar/1"> Revisados </option>        
+    </select>
 <table class="table table-striped table-responsive table-hover">
     <thead>
     <th>Fecha Registro</th><th>Boleta</th><th>Apellido Paterno</th><th>Apellido Materno</th><th>Nombres</th>    
