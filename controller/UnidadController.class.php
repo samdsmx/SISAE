@@ -27,6 +27,20 @@ class UnidadController extends _BaseController {
         //TODO Agregar a bitacora
     }
     
+    public function detalleEgresado ($id){
+        /*@var responsable EgreResponsablesUr*/
+        $responsable = unserialize($_SESSION[RESPONSABLE]);
+        $egresado = DAOFactory::getEgreEgresadosDAO()->load($id);
+        $datosAcad = DAOFactory::getEgreDatosAcadsIpnDAO()->queryByIDEGRESADO($egresado->idEgresado);
+        $datoEscuela = '';
+        foreach ($datosAcad as $dato){
+            if ($dato->idUnidadResponsable == $responsable->idUnidadResponsable)
+                $datoEscuela = $dato;
+        }                
+        $_SESSION[VISTA] = 'view/unidad/verDetalleEgresado.php';
+        include_once 'templates/unidad.php';
+    }
+    
     private function esUsuarioLoggeado (){
         if (!isset($_SESSION[RESPONSABLE])){
             header (header("Location: http://" . SERVER_URL));
