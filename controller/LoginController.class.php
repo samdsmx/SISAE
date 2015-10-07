@@ -8,7 +8,8 @@ class LoginController {
 
         //TODO verificar número de intentos
         $_SESSION[VISTA] = 'view/login.php';
-        include 'templates/fullwidth.php';
+        //include 'templates/fullwidth.php';
+        include 'templates/base.php';
     }    
     
     public function check (){

@@ -36,7 +36,7 @@
 </head>
 
 <body>
-
+    <div class="page-header">encabezado</div>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -59,29 +59,23 @@
 
     <!-- Page Content -->
     <div class="container">
-
-        
-
-        <!-- Content Row -->
+    <!-- Content Row -->
         <div class="row">
             <?php include $_SESSION[VISTA];?>
         </div>
         <!-- /.row -->
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; CENAC - IPN 2015</p>
-                </div>
-            </div>
-        </footer>
-
     </div>
     <!-- /.container -->
-
 </body>
-
+<footer>
+        <div class="row">
+                <div class="col-lg-12">
+                    <h1>INSTITUTO POLITÉCNICO NACIONAL</h1>
+                    <h2>
+                        Unidad Profesional “Adolfo López Mateos”, Edificio de la Secretaría de Extensión e Integración Social, Planta baja<br>
+                        Av. Juan de Dios Bátiz s/n Esq. Av. Luis Enrique Erro, Zacatenco c.p. 07738, México, D.F. <br>
+                        Tels.: 57296000, 56242000 ext. 51671</h2>  
+                </div>
+        </div>
+</footer>
 </html>

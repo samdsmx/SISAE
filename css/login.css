@@ -20,6 +20,12 @@
   font-family: roboto;
 }
 
+.loginmodal-container h3 {
+  text-align: center;
+  font-size: 1.3em;
+  padding: 10px;
+}
+
 .loginmodal-container input[type=submit] {
   width: 100%;
   display: block;
@@ -67,7 +73,7 @@
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
-  background-color: #4d90fe;
+  background-color: #6c1d45;
   padding: 17px 0px;
   font-family: roboto;
   font-size: 14px;
@@ -78,7 +84,7 @@
   /* border: 1px solid #2f5bb7; */
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: #357ae8;
+  background-color: #666;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 
@@ -96,3 +102,88 @@
   font-size: 12px;
 }
 
+/* CAROUSEL*/
+.main-container {
+  padding: 40px;
+  width:100%; 
+}
+
+.grey{
+    background-color:#d9d9d9;
+}
+.skyblue {
+    background-color: #22c8ff;
+}
+.deepskyblue {
+    background-color: #00bfff;
+}
+.darkerskyblue {
+    background-color: #00a6dd;
+}
+.carousel-indicators {
+    bottom: 0;
+}
+.carousel-control.right,
+.carousel-control.left {
+    background-image: none;
+    background-color: #a0a0a0;
+    width:5%;
+}
+.carousel .item {
+    min-height: 400px; 
+}
+.carousel-caption h3,
+.carousel .icon-container,
+.carousel-caption button {
+    background-color: #6c1d45;
+
+}
+.carousel-caption h3 {
+    padding: .5em;
+        right: 10%;
+    left: 10%;
+}
+.carousel .icon-container {
+    display: inline-block;
+    font-size: 15px;
+    line-height: 25px;
+    padding: 0.5em;
+    text-align: center;
+    border-radius: 50%;
+}
+.carousel-caption button {
+    border-color: #6c1d45;
+    font-size: 10px;
+    padding: .5em;
+}
+
+/* Animation delays */
+.carousel-caption h3:first-child {
+    animation-delay: 1s;
+}
+.carousel-caption h3:nth-child(2) {
+    animation-delay: 2s;
+}
+.carousel-caption button {
+    animation-delay: 3s;
+}
+
+h1 {
+  text-align: center;  
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+h3 {
+  text-align: center;  
+  font-size: 15px;
+}
+.p {
+  padding-top: 125px;
+  text-align: center;
+}
+
+.p a {
+  text-decoration: underline;
+}
