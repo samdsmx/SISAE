@@ -273,7 +273,7 @@ class EgresadoController extends _BaseController {
         $form->get('resideMexico')->selected = isset($_SESSION[EGRESADO][PERSONAL]['resideMexico']) ?
                 $_SESSION[EGRESADO][PERSONAL]['resideMexico'] : "";
 
-        $form->get('idEstadoNac')->label = 'Estado';
+        $form->get('idEstadoNac')->label = 'Estado de Nacimiento';
         $form->get('idEstadoNac')->placeholder = 'Estado';
         $form->get('idEstadoNac')->type = 'select';
         $form->get('idEstadoNac')->options = array(1 => 'DF', 2 => 'Morelos');
