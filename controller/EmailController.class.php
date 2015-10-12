@@ -10,9 +10,29 @@ class EmailController extends _BaseController {
     
     public function send() {
         print_r ($_POST);
+        $asunto = filter_input(INPUT_POST, 'asunto');
+        $carreras = $_POST['carrera'];
+        $generaciones = $_POST['generacion'];
+        $body = filter_input(INPUT_POST, 'body');
+        $unidad = filter_input(INPUT_POST, 'unidad');
+        $remitente = filter_input(INPUT_POST, 'remitente');
+        print 'Iniciando envío...';
+        var_dump($carreras);
+        foreach ($carreras as $carrera){
+            print 'Carrera:'.$carrera;
+            foreach ($generaciones as $generacion){
+                print 'Generacion:'.$generacion;
+                $egresados = DAOFactory::getEgreDatosAcadsIpnDAO()->queryCorreosXGeneracion($unidad, $carrera, $generacion);
+                print_r($egresados);
+                foreach ($egresados as $egresado){
+                    $this->sendMail($asunto, $egresado, $remitente, $body);
+                }
+            }
+        }
     }
     
-    private function sendMail (){
+    private function sendMail ($asunto, $egresado, $remitente, $body){
+        echo 'Enviando correo a:'.$egresado;
         //Create a new PHPMailer instance
         $mail = new PHPMailer;
 
@@ -52,21 +72,21 @@ class EmailController extends _BaseController {
         $mail->setFrom('egresados.dtw@gmail.com', 'SISAE');
 
 //Set an alternative reply-to address
-        $mail->addReplyTo('egresados.dtw@gmail.com', 'SISAE');
+        $mail->addReplyTo($this->remitente, 'SISAE');
 
 //Set who the message is to be sent to
-        $mail->addAddress('j.israel.toledo@gmail.com', 'Israel Toledo');
+        $mail->addAddress($this->egresado, $this->egresado);
 
 //Set the subject line
-        $mail->Subject = 'PHPMailer GMail SMTP test';
+        $mail->Subject = $this->asunto;
 
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 //        $mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
-        $mail->msgHTML("<html><body>Pruebas</body></html>");
+        $mail->msgHTML("<html><body>".$this->body."</body></html>");
 
 //Replace the plain text body with one created manually
-        $mail->AltBody = 'This is a plain-text message body';
+//        $mail->AltBody = 'This is a plain-text message body';
 
 //Attach an image file
 //        $mail->addAttachment('images/phpmailer_mini.png');
@@ -78,5 +98,4 @@ class EmailController extends _BaseController {
             echo "Message sent!";
         }
     }
-
 }

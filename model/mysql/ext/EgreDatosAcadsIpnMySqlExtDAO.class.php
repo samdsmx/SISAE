@@ -28,5 +28,17 @@ class EgreDatosAcadsIpnMySqlExtDAO extends EgreDatosAcadsIpnMySqlDAO{
         }
         return QueryExecutor::execute($sqlQuery);
     }
+    
+    public function queryCorreosXGeneracion ($idUnidad, $idCarrera, $anioEgreso){
+        $sql =    "SELECT * FROM sisae.correos_por_generacion "
+                . "WHERE ID_UNIDAD_RESPONSABLE = ? "
+                . "AND   ID_CARRERA = ? "
+                . "AND anio_egreso=?";
+        $sqlQuery = new SqlQuery($sql);
+        $sqlQuery->setNumber($idUnidad);
+        $sqlQuery->setNumber($idCarrera);
+        $sqlQuery->setNumber($anioEgreso);
+        return QueryExecutor::execute($sqlQuery);
+    }
 }
 ?>

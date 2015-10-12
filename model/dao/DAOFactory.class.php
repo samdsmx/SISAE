@@ -7,12 +7,41 @@
  */
 class DAOFactory{
 	
-    /**
+	/**
+	 * @return CipnCatEstadosDAO
+	 */
+	public static function getCipnCatEstadosDAO(){
+		return new CipnCatEstadosMySqlExtDAO();
+	}
+
+	/**
+	 * @return CipnCatEstadosCivilesDAO
+	 */
+	public static function getCipnCatEstadosCivilesDAO(){
+		return new CipnCatEstadosCivilesMySqlExtDAO();
+	}
+
+	/**
+	 * @return CipnCatGenerosDAO
+	 */
+	public static function getCipnCatGenerosDAO(){
+		return new CipnCatGenerosMySqlExtDAO();
+	}
+
+	/**
+	 * @return CipnCatGentiliciosDAO
+	 */
+	public static function getCipnCatGentiliciosDAO(){
+		return new CipnCatGentiliciosMySqlExtDAO();
+	}
+
+	/**
 	 * @return CipnCatUnidadesResponsablesDAO
 	 */
 	public static function getCipnCatUnidadesResponsablesDAO(){
 		return new CipnCatUnidadesResponsablesMySqlExtDAO();
 	}
+
 	/**
 	 * @return EgreAsoCarrerasUrDAO
 	 */

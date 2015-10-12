@@ -43,6 +43,8 @@
                         <button id="btn_enviar" class="btn btn-success"> <i class="icon-send"></i> Enviar</button>
                     </div>                    
                     <input type="hidden" name="body" id="messageBody">
+                    <input type="hidden" name="unidad" id="unidad" data-bind="value:responsable().idUnidadResponsable ">
+                    <input type="hidden" name="remitente" id="unidad" data-bind="value:responsable().correo ">
                 </form>
                 <hr/>
 
