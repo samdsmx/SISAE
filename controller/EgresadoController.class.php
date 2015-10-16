@@ -5,7 +5,7 @@ class EgresadoController extends _BaseController {
     public function defaultAction() {
 
         $_SESSION[VISTA] = 'view/egresado/index.php';
-        include ('templates/index.php');
+        include ('templates/base.php');
     }
     
     
@@ -51,7 +51,7 @@ class EgresadoController extends _BaseController {
                 break;
         }
 
-        include ('templates/formularios.php');
+        include ('templates/base.php');
     }
 
     public function guardar($seccion) {
@@ -72,7 +72,7 @@ class EgresadoController extends _BaseController {
                 break;
             default:                
                 $_SESSION[VISTA] = 'view/404.php';
-                include ('templates/index.php');
+                include ('templates/base.php');
                 break;
         }
     }
@@ -146,7 +146,7 @@ class EgresadoController extends _BaseController {
         $carrera = DAOFactory::getEgreCatCarrerasDAO()->load($idCarrera);                
         $_SESSION[VISTA] = 'view/egresado/confirmacionRegistro.php';
         $_SESSION[NOMBRE_VISTA] = 'Registro completo';
-        include_once 'templates/formularios.php';        
+        include_once 'templates/base.php';        
     }
 
     private function guardarPersonal() {
@@ -181,8 +181,9 @@ class EgresadoController extends _BaseController {
     private function formularioDireccion() {
         if (!isset($_SESSION[EGRESADO][PERSONAL]['resideMexico'])) {
             $_SESSION[MENSAJE] = 'Antes de elegir una dirección, llena los datos personales';
+//            var_dump ($_SESSION[MENSAJE]);
             header("Location: http://" . SERVER_URL . "egresado/agregar/personal");
-            return;
+            exit ();
         }        
         if ($_SESSION[EGRESADO][PERSONAL]['resideMexico'] == 1) {
             return $this->formularioDireccionMexico();

@@ -5,6 +5,7 @@ class EmailController extends _BaseController {
     public function compose (){
         $carreras = DAOFactory::getEgreCatCarrerasDAO()->queryAll();
         $_SESSION[VISTA] = 'view/email.php';
+        $_SESSION[NOMBRE_VISTA] = 'Envío de correos';
         include_once 'templates/base.php';
     }
     

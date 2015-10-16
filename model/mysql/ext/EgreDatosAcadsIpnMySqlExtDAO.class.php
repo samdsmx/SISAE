@@ -11,13 +11,13 @@ class EgreDatosAcadsIpnMySqlExtDAO extends EgreDatosAcadsIpnMySqlDAO{
         
         // Es la llamada sin parámetros
         if ($idUnidadResponsable == 0){
-            $sql = 'SELECT d.ID_DATO_ACAD_IPN, e.FECHA_REGISTRO, d.BOLETA, e.AP_PATERNO, e.AP_MATERNO, e.NOMBRE 
+            $sql = 'SELECT e.ID_EGRESADO, d.ID_DATO_ACAD_IPN, e.FECHA_REGISTRO, d.BOLETA, e.AP_PATERNO, e.AP_MATERNO, e.NOMBRE 
                     FROM egre_egresados e, egre_datos_acads_ipn d
                     WHERE e.ID_EGRESADO = d.ID_EGRESADO
                     AND d.VALIDADO_ECU IN (0, 1)';
             $sqlQuery = new SqlQuery($sql);
         }else{            
-            $sql = 'SELECT d.ID_DATO_ACAD_IPN, e.FECHA_REGISTRO, d.BOLETA, e.AP_PATERNO, e.AP_MATERNO, e.NOMBRE 
+            $sql = 'SELECT e.ID_EGRESADO, d.ID_DATO_ACAD_IPN, e.FECHA_REGISTRO, d.BOLETA, e.AP_PATERNO, e.AP_MATERNO, e.NOMBRE 
                     FROM egre_egresados e, egre_datos_acads_ipn d
                     WHERE e.ID_EGRESADO = d.ID_EGRESADO
                     AND d.VALIDADO_ECU = ?

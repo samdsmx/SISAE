@@ -35,6 +35,10 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     </head>
 
@@ -283,7 +287,7 @@
                                 <a href="unidad/"><i class="fa fa-home fa-fw"></i> Inicio </a>
                             </li>
                             <li>
-                                <a href="unidad/envio"><i class="fa fa-envelope-o fa-fw"></i> Envío de correos</a>
+                                <a href="email/compose"><i class="fa fa-envelope-o fa-fw"></i> Envío de correos</a>
                             </li>
                             <li>
                                 <a href="unidad/validar"><i class="fa fa-check-square-o fa-fw"></i> Validar egresados </a>
@@ -390,11 +394,7 @@
         <!-- /#wrapper -->
 
         <!-- jQuery -->
-        <script src="bower_components/jquery/dist/jquery.min.js"></script>
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
+        
         <!-- Metis Menu Plugin JavaScript -->
         <!--<script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>-->
 

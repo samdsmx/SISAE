@@ -75,7 +75,24 @@
     
      <!-- Page Content -->
      <div class="content-wrapper">
-        <div class="container">
+        <div class="container">            
+            <h2><?php print $_SESSION[NOMBRE_VISTA]; ?></h2>
+            <?php
+            if (isset($_SESSION[MENSAJE])){
+                print '<div class="alert alert-success alert-dismissible" role="alert">';
+                print $_SESSION[MENSAJE];
+                print '</div>';
+                unset($_SESSION[MENSAJE]);
+            }
+            ?>
+            <?php
+            if (isset($_SESSION[MENSAJE_ERROR])){
+                print '<div class="alert alert-danger alert-dismissible" role="alert">';
+                print $_SESSION[MENSAJE_ERROR];
+                print '</div>';
+                unset($_SESSION[MENSAJE_ERROR]);
+            }
+            ?>
     <!-- Content Row -->
         <div class="row">
             <?php include $_SESSION[VISTA];?>

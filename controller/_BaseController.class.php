@@ -20,8 +20,13 @@ class _BaseController {
 
   public function closeSession() {
     session_destroy();
-    header('Location: /');
+    header("Location: http://" . SERVER_URL);
   }
+  
+  public function cerrarSesion (){
+        session_destroy();
+        header("Location: http://" . SERVER_URL);
+    }
 
   public function validateUser() {
     if (!isset($_SESSION['usuario'])) {

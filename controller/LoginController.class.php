@@ -13,20 +13,19 @@ class LoginController {
     }    
     
     public function check (){
+        
         $user = filter_input(INPUT_POST, 'user');
         $pass = filter_input(INPUT_POST, 'pass');
         
         $usuarios = DAOFactory::getEgreUsuariosDAO()->queryByUSUARIO($user);
         $usuario = $usuarios[0];
+        
         if ($usuario == null){
-            $_SESSION[MENSAJE_ERROR] = 'Usuario o contraseña incorrectos';
-            $_SESSION[INTENTOS] ++;
-            $_SESSION[VISTA] = 'view/login.php';
-            include 'templates/fullwidth.php';
-            return;
+            $this->errorLogin();                    
         }
         
         if ($usuario->contrasenia == md5($pass)){
+            
             $_SESSION[USUARIO] = serialize($usuario);
             if ($usuario->idRol == 2){ //ESCUELA
                 $responsable = DAOFactory::getEgreResponsablesUrDAO()->queryByIDUSUARIO($usuario->idUsuario);
@@ -38,5 +37,16 @@ class LoginController {
             header("Location: http://" . SERVER_URL . "egresado");
             
         }
+        else{
+            $this->errorLogin();
+        }
+    }
+    
+    private function errorLogin (){
+        $_SESSION[MENSAJE_ERROR] = 'Usuario o contraseña incorrectos';
+            $_SESSION[INTENTOS] ++;
+            $_SESSION[VISTA] = 'view/login.php';
+            include 'templates/base.php';
+            return;
     }
 }
