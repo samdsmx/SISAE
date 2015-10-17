@@ -427,14 +427,6 @@ class EgresadoController extends _BaseController {
         return $form->build();
     }
 
-    private function getOpciones($dao, $id, $descripcion) {
-        $elementos = $dao->queryAll();
-        $opciones = array();
-
-        foreach ($elementos as $elemento) {
-            $opciones[$elemento->$id] = $elemento->$descripcion;
-        }
-        return $opciones;
-    }
+    
 
 }

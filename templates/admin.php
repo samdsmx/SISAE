@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SISAE Administración de Unidad</title>
+        <title> -- S I S A E -- </title>
 
         <!-- Bootstrap Core CSS -->
         <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,9 +23,12 @@
         <!-- Custom CSS -->
         <link href="css/sb-admin-2.css" rel="stylesheet">
 
+        <!-- Morris Charts CSS -->
+        
 
         <!-- Custom Fonts -->
-        <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!--<link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,7 +48,7 @@
         <div id="wrapper">
 
             <!-- Navigation -->
-            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: #000">
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -53,7 +56,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">SISAE v2.0</a>
+                    <a class="navbar-brand" href="index.html">Super Admin SISAE v2.0</a>
                 </div>
                 <!-- /.navbar-header -->
 
@@ -282,33 +285,15 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="unidad/"><i class="fa fa-home fa-fw"></i> Inicio </a>
+                                <a href="admin/"><i class="fa fa-home fa-fw"></i> Inicio </a>
+                            </li>                            
+                            <li>
+                                <a href="admin/usuarios"><i class="fa fa-user-plus"></i> Agregar usuarios </a>
                             </li>
                             <li>
-                                <a href="email/compose"><i class="fa fa-envelope-o fa-fw"></i> Envío de correos</a>
-                            </li>
-                            <li>
-                                <a href="unidad/validar"><i class="fa fa-check-square-o fa-fw"></i> Validar egresados </a>
-                            </li>
-                            <li>
-                                <a href="unidad/busca"><i class="fa fa-search fa-fw"></i> Encontrar egresados </a>
-                            </li>
-                            <li>
-                                <a><i class="fa fa-bar-chart-o fa-fw"></i> Mostrar Reportes <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="reportes/anioEgreso">Año de egreso </a>
-                                    </li>
-                                    <li>
-                                        <a href="reportes/fechaRegistro">Fecha de registro</a>
-                                    </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
+                                <a href="admin/carreras"><i class="fa fa-book fa-fw"></i> Administrar carreras</a>
                             </li>
                             
-                            <li>
-                                <a href="forms.html"><i class="fa fa-users fa-fw"></i> Polired </a>
-                            </li>
 <!--                            <li>
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">

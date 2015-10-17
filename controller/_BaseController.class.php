@@ -38,5 +38,15 @@ class _BaseController {
       die;
     }
   }
+  
+  public function getOpciones($dao, $id, $descripcion) {
+        $elementos = $dao->queryAll();
+        $opciones = array();
+
+        foreach ($elementos as $elemento) {            
+            $opciones[$elemento->$id] = $elemento->$descripcion;
+        }
+        return $opciones;
+    }
 
 }

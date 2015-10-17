@@ -2,8 +2,12 @@
 
 class UnidadController extends _BaseController {
 
+    public static $busca = "unidad/busca";
+    
     public function defaultAction() {
         $this->esUsuarioLoggeado();
+        $responsable = unserialize($_SESSION[RESPONSABLE]);
+        $_SESSION[NOMBRE_VISTA] = "Bienvenid@ " . $responsable->nombre;
         $_SESSION[VISTA] = 'view/unidad/index.php';
         include ('templates/unidad.php');
     }
@@ -48,4 +52,16 @@ class UnidadController extends _BaseController {
         }        
     }
     
+    public function busca ($boleta = '', $apellidoPaterno = '', $apellidoMaterno = '', $nombre = ''){
+                
+        $form = new FormGenerator(new FormularioBusqueda (), UnidadController::$busca, "Buscar");
+        $_SESSION[NOMBRE_VISTA] = 'Búsqueda';
+        $_SESSION[FORMULARIO] = $form->build();
+        $_SESSION[VISTA] = 'view/buscar.php';
+        include 'templates/unidad.php';
+        
+        
+    }
 }
+
+class FormularioBusqueda { var $boleta; var $apellidoPaterno; var $apellidoMaterno; var $nombre; };

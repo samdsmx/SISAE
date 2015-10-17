@@ -27,12 +27,17 @@ class LoginController {
         if ($usuario->contrasenia == md5($pass)){
             
             $_SESSION[USUARIO] = serialize($usuario);
+            print_r($_SESSION[USUARIO]);
             if ($usuario->idRol == 2){ //ESCUELA
                 $responsable = DAOFactory::getEgreResponsablesUrDAO()->queryByIDUSUARIO($usuario->idUsuario);
                 $_SESSION[RESPONSABLE] = serialize($responsable[0]);
                 $_SESSION[ID_UNIDAD_RESPONSABLE] = $responsable->idUnidadResponsable;
-                header("Location: http://" . SERVER_URL . "unidad");
-                return;
+                header("Location: http://" . SERVER_URL . "unidad");                
+                exit ();
+            }
+            if ($usuario->idRol == 3){ //Administrador                
+                header("Location: http://" . SERVER_URL . "admin");     
+                exit ();
             }
             header("Location: http://" . SERVER_URL . "egresado");
             

@@ -4,13 +4,6 @@ $responsable = unserialize($_SESSION[RESPONSABLE]);
 
 ?>
 
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Bienvenid@ <span> <?php print $responsable->nombre;?></span></h1>
-        <h2><?php print $responsable->idUnidadResponsable;?></h2>
-    </div>
-    <!-- /.col-lg-12 -->
-</div>
 <!--Iconos https://fortawesome.github.io/Font-Awesome/icons/-->
 <div class="row">
     <div class="col-lg-3 col-md-6">
@@ -70,7 +63,7 @@ $responsable = unserialize($_SESSION[RESPONSABLE]);
                     </div>
                 </div>
             </div>
-            <a href="#">
+            <a href="unidad/busca">
                 <div class="panel-footer">
                     <span class="pull-left">Ingresar</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
