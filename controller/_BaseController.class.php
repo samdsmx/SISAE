@@ -49,4 +49,8 @@ class _BaseController {
         return $opciones;
     }
 
+    public function redirect ($url){
+        header("Location: http://" . SERVER_URL . $url);
+        exit ();
+    }
 }

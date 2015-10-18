@@ -291,33 +291,17 @@
                                 <a href="admin/usuarios"><i class="fa fa-user-plus"></i> Agregar usuarios </a>
                             </li>
                             <li>
-                                <a href="admin/carreras"><i class="fa fa-book fa-fw"></i> Administrar carreras</a>
-                            </li>
-                            
-<!--                            <li>
-                                <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                                <a><i class="fa fa-book fa-fw"></i> Administrar carreras</a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="panels-wells.html">Panels and Wells</a>
+                                        <a href="admin/carreras"><i class="fa fa-plus fa-fw"></i>Agregar Carrera</a>
                                     </li>
                                     <li>
-                                        <a href="buttons.html">Buttons</a>
-                                    </li>
-                                    <li>
-                                        <a href="notifications.html">Notifications</a>
-                                    </li>
-                                    <li>
-                                        <a href="typography.html">Typography</a>
-                                    </li>
-                                    <li>
-                                        <a href="icons.html"> Icons</a>
-                                    </li>
-                                    <li>
-                                        <a href="grid.html">Grid</a>
-                                    </li>
-                                </ul>
-                                 /.nav-second-level 
+                                        <a href="admin/asociaCarrera"> <i class="fa fa-object-group fa-fw"></i> Asociar Carrera a UR</a>
+                                    </li>                                    
+                                </ul>    
                             </li>
+                            <!--                           
                             <li>
                                 <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -368,10 +352,26 @@
             </nav>
 
             <div id="page-wrapper">
-                
+            
                 <h1> 
                 <?=$_SESSION[NOMBRE_VISTA];?>
                 </h1>
+                    <?php
+            if (isset($_SESSION[MENSAJE])){
+                print '<div class="alert alert-success alert-dismissible" role="alert">';
+                print $_SESSION[MENSAJE];
+                print '</div>';
+                unset($_SESSION[MENSAJE]);
+            }
+            ?>
+            <?php
+            if (isset($_SESSION[MENSAJE_ERROR])){
+                print '<div class="alert alert-danger alert-dismissible" role="alert">';
+                print $_SESSION[MENSAJE_ERROR];
+                print '</div>';
+                unset($_SESSION[MENSAJE_ERROR]);
+            }
+            ?>
                 <hr>
                 <?php include $_SESSION[VISTA];?>
             </div>
