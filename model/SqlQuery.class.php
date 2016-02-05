@@ -16,6 +16,7 @@ class SqlQuery{
 	 * @param String $txt zapytanie sql
 	 */
 	function SqlQuery($txt){
+           
 		$this->txt = $txt;
 	}
 
@@ -25,7 +26,7 @@ class SqlQuery{
 	 * @param String $value value set
 	 */
 	public function setString($value){
-		$value = mysql_real_escape_string($value);
+//		$value = mysql_real_escape_string($value);
 		$this->params[$this->idx++] = "'".$value."'";
 	}
 	
@@ -35,7 +36,7 @@ class SqlQuery{
 	 * @param String $value value to set
 	 */
 	public function set($value){
-		$value = mysql_real_escape_string($value);
+//		$value = mysql_real_escape_string($value);
 		$this->params[$this->idx++] = "'".$value."'";
 	}
 	

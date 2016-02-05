@@ -13,13 +13,13 @@ class LoginController {
     }    
     
     public function check (){
-        
         $user = filter_input(INPUT_POST, 'user');
         $pass = filter_input(INPUT_POST, 'pass');
         
-        $usuarios = DAOFactory::getEgreUsuariosDAO()->queryByUSUARIO($user);
-        $usuario = $usuarios[0];
-        
+        $dao = DAOFactory::getDAOFactory(DAOFactory::$ORACLE);
+        $usuarios = $dao->getEgreUsuariosDAO()->queryByUSUARIO($user);
+//        $usuarios = DAOFactory::getDAOFactory(DAOFactory::$ORACLE)->getEgreUsuariosDAO()->queryByUSUARIO($user);
+        $usuario = $usuarios[0];        
         if ($usuario == null){
             $this->errorLogin();                    
         }
@@ -29,7 +29,8 @@ class LoginController {
             $_SESSION[USUARIO] = serialize($usuario);
             print_r($_SESSION[USUARIO]);
             if ($usuario->idRol == 2){ //ESCUELA
-                $responsable = DAOFactory::getEgreResponsablesUrDAO()->queryByIDUSUARIO($usuario->idUsuario);
+                $dao = DAOFactory::getDAOFactory(DAOFactory::$ORACLE);
+                $responsable = $dao->getEgreResponsablesUrDAO()->queryByIDUSUARIO($usuario->idUsuario);
                 $_SESSION[RESPONSABLE] = serialize($responsable[0]);
                 $_SESSION[ID_UNIDAD_RESPONSABLE] = $responsable->idUnidadResponsable;
                 header("Location: http://" . SERVER_URL . "unidad");                
