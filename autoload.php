@@ -5,13 +5,19 @@
  */
 $paths = array(
     'util/',
+    'model/',
     'model/core/',
     'model/dao/',
     'model/dto/',
     'model/mysql/',
     'model/mysql/ext/',
+    'model/mysql/sql/',
+    'model/oracle/',
+    'model/oracle/ext/',
+    'model/oracle/sql/',
     'model/sql/',
     'controller/',
+    
 );
 
 /**
