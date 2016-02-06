@@ -95,7 +95,8 @@
             ?>
     <!-- Content Row -->
         <div class="row">
-            <?php include $_SESSION[VISTA];?>
+            <?php
+            include $_SESSION[VISTA];?>
         </div>
         <!-- /.row -->
         </div>

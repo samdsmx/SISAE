@@ -2,6 +2,11 @@
 
 class EgresadoController extends _BaseController {
 
+    public $daoFactory ;
+    
+    public function __construct (){
+        $this->daoFactory = new OracleDAOFactory ();
+    }
     public function defaultAction() {
 
         $_SESSION[VISTA] = 'view/egresado/index.php';
@@ -32,9 +37,13 @@ class EgresadoController extends _BaseController {
                 $_SESSION[VISTA] = 'view/egresado/registroEgresadoDatos.php';
                 break;
             case 'academico':
+                print 'entro aqui';
                 $_SESSION[NOMBRE_VISTA] = 'Datos académicos';
+                print 'llego aqui 2';
                 $_SESSION[FORMULARIO] = $this->formularioAcademico();
+                print 'llego aqui 3';
                 $_SESSION[VISTA] = 'view/egresado/registroEgresadoAcademico.php';
+                 print 'llego aqui';
                 break;
             case 'direccion':
                 $_SESSION[NOMBRE_VISTA] = 'Dirección';
@@ -50,6 +59,8 @@ class EgresadoController extends _BaseController {
                 $_SESSION[VISTA] = 'view/404.php';
                 break;
         }
+        
+        var_dump ($_SESSION);
 
         include ('templates/base.php');
     }
@@ -110,32 +121,32 @@ class EgresadoController extends _BaseController {
         $usuario->idRol = '1';
         $usuario->usuario = $_SESSION[EGRESADO][PERSONAL]['email'];
         
-        DAOFactory::getEgreUsuariosDAO()->insert($usuario);
+         $this->daoFactory.getEgreUsuariosDAO()->insert($usuario);
                 
         $egresado->idUsuario = $usuario->idUsuario;
                 
-        DAOFactory::getEgreEgresadosDAO()->insert($egresado);
+        $this->daoFactory.getEgreEgresadosDAO()->insert($egresado);
 
         $academico->idEgresado = $egresado->idEgresado;
         
-        DAOFactory::getEgreDatosAcadsIpnDAO()->insert($academico);
+        $this->daoFactory.getEgreDatosAcadsIpnDAO()->insert($academico);
         
         if ($_SESSION[EGRESADO][PERSONAL]['resideMexico'] == 1){
             $domicilio = new EgreDomicilio();            
             ObjectMap::map($_SESSION[EGRESADO][DIRECCION], $domicilio);
-            DAOFactory::getEgreDomiciliosDAO()->insert($domicilio);
+            $this->daoFactory.getEgreDomiciliosDAO()->insert($domicilio);
             $aso = new EgreAsoEgreDomicilio ();
             $aso->idDomicilio = $domicilio->idDomicilio;
             $aso->idEgresado = $egresado->idEgresado;
-            DAOFactory::getEgreAsoEgreDomiciliosDAO()->insert($aso);
+            $this->daoFactory.getEgreAsoEgreDomiciliosDAO()->insert($aso);
         }else{
             $domicilio = new EgreDomiciliosExtranjero();            
             ObjectMap::map($_SESSION[EGRESADO][DIRECCION], $domicilio);
-            DAOFactory::getEgreDomiciliosExtranjerosDAO()->insert($domicilio);
+            $this->daoFactory.getEgreDomiciliosExtranjerosDAO()->insert($domicilio);
             $aso = new EgreAsoEgreDomExt ();
             $aso->idDomicilio = $domicilio->idDomicilio;
             $aso->idEgresado = $egresado->idEgresado;
-            DAOFactory::getEgreAsoEgreDomExtDAO()->insert($aso);
+            $this->daoFactory.getEgreAsoEgreDomExtDAO()->insert($aso);
         }
         
         header("Location: http://" . SERVER_URL . "egresado/registrado");
@@ -143,7 +154,7 @@ class EgresadoController extends _BaseController {
     
     public function registrado (){
         $idCarrera = $_SESSION[EGRESADO][ACADEMICO]['idCarrera'];
-        $carrera = DAOFactory::getEgreCatCarrerasDAO()->load($idCarrera);                
+        $carrera = $this->daoFactory.getEgreCatCarrerasDAO()->load($idCarrera);                
         $_SESSION[VISTA] = 'view/egresado/confirmacionRegistro.php';
         $_SESSION[NOMBRE_VISTA] = 'Registro completo';
         include_once 'templates/base.php';        
@@ -172,7 +183,7 @@ class EgresadoController extends _BaseController {
         
         
         $form->get('idMedioContacto')->type = 'select';
-        $form->get('idMedioContacto')->options = $this->getOpciones(DAOFactory::getEgreCatMediosContactoDAO(), 'idMedioContacto', 'medioContacto');
+        $form->get('idMedioContacto')->options = $this->getOpciones($this->daoFactory.getEgreCatMediosContactoDAO(), 'idMedioContacto', 'medioContacto');
         $form->get('idMedioContacto')->value = isset($_SESSION[EGRESADO][CONTACTO]['idMedioContacto']) ?
                 $_SESSION[EGRESADO][CONTACTO]['idMedioContacto'] : "";
         return $form->build();
@@ -350,35 +361,44 @@ class EgresadoController extends _BaseController {
     }
 
     private function formularioAcademico() {
+        
         $form = new FormGenerator(new EgreDatosAcadsIpn(), 'egresado/guardar/academico', 'Guardar todo');
-
+        
         $form->get('idDatoAcadIpn')->visible = false;
 
-        $form->get('idMotivoInterrupcion')->options = $this->getOpciones(DAOFactory::getEgreCatMotivosInterrupcionDAO(), 'idMotivoInterrupcion', 'motivoInterrupcion');
+        $op = $this->daoFactory.getEgreCatMotivosInterrupcionDAO();
+        var_dump ($op);
+        $form->get('idMotivoInterrupcion')->options = $this->getOpciones($op, 'idMotivoInterrupcion', 'motivoInterrupcion');
+        
         $form->get('idMotivoInterrupcion')->type = 'select';
         $form->get('idMotivoInterrupcion')->label = 'Motivo Interrupción';
         $form->get('idMotivoInterrupcion')->selected = isset($_SESSION[EGRESADO][ACADEMICO]['idMotivoInterrupcion']) ?
                 $_SESSION[EGRESADO][ACADEMICO]['idMotivoInterrupcion'] : "";
 
-        $form->get('idEstatusEgre')->options = $this->getOpciones(DAOFactory::getEgreCatEstatusEgreDAO(), 'idEstatusEgre', 'estatus');
+        
+        
+        $form->get('idEstatusEgre')->options = $this->getOpciones($this->daoFactory.getEgreCatEstatusEgreDAO(), 'idEstatusEgre', 'estatus');
         $form->get('idEstatusEgre')->type = 'select';
         $form->get('idEstatusEgre')->label = 'Status egresado';
         $form->get('idEstatusEgre')->selected = isset($_SESSION[EGRESADO][ACADEMICO]['idEstatusEgre']) ?
                 $_SESSION[EGRESADO][ACADEMICO]['idEstatusEgre'] : "";
 
-        $form->get('idMotivoNotitulacion')->options = $this->getOpciones(DAOFactory::getEgreCatMotivosNotitulacionDAO(), 'idMotivoNotitulacion', 'motivoNotitulacion');
+        
+        $form->get('idMotivoNotitulacion')->options = $this->getOpciones($this->daoFactory.getEgreCatMotivosNotitulacionDAO(), 'idMotivoNotitulacion', 'motivoNotitulacion');
         $form->get('idMotivoNotitulacion')->type = 'select';
         $form->get('idMotivoNotitulacion')->label = 'Motivo no titulación';
         $form->get('idMotivoNotitulacion')->selected = isset($_SESSION[EGRESADO][ACADEMICO]['idMotivoNotitulacion']) ?
                 $_SESSION[EGRESADO][ACADEMICO]['idMotivoNotitulacion'] : "";
 
-        $form->get('idFormaTitulacion')->options = $this->getOpciones(DAOFactory::getEgreCatFormasTitulacionDAO(), 'idFormaTitulacion', 'formaTitulacion');
+        
+        $form->get('idFormaTitulacion')->options = $this->getOpciones($this->daoFactory.getEgreCatFormasTitulacionDAO(), 'idFormaTitulacion', 'formaTitulacion');
         $form->get('idFormaTitulacion')->type = 'select';
         $form->get('idFormaTitulacion')->label = 'Forma de Titulación';
         $form->get('idFormaTitulacion')->selected = isset($_SESSION[EGRESADO][ACADEMICO]['idFormaTitulacion']) ?
                 $_SESSION[EGRESADO][ACADEMICO]['idFormaTitulacion'] : "";
 
-        $form->get('idCarrera')->options = $this->getOpciones(DAOFactory::getEgreCatCarrerasDAO(), 'idCarrera', 'carrera');
+        
+        $form->get('idCarrera')->options = $this->getOpciones($this->daoFactory.getEgreCatCarrerasDAO(), 'idCarrera', 'carrera');
         $form->get('idCarrera')->type = 'select';
         $form->get('idCarrera')->label = 'Carrera';
         $form->get('idCarrera')->selected = isset($_SESSION[EGRESADO][ACADEMICO]['idCarrera']) ?
@@ -386,6 +406,7 @@ class EgresadoController extends _BaseController {
 
         $form->get('idEgresado')->visible = false;
 
+        
         //TODO falta este catálogo
 //       $form->get('iDUNIDADRESPONSABLE')->options = 
 //               $this->getOpciones(DAOFactory::getEgreCatUnidadResponsable(), 
@@ -395,7 +416,7 @@ class EgresadoController extends _BaseController {
         $form->get('idUnidadResponsable')->options = array(1 => 'ESCOM', 2 => 'ESIME');
         $form->get('idUnidadResponsable')->selected = isset($_SESSION[EGRESADO][ACADEMICO]['idUnidadResponsable']) ?
                 $_SESSION[EGRESADO][ACADEMICO]['idUnidadResponsable'] : "";
-
+        
         for ($i = date("Y"); $i >= 1936; $i--) {
             $anios [$i] = $i;
         }
@@ -405,17 +426,19 @@ class EgresadoController extends _BaseController {
         $form->get('anioIngreso')->selected = isset($_SESSION[EGRESADO][ACADEMICO]['anioIngreso']) ?
                 $_SESSION[EGRESADO][ACADEMICO]['anioIngreso'] : "";
 
+        
         $form->get('anioEgreso')->options = $anios;
         $form->get('anioEgreso')->type = 'select';
         $form->get('anioEgreso')->label = 'Año de Egreso';
         $form->get('anioEgreso')->selected = isset($_SESSION[EGRESADO][ACADEMICO]['anioEgreso']) ?
                 $_SESSION[EGRESADO][ACADEMICO]['anioEgreso'] : "";
 
+        
         $form->get('boleta')->label = 'Boleta';
         $form->get('boleta')->value = isset($_SESSION[EGRESADO][ACADEMICO]['boleta']) ?
                 $_SESSION[EGRESADO][ACADEMICO]['boleta'] : "";
 
-
+        
         $form->get('promedio')->label = 'Promedio';
         $form->get('promedio')->value = isset($_SESSION[EGRESADO][ACADEMICO]['promedio']) ?
                 $_SESSION[EGRESADO][ACADEMICO]['promedio'] : "";
@@ -424,6 +447,7 @@ class EgresadoController extends _BaseController {
 
         $form->get('fechaRegistro')->visible = false;
 
+        
         return $form->build();
     }
 
