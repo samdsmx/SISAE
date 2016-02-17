@@ -54,6 +54,7 @@ class SimpleFrontController {
 
   public function setController($controller) {
     $controller = ucfirst(strtolower($controller)) . "Controller";
+    
     if (class_exists($controller)) {
       $this->controller = $controller;
     }
