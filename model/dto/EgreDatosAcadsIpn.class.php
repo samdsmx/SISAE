@@ -8,19 +8,33 @@
 	class EgreDatosAcadsIpn{
 		
 		var $idDatoAcadIpn;
-		var $idMotivoInterrupcion;
-		var $idEstatusEgre;
-		var $idMotivoNotitulacion;
-		var $idFormaTitulacion;
-		var $idCarrera;
-		var $idEgresado;
-		var $idUnidadResponsable;
-		var $anioIngreso;
-		var $anioEgreso;
-		var $boleta;
-		var $promedio;
-		var $validadoEcu;
-		var $fechaRegistro;
-		
+
+		var $idMotivoInterrupcion;
+
+		var $idEstatusEgre;
+
+		var $idMotivoNotitulacion;
+
+		var $idFormaTitulacion;
+
+		var $idUnidadResponsable;
+                
+                var $idCarrera;
+                
+                var $idEgresado;
+
+		var $anioIngreso;
+
+		var $anioEgreso;
+
+		var $boleta;
+
+		var $promedio;
+
+		var $validadoEcu;
+
+		var $fechaRegistro;
+
+		
 	}
 ?>

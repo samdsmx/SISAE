@@ -3,14 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/sisae/controller/RegistroController.class.php</file>
-            <file>file:/C:/xampp/htdocs/sisae/controller/EgresadoController.class.php</file>
-            <file>file:/C:/xampp/htdocs/sisae/controller/IndexController.class.php</file>
-            <file>file:/C:/xampp/htdocs/sisae/index.php</file>
-            <file>file:/C:/xampp/htdocs/sisae/view/ejemplo.php</file>
-            <file>file:/C:/xampp/htdocs/sisae/view/home.php</file>
-            <file>file:/C:/xampp/htdocs/sisae/templates/main.php</file>
-            <file>file:/C:/xampp/htdocs/sisae/util/SimpleFrontController.class.php</file>
+            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/ConnectionProperty.class.php</file>
+            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/.htaccess</file>
+            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/templates/base.php</file>
+            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/view/egresado/registroEgresadoDatos.php</file>
+            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/controller/EgresadoController.class.php</file>
         </group>
     </open-files>
 </project-private>

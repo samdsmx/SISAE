@@ -14,7 +14,7 @@ class CipnCatGentiliciosOracleDAO implements CipnCatGentiliciosDAO{
 	 * @return CipnCatGentiliciosOracle 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM cipn_cat_gentilicios WHERE ID_GENTILICIO = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_gentilicios WHERE ID_GENTILICIO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
@@ -24,7 +24,7 @@ class CipnCatGentiliciosOracleDAO implements CipnCatGentiliciosDAO{
 	 * Get all records from table
 	 */
 	public function queryAll(){
-		$sql = 'SELECT * FROM cipn_cat_gentilicios';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_gentilicios';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -35,7 +35,7 @@ class CipnCatGentiliciosOracleDAO implements CipnCatGentiliciosDAO{
 	 * @param $orderColumn column name
 	 */
 	public function queryAllOrderBy($orderColumn){
-		$sql = 'SELECT * FROM cipn_cat_gentilicios ORDER BY '.$orderColumn;
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_gentilicios ORDER BY '.$orderColumn;
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -45,7 +45,7 @@ class CipnCatGentiliciosOracleDAO implements CipnCatGentiliciosDAO{
  	 * @param cipnCatGentilicio primary key
  	 */
 	public function delete($ID_GENTILICIO){
-		$sql = 'DELETE FROM cipn_cat_gentilicios WHERE ID_GENTILICIO = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_gentilicios WHERE ID_GENTILICIO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($ID_GENTILICIO);
 		return $this->executeUpdate($sqlQuery);
@@ -57,7 +57,7 @@ class CipnCatGentiliciosOracleDAO implements CipnCatGentiliciosDAO{
  	 * @param CipnCatGentiliciosOracle cipnCatGentilicio
  	 */
 	public function insert($cipnCatGentilicio){
-		$sql = 'INSERT INTO cipn_cat_gentilicios (GENTILICIO, ID_USUARIO_TRAN, FECHA_TRAN, ESTATUS) VALUES (?, ?, ?, ?)';
+		$sql = 'INSERT INTO SC_CIPN.cipn_cat_gentilicios (GENTILICIO, ID_USUARIO_TRAN, FECHA_TRAN, ESTATUS) VALUES (?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($cipnCatGentilicio->gENTILICIO);
@@ -76,7 +76,7 @@ class CipnCatGentiliciosOracleDAO implements CipnCatGentiliciosDAO{
  	 * @param CipnCatGentiliciosOracle cipnCatGentilicio
  	 */
 	public function update($cipnCatGentilicio){
-		$sql = 'UPDATE cipn_cat_gentilicios SET GENTILICIO = ?, ID_USUARIO_TRAN = ?, FECHA_TRAN = ?, ESTATUS = ? WHERE ID_GENTILICIO = ?';
+		$sql = 'UPDATE SC_CIPN.cipn_cat_gentilicios SET GENTILICIO = ?, ID_USUARIO_TRAN = ?, FECHA_TRAN = ?, ESTATUS = ? WHERE ID_GENTILICIO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($cipnCatGentilicio->gENTILICIO);
@@ -92,34 +92,34 @@ class CipnCatGentiliciosOracleDAO implements CipnCatGentiliciosDAO{
  	 * Delete all rows
  	 */
 	public function clean(){
-		$sql = 'DELETE FROM cipn_cat_gentilicios';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_gentilicios';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function queryByGENTILICIO($value){
-		$sql = 'SELECT * FROM cipn_cat_gentilicios WHERE GENTILICIO = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_gentilicios WHERE GENTILICIO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByIDUSUARIOTRAN($value){
-		$sql = 'SELECT * FROM cipn_cat_gentilicios WHERE ID_USUARIO_TRAN = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_gentilicios WHERE ID_USUARIO_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByFECHATRAN($value){
-		$sql = 'SELECT * FROM cipn_cat_gentilicios WHERE FECHA_TRAN = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_gentilicios WHERE FECHA_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByESTATUS($value){
-		$sql = 'SELECT * FROM cipn_cat_gentilicios WHERE ESTATUS = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_gentilicios WHERE ESTATUS = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
@@ -127,28 +127,28 @@ class CipnCatGentiliciosOracleDAO implements CipnCatGentiliciosDAO{
 
 
 	public function deleteByGENTILICIO($value){
-		$sql = 'DELETE FROM cipn_cat_gentilicios WHERE GENTILICIO = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_gentilicios WHERE GENTILICIO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByIDUSUARIOTRAN($value){
-		$sql = 'DELETE FROM cipn_cat_gentilicios WHERE ID_USUARIO_TRAN = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_gentilicios WHERE ID_USUARIO_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByFECHATRAN($value){
-		$sql = 'DELETE FROM cipn_cat_gentilicios WHERE FECHA_TRAN = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_gentilicios WHERE FECHA_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByESTATUS($value){
-		$sql = 'DELETE FROM cipn_cat_gentilicios WHERE ESTATUS = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_gentilicios WHERE ESTATUS = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);

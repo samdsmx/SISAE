@@ -6,10 +6,10 @@
  * @date: 27.11.2007
  */
 class ConnectionProperty{
-	private static $host = 'localhost';
+	private static $host = '148.204.14.181:1521/CENAC.IPN.MX';
 	private static $user = 'SC_SISAE';
-	private static $password = 'SC_SISAE';
-	private static $database = 'localhost/xe';
+	private static $password = 'XIaUFXixbmx0Pk';
+	private static $database = '148.204.14.181:1521/DESCENAC.CENAC.IPN.MX';
 
 	public static function getHost(){
 		return ConnectionProperty::$host;

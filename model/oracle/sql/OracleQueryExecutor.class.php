@@ -47,7 +47,7 @@ class OracleQueryExecutor {
     }
 
     public static function executeInsert($sqlQuery) {
-        return $self::executeUpdate($sqlQuery);        
+        return self::executeUpdate($sqlQuery);        
     }
     
     public static function queryForString($sqlQuery){

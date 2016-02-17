@@ -14,7 +14,7 @@ class CipnCatUnidadesResponsablesOracleDAO implements CipnCatUnidadesResponsable
 	 * @return CipnCatUnidadesResponsablesOracle 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE ID_UNIDAD_RESPONSABLE = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_UNIDAD_RESPONSABLE = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
@@ -24,7 +24,7 @@ class CipnCatUnidadesResponsablesOracleDAO implements CipnCatUnidadesResponsable
 	 * Get all records from table
 	 */
 	public function queryAll(){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -35,7 +35,7 @@ class CipnCatUnidadesResponsablesOracleDAO implements CipnCatUnidadesResponsable
 	 * @param $orderColumn column name
 	 */
 	public function queryAllOrderBy($orderColumn){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables ORDER BY '.$orderColumn;
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables ORDER BY '.$orderColumn;
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -45,7 +45,7 @@ class CipnCatUnidadesResponsablesOracleDAO implements CipnCatUnidadesResponsable
  	 * @param cipnCatUnidadesResponsable primary key
  	 */
 	public function delete($ID_UNIDAD_RESPONSABLE){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE ID_UNIDAD_RESPONSABLE = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_UNIDAD_RESPONSABLE = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($ID_UNIDAD_RESPONSABLE);
 		return $this->executeUpdate($sqlQuery);
@@ -57,7 +57,7 @@ class CipnCatUnidadesResponsablesOracleDAO implements CipnCatUnidadesResponsable
  	 * @param CipnCatUnidadesResponsablesOracle cipnCatUnidadesResponsable
  	 */
 	public function insert($cipnCatUnidadesResponsable){
-		$sql = 'INSERT INTO cipn_cat_unidades_responsables (ID_UNIDAD_RESPONSABLE_PADRE, CLAVE, UNIDAD_RESPONSABLE, ID_NOMBRE_UR, ID_UR_CLASIFICACION, ID_UR_DOMICILIO, ESTATUS, FECHA_BAJA, OBSERVACIONES, ID_USUARIO_TRAN, FECHA_TRAN, ID_UNIDAD_RESPONSABLE_ANT, ANIO_ALTA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO SC_CIPN.cipn_cat_unidades_responsables (ID_UNIDAD_RESPONSABLE_PADRE, CLAVE, UNIDAD_RESPONSABLE, ID_NOMBRE_UR, ID_UR_CLASIFICACION, ID_UR_DOMICILIO, ESTATUS, FECHA_BAJA, OBSERVACIONES, ID_USUARIO_TRAN, FECHA_TRAN, ID_UNIDAD_RESPONSABLE_ANT, ANIO_ALTA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($cipnCatUnidadesResponsable->iDUNIDADRESPONSABLEPADRE);
@@ -85,7 +85,7 @@ class CipnCatUnidadesResponsablesOracleDAO implements CipnCatUnidadesResponsable
  	 * @param CipnCatUnidadesResponsablesOracle cipnCatUnidadesResponsable
  	 */
 	public function update($cipnCatUnidadesResponsable){
-		$sql = 'UPDATE cipn_cat_unidades_responsables SET ID_UNIDAD_RESPONSABLE_PADRE = ?, CLAVE = ?, UNIDAD_RESPONSABLE = ?, ID_NOMBRE_UR = ?, ID_UR_CLASIFICACION = ?, ID_UR_DOMICILIO = ?, ESTATUS = ?, FECHA_BAJA = ?, OBSERVACIONES = ?, ID_USUARIO_TRAN = ?, FECHA_TRAN = ?, ID_UNIDAD_RESPONSABLE_ANT = ?, ANIO_ALTA = ? WHERE ID_UNIDAD_RESPONSABLE = ?';
+		$sql = 'UPDATE SC_CIPN.cipn_cat_unidades_responsables SET ID_UNIDAD_RESPONSABLE_PADRE = ?, CLAVE = ?, UNIDAD_RESPONSABLE = ?, ID_NOMBRE_UR = ?, ID_UR_CLASIFICACION = ?, ID_UR_DOMICILIO = ?, ESTATUS = ?, FECHA_BAJA = ?, OBSERVACIONES = ?, ID_USUARIO_TRAN = ?, FECHA_TRAN = ?, ID_UNIDAD_RESPONSABLE_ANT = ?, ANIO_ALTA = ? WHERE ID_UNIDAD_RESPONSABLE = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($cipnCatUnidadesResponsable->iDUNIDADRESPONSABLEPADRE);
@@ -110,97 +110,97 @@ class CipnCatUnidadesResponsablesOracleDAO implements CipnCatUnidadesResponsable
  	 * Delete all rows
  	 */
 	public function clean(){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function queryByIDUNIDADRESPONSABLEPADRE($value){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE ID_UNIDAD_RESPONSABLE_PADRE = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_UNIDAD_RESPONSABLE_PADRE = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByCLAVE($value){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE CLAVE = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE CLAVE = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByUNIDADRESPONSABLE($value){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE UNIDAD_RESPONSABLE = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE UNIDAD_RESPONSABLE = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByIDNOMBREUR($value){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE ID_NOMBRE_UR = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_NOMBRE_UR = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByIDURCLASIFICACION($value){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE ID_UR_CLASIFICACION = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_UR_CLASIFICACION = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByIDURDOMICILIO($value){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE ID_UR_DOMICILIO = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_UR_DOMICILIO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByESTATUS($value){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE ESTATUS = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ESTATUS = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByFECHABAJA($value){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE FECHA_BAJA = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE FECHA_BAJA = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByOBSERVACIONES($value){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE OBSERVACIONES = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE OBSERVACIONES = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByIDUSUARIOTRAN($value){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE ID_USUARIO_TRAN = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_USUARIO_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByFECHATRAN($value){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE FECHA_TRAN = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE FECHA_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByIDUNIDADRESPONSABLEANT($value){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE ID_UNIDAD_RESPONSABLE_ANT = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_UNIDAD_RESPONSABLE_ANT = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByANIOALTA($value){
-		$sql = 'SELECT * FROM cipn_cat_unidades_responsables WHERE ANIO_ALTA = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ANIO_ALTA = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
@@ -208,91 +208,91 @@ class CipnCatUnidadesResponsablesOracleDAO implements CipnCatUnidadesResponsable
 
 
 	public function deleteByIDUNIDADRESPONSABLEPADRE($value){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE ID_UNIDAD_RESPONSABLE_PADRE = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_UNIDAD_RESPONSABLE_PADRE = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByCLAVE($value){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE CLAVE = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE CLAVE = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByUNIDADRESPONSABLE($value){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE UNIDAD_RESPONSABLE = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE UNIDAD_RESPONSABLE = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByIDNOMBREUR($value){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE ID_NOMBRE_UR = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_NOMBRE_UR = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByIDURCLASIFICACION($value){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE ID_UR_CLASIFICACION = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_UR_CLASIFICACION = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByIDURDOMICILIO($value){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE ID_UR_DOMICILIO = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_UR_DOMICILIO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByESTATUS($value){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE ESTATUS = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ESTATUS = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByFECHABAJA($value){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE FECHA_BAJA = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE FECHA_BAJA = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByOBSERVACIONES($value){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE OBSERVACIONES = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE OBSERVACIONES = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByIDUSUARIOTRAN($value){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE ID_USUARIO_TRAN = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_USUARIO_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByFECHATRAN($value){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE FECHA_TRAN = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE FECHA_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByIDUNIDADRESPONSABLEANT($value){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE ID_UNIDAD_RESPONSABLE_ANT = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ID_UNIDAD_RESPONSABLE_ANT = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByANIOALTA($value){
-		$sql = 'DELETE FROM cipn_cat_unidades_responsables WHERE ANIO_ALTA = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_unidades_responsables WHERE ANIO_ALTA = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);

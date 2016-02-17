@@ -3,7 +3,7 @@
 class EmailController extends _BaseController {
 
     public function compose (){
-        $carreras = DAOFactory::getEgreCatCarrerasDAO()->queryAll();
+        $carreras = DAOFactory::getDAOFactory()->getEgreCatCarrerasDAO()->queryAll();
         $_SESSION[VISTA] = 'view/email.php';
         $_SESSION[NOMBRE_VISTA] = 'Envío de correos';
         include_once 'templates/base.php';
@@ -23,7 +23,7 @@ class EmailController extends _BaseController {
             print 'Carrera:'.$carrera;
             foreach ($generaciones as $generacion){
                 print 'Generacion:'.$generacion;
-                $egresados = DAOFactory::getEgreDatosAcadsIpnDAO()->queryCorreosXGeneracion($unidad, $carrera, $generacion);
+                $egresados = DAOFactory::getDAOFactory()->getEgreDatosAcadsIpnDAO()->queryCorreosXGeneracion($unidad, $carrera, $generacion);
                 print_r($egresados);
                 foreach ($egresados as $egresado){
                     $this->sendMail($asunto, $egresado, $remitente, $body);

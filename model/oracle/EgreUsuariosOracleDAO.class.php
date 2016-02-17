@@ -65,6 +65,7 @@ class EgreUsuariosOracleDAO implements EgreUsuariosDAO{
 		$sqlQuery->set($egreUsuario->contrasenia);
 		$sqlQuery->set($egreUsuario->foto);
 
+                var_dump ($sqlQuery);
 		$id = $this->executeInsert($sqlQuery);	
 		$egreUsuario->idUsuario = $id;
 		return $id;

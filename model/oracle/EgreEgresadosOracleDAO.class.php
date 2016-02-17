@@ -73,6 +73,7 @@ class EgreEgresadosOracleDAO implements EgreEgresadosDAO{
 		$sqlQuery->setNumber($egreEgresado->idUsuario);
 		$sqlQuery->set($egreEgresado->fechaRegistro);
 
+                var_dump($sqlQuery);
 		$id = $this->executeInsert($sqlQuery);	
 		$egreEgresado->idEgresado = $id;
 		return $id;

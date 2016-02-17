@@ -14,7 +14,7 @@ class CipnCatGenerosOracleDAO implements CipnCatGenerosDAO{
 	 * @return CipnCatGenerosOracle 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM cipn_cat_generos WHERE ID_GENERO = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_generos WHERE ID_GENERO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
@@ -24,7 +24,7 @@ class CipnCatGenerosOracleDAO implements CipnCatGenerosDAO{
 	 * Get all records from table
 	 */
 	public function queryAll(){
-		$sql = 'SELECT * FROM cipn_cat_generos';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_generos';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -35,7 +35,7 @@ class CipnCatGenerosOracleDAO implements CipnCatGenerosDAO{
 	 * @param $orderColumn column name
 	 */
 	public function queryAllOrderBy($orderColumn){
-		$sql = 'SELECT * FROM cipn_cat_generos ORDER BY '.$orderColumn;
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_generos ORDER BY '.$orderColumn;
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -45,7 +45,7 @@ class CipnCatGenerosOracleDAO implements CipnCatGenerosDAO{
  	 * @param cipnCatGenero primary key
  	 */
 	public function delete($ID_GENERO){
-		$sql = 'DELETE FROM cipn_cat_generos WHERE ID_GENERO = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_generos WHERE ID_GENERO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($ID_GENERO);
 		return $this->executeUpdate($sqlQuery);
@@ -57,7 +57,7 @@ class CipnCatGenerosOracleDAO implements CipnCatGenerosDAO{
  	 * @param CipnCatGenerosOracle cipnCatGenero
  	 */
 	public function insert($cipnCatGenero){
-		$sql = 'INSERT INTO cipn_cat_generos (GENERO, ACRONIMO, ID_USUARIO_TRAN, FECHA_TRAN, ESTATUS) VALUES (?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO SC_CIPN.cipn_cat_generos (GENERO, ACRONIMO, ID_USUARIO_TRAN, FECHA_TRAN, ESTATUS) VALUES (?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($cipnCatGenero->gENERO);
@@ -77,7 +77,7 @@ class CipnCatGenerosOracleDAO implements CipnCatGenerosDAO{
  	 * @param CipnCatGenerosOracle cipnCatGenero
  	 */
 	public function update($cipnCatGenero){
-		$sql = 'UPDATE cipn_cat_generos SET GENERO = ?, ACRONIMO = ?, ID_USUARIO_TRAN = ?, FECHA_TRAN = ?, ESTATUS = ? WHERE ID_GENERO = ?';
+		$sql = 'UPDATE SC_CIPN.cipn_cat_generos SET GENERO = ?, ACRONIMO = ?, ID_USUARIO_TRAN = ?, FECHA_TRAN = ?, ESTATUS = ? WHERE ID_GENERO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($cipnCatGenero->gENERO);
@@ -94,7 +94,7 @@ class CipnCatGenerosOracleDAO implements CipnCatGenerosDAO{
  	 * Delete all rows
  	 */
 	public function clean(){
-		$sql = 'DELETE FROM cipn_cat_generos';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_generos';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->executeUpdate($sqlQuery);
 	}
@@ -107,28 +107,28 @@ class CipnCatGenerosOracleDAO implements CipnCatGenerosDAO{
 	}
 
 	public function queryByACRONIMO($value){
-		$sql = 'SELECT * FROM cipn_cat_generos WHERE ACRONIMO = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_generos WHERE ACRONIMO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByIDUSUARIOTRAN($value){
-		$sql = 'SELECT * FROM cipn_cat_generos WHERE ID_USUARIO_TRAN = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_generos WHERE ID_USUARIO_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByFECHATRAN($value){
-		$sql = 'SELECT * FROM cipn_cat_generos WHERE FECHA_TRAN = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_generos WHERE FECHA_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByESTATUS($value){
-		$sql = 'SELECT * FROM cipn_cat_generos WHERE ESTATUS = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_generos WHERE ESTATUS = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
@@ -136,35 +136,35 @@ class CipnCatGenerosOracleDAO implements CipnCatGenerosDAO{
 
 
 	public function deleteByGENERO($value){
-		$sql = 'DELETE FROM cipn_cat_generos WHERE GENERO = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_generos WHERE GENERO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByACRONIMO($value){
-		$sql = 'DELETE FROM cipn_cat_generos WHERE ACRONIMO = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_generos WHERE ACRONIMO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByIDUSUARIOTRAN($value){
-		$sql = 'DELETE FROM cipn_cat_generos WHERE ID_USUARIO_TRAN = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_generos WHERE ID_USUARIO_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByFECHATRAN($value){
-		$sql = 'DELETE FROM cipn_cat_generos WHERE FECHA_TRAN = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_generos WHERE FECHA_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByESTATUS($value){
-		$sql = 'DELETE FROM cipn_cat_generos WHERE ESTATUS = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_generos WHERE ESTATUS = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);

@@ -41,6 +41,18 @@ class _BaseController {
   
   public function getOpciones($dao, $id, $descripcion) {
         $elementos = $dao->queryAll();
+        
+        $opciones = array();
+
+        foreach ($elementos as $elemento) {            
+            $opciones[$elemento->$id] = $elemento->$descripcion;
+        }
+        return $opciones;
+    }
+    
+    public function getOpcionesOrder($dao, $id, $descripcion, $campo) {
+        $elementos = $dao->queryAllOrderBy($campo);
+        
         $opciones = array();
 
         foreach ($elementos as $elemento) {            

@@ -10,7 +10,9 @@ abstract class DAOFactory{
     public static $MYSQL = 'mysql';
     public static $ORACLE = 'oracle';
     
-    public static function getDAOFactory ($whichFactory) {
+    public static function getDAOFactory () {
+        
+        $whichFactory = self::$ORACLE;
         
         if ($whichFactory == self::$MYSQL){
             return new MySQLDAOFactory();
@@ -18,8 +20,8 @@ abstract class DAOFactory{
         if ($whichFactory == self::$ORACLE){            
             return new OracleDAOFactory();
         }
-            return null;
-        }
+        return null;
+    }
     
 
     
@@ -59,5 +61,6 @@ abstract class DAOFactory{
 	public abstract function getEgrePublicacionesDAO();
 	public abstract function getEgreResponsablesUrDAO();
 	public abstract function getEgreUsuariosDAO();
+        public abstract function getEgreUrNombresDAO();
 }
 ?>

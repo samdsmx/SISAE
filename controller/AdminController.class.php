@@ -20,11 +20,11 @@ class AdminController extends _BaseController {
         $form = new FormGenerator(new FormularioAsociacion(), self::$guardaAsociacionCarreraUr, 'Guardar');
         $form->get ('carrera')->type = 'select';
         $form->get ('carrera')->options = 
-            parent::getOpciones(DAOFactory::getEgreCatCarrerasDAO(), 'idCarrera', 'carrera');;
+            parent::getOpciones(DAOFactory::getDAOFactory()->getEgreCatCarrerasDAO(), 'idCarrera', 'carrera');;
             
         $form->get ('unidadResponsable')->type = 'select';
         $form->get ('unidadResponsable')->options = 
-            parent::getOpciones(DAOFactory::getCipnCatUnidadesResponsablesDAO(), 'iDUNIDADRESPONSABLE', 'uNIDADRESPONSABLE');
+            parent::getOpciones(DAOFactory::getDAOFactory()->getCipnCatUnidadesResponsablesDAO(), 'iDUNIDADRESPONSABLE', 'uNIDADRESPONSABLE');
         
         $_SESSION[NOMBRE_VISTA] = 'Asocia Carrera a UR';
         $_SESSION[FORMULARIO] = $form->build();
@@ -36,7 +36,7 @@ class AdminController extends _BaseController {
         $aso = new EgreAsoCarrerasUr ();
         $aso->idCarrera = $_POST['carrera'];
         $aso->idUnidadResponsable = $_POST['unidadResponsable'];        
-        DAOFactory::getEgreAsoCarrerasUrDAO()->insert($aso);
+        DAOFactory::getDAOFactory()->getEgreAsoCarrerasUrDAO()->insert($aso);
         $_SESSION[MENSAJE] = 'Asociación guardada';
         parent::redirect(self::$index);  
     }
@@ -59,7 +59,7 @@ class AdminController extends _BaseController {
         $carrera = new EgreCatCarrera();
         ObjectMap::map($_POST, $carrera);
         
-        DAOFactory::getEgreCatCarrerasDAO()->insert($carrera);
+        DAOFactory::getDAOFactory()->getEgreCatCarrerasDAO()->insert($carrera);
         $_SESSION[MENSAJE] = 'Carrera guardada';
         parent::redirect(self::$index);        
     }
@@ -71,7 +71,7 @@ class AdminController extends _BaseController {
         
         $form->get('idUnidadResponsable')->type = 'select';
         $form->get('idUnidadResponsable')->options = 
-                parent::getOpciones(DAOFactory::getCipnCatUnidadesResponsablesDAO(), 'iDUNIDADRESPONSABLE', 'uNIDADRESPONSABLE');
+                parent::getOpciones(DAOFactory::getDAOFactory()->getCipnCatUnidadesResponsablesDAO(), 'iDUNIDADRESPONSABLE', 'uNIDADRESPONSABLE');
         
         $rol = new FormElement('idRol');
         $rol->label = 'Rol';
@@ -102,9 +102,9 @@ class AdminController extends _BaseController {
         ObjectMap::map($_POST, $usuario);
         ObjectMap::map($_POST, $responsable);
         $usuario->contrasenia = md5($usuario->contrasenia);
-        DAOFactory::getEgreUsuariosDAO()->insert($usuario);
+        DAOFactory::getDAOFactory()->getEgreUsuariosDAO()->insert($usuario);
         $responsable->idUsuario = $usuario->idUsuario;
-        DAOFactory::getEgreResponsablesUrDAO()->insert($responsable);        
+        DAOFactory::getDAOFactory()->getEgreResponsablesUrDAO()->insert($responsable);        
         $_SESSION[MENSAJE] = 'Usuario guardado';
         parent::redirect(self::$index);        
     }

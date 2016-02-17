@@ -14,7 +14,7 @@ class UnidadController extends _BaseController {
     
     public function validar ($status = 0){        
         $this->esUsuarioLoggeado();
-        $dao = DAOFactory::getEgreDatosAcadsIpnDAO();
+        $dao = DAOFactory::getDAOFactory()->getEgreDatosAcadsIpnDAO();
         $responsable = unserialize($_SESSION[RESPONSABLE]);
         $registros = $dao->queryNoValidados($responsable->idUnidadResponsable, $status);
         $_SESSION[VISTA] = 'view/unidad/verEgresadosStatus.php';
@@ -23,7 +23,7 @@ class UnidadController extends _BaseController {
     
     public function cambiaStatus (){
         $this->esUsuarioLoggeado();
-        $dao = DAOFactory::getEgreDatosAcadsIpnDAO();
+        $dao = DAOFactory::getDAOFactory()->getEgreDatosAcadsIpnDAO();
         $datosAcad = $dao->load($_POST['id']);
         $datosAcad->validadoEcu = $_POST['status'];
         print $dao->update($datosAcad); 
@@ -34,8 +34,8 @@ class UnidadController extends _BaseController {
     public function detalleEgresado ($id){
         /*@var responsable EgreResponsablesUr*/
         $responsable = unserialize($_SESSION[RESPONSABLE]);
-        $egresado = DAOFactory::getEgreEgresadosDAO()->load($id);
-        $datosAcad = DAOFactory::getEgreDatosAcadsIpnDAO()->queryByIDEGRESADO($egresado->idEgresado);
+        $egresado = DAOFactory::getDAOFactory()->getEgreEgresadosDAO()->load($id);
+        $datosAcad = DAOFactory::getDAOFactory()->getEgreDatosAcadsIpnDAO()->queryByIDEGRESADO($egresado->idEgresado);
         $datoEscuela = '';
         foreach ($datosAcad as $dato){
             if ($dato->idUnidadResponsable == $responsable->idUnidadResponsable)

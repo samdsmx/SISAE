@@ -3,7 +3,7 @@
 class TestController extends _BaseController {
     
     public function testOracleDao (){        
-        $daoFactory = DAOFactory::getDAOFactory(DAOFactory::$ORACLE);                
+        $daoFactory = DAOFactory::getDAOFactory();                
         $dao = $daoFactory->getEgreEgresadosDAO();
         
         $egresados = $dao->queryAll();

@@ -14,7 +14,7 @@ class CipnCatEstadosCivilesOracleDAO implements CipnCatEstadosCivilesDAO{
 	 * @return CipnCatEstadosCivilesOracle 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM cipn_cat_estados_civiles WHERE ID_ESTADO_CIVIL = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_estados_civiles WHERE ID_ESTADO_CIVIL = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
@@ -24,7 +24,7 @@ class CipnCatEstadosCivilesOracleDAO implements CipnCatEstadosCivilesDAO{
 	 * Get all records from table
 	 */
 	public function queryAll(){
-		$sql = 'SELECT * FROM cipn_cat_estados_civiles';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_estados_civiles';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -35,7 +35,7 @@ class CipnCatEstadosCivilesOracleDAO implements CipnCatEstadosCivilesDAO{
 	 * @param $orderColumn column name
 	 */
 	public function queryAllOrderBy($orderColumn){
-		$sql = 'SELECT * FROM cipn_cat_estados_civiles ORDER BY '.$orderColumn;
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_estados_civiles ORDER BY '.$orderColumn;
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -45,7 +45,7 @@ class CipnCatEstadosCivilesOracleDAO implements CipnCatEstadosCivilesDAO{
  	 * @param cipnCatEstadosCivile primary key
  	 */
 	public function delete($ID_ESTADO_CIVIL){
-		$sql = 'DELETE FROM cipn_cat_estados_civiles WHERE ID_ESTADO_CIVIL = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_estados_civiles WHERE ID_ESTADO_CIVIL = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($ID_ESTADO_CIVIL);
 		return $this->executeUpdate($sqlQuery);
@@ -57,7 +57,7 @@ class CipnCatEstadosCivilesOracleDAO implements CipnCatEstadosCivilesDAO{
  	 * @param CipnCatEstadosCivilesOracle cipnCatEstadosCivile
  	 */
 	public function insert($cipnCatEstadosCivile){
-		$sql = 'INSERT INTO cipn_cat_estados_civiles (ESTADO_CIVIL, ID_USUARIO_TRAN, FECHA_TRAN, ESTATUS) VALUES (?, ?, ?, ?)';
+		$sql = 'INSERT INTO SC_CIPN.cipn_cat_estados_civiles (ESTADO_CIVIL, ID_USUARIO_TRAN, FECHA_TRAN, ESTATUS) VALUES (?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($cipnCatEstadosCivile->eSTADOCIVIL);
@@ -76,7 +76,7 @@ class CipnCatEstadosCivilesOracleDAO implements CipnCatEstadosCivilesDAO{
  	 * @param CipnCatEstadosCivilesOracle cipnCatEstadosCivile
  	 */
 	public function update($cipnCatEstadosCivile){
-		$sql = 'UPDATE cipn_cat_estados_civiles SET ESTADO_CIVIL = ?, ID_USUARIO_TRAN = ?, FECHA_TRAN = ?, ESTATUS = ? WHERE ID_ESTADO_CIVIL = ?';
+		$sql = 'UPDATE SC_CIPN.cipn_cat_estados_civiles SET ESTADO_CIVIL = ?, ID_USUARIO_TRAN = ?, FECHA_TRAN = ?, ESTATUS = ? WHERE ID_ESTADO_CIVIL = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($cipnCatEstadosCivile->eSTADOCIVIL);
@@ -92,34 +92,34 @@ class CipnCatEstadosCivilesOracleDAO implements CipnCatEstadosCivilesDAO{
  	 * Delete all rows
  	 */
 	public function clean(){
-		$sql = 'DELETE FROM cipn_cat_estados_civiles';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_estados_civiles';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function queryByESTADOCIVIL($value){
-		$sql = 'SELECT * FROM cipn_cat_estados_civiles WHERE ESTADO_CIVIL = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_estados_civiles WHERE ESTADO_CIVIL = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByIDUSUARIOTRAN($value){
-		$sql = 'SELECT * FROM cipn_cat_estados_civiles WHERE ID_USUARIO_TRAN = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_estados_civiles WHERE ID_USUARIO_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByFECHATRAN($value){
-		$sql = 'SELECT * FROM cipn_cat_estados_civiles WHERE FECHA_TRAN = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_estados_civiles WHERE FECHA_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByESTATUS($value){
-		$sql = 'SELECT * FROM cipn_cat_estados_civiles WHERE ESTATUS = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_estados_civiles WHERE ESTATUS = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
@@ -127,28 +127,28 @@ class CipnCatEstadosCivilesOracleDAO implements CipnCatEstadosCivilesDAO{
 
 
 	public function deleteByESTADOCIVIL($value){
-		$sql = 'DELETE FROM cipn_cat_estados_civiles WHERE ESTADO_CIVIL = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_estados_civiles WHERE ESTADO_CIVIL = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByIDUSUARIOTRAN($value){
-		$sql = 'DELETE FROM cipn_cat_estados_civiles WHERE ID_USUARIO_TRAN = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_estados_civiles WHERE ID_USUARIO_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByFECHATRAN($value){
-		$sql = 'DELETE FROM cipn_cat_estados_civiles WHERE FECHA_TRAN = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_estados_civiles WHERE FECHA_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByESTATUS($value){
-		$sql = 'DELETE FROM cipn_cat_estados_civiles WHERE ESTATUS = ?';
+		$sql = 'DELETE FROM SC_CIPN.cipn_cat_estados_civiles WHERE ESTATUS = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);

@@ -16,7 +16,7 @@ class LoginController {
         $user = filter_input(INPUT_POST, 'user');
         $pass = filter_input(INPUT_POST, 'pass');
         
-        $dao = DAOFactory::getDAOFactory(DAOFactory::$ORACLE);
+        $dao = DAOFactory::getDAOFactory();
         $usuarios = $dao->getEgreUsuariosDAO()->queryByUSUARIO($user);
 //        $usuarios = DAOFactory::getDAOFactory(DAOFactory::$ORACLE)->getEgreUsuariosDAO()->queryByUSUARIO($user);
         $usuario = $usuarios[0];        
@@ -29,7 +29,7 @@ class LoginController {
             $_SESSION[USUARIO] = serialize($usuario);
             print_r($_SESSION[USUARIO]);
             if ($usuario->idRol == 2){ //ESCUELA
-                $dao = DAOFactory::getDAOFactory(DAOFactory::$ORACLE);
+                $dao = DAOFactory::getDAOFactory();
                 $responsable = $dao->getEgreResponsablesUrDAO()->queryByIDUSUARIO($usuario->idUsuario);
                 $_SESSION[RESPONSABLE] = serialize($responsable[0]);
                 $_SESSION[ID_UNIDAD_RESPONSABLE] = $responsable->idUnidadResponsable;

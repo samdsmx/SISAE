@@ -260,6 +260,11 @@ class OracleDAOFactory extends DAOFactory{
 		return new EgreUsuariosOracleExtDAO();
 	}
 
-
+        /**
+	 * @return EgreUrNombreDAO
+	 */
+        public  function getEgreUrNombresDAO(){
+		return new EgreUrNombresOracleExtDAO();
+	}
 }
 ?>
