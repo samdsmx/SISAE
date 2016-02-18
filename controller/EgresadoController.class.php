@@ -107,9 +107,7 @@ class EgresadoController extends _BaseController {
         
         $academico = new EgreDatosAcadsIpn ();
         ObjectMap::map($_SESSION[EGRESADO][ACADEMICO], $academico);
-        $academico->anioEgreso .= '-01-01 00:00:00';
-        $academico->anioIngreso .= '-01-01 00:00:00';
-        
+               
         $usuario = new EgreUsuario ();
         $usuario->contrasenia = $_SESSION[EGRESADO][PERSONAL]['password'];
         $usuario->idRol = '1';
@@ -166,7 +164,8 @@ class EgresadoController extends _BaseController {
 
     private function guardarPersonal() {
         $_SESSION[EGRESADO][PERSONAL] = $_POST;
-        header("Location: http://" . SERVER_URL . "egresado/agregar/direccion");
+        var_dump ($_SESSION);
+//        header("Location: http://" . SERVER_URL . "egresado/agregar/direccion");
     }
     
     private function guardarDireccion() {
@@ -419,7 +418,7 @@ class EgresadoController extends _BaseController {
         $form->get('idUnidadResponsable')->selected = isset($_SESSION[EGRESADO][ACADEMICO]['idUnidadResponsable']) ?
                 $_SESSION[EGRESADO][ACADEMICO]['idUnidadResponsable'] : "";
         
-         $form->get('idCarrera')->options = $this->getOpciones(DAOFactory::getDAOFactory()->getEgreCatCarrerasDAO(), 'idCarrera', 'carrera');
+        $form->get('idCarrera')->options = $this->getOpciones(DAOFactory::getDAOFactory()->getEgreCatCarrerasDAO(), 'idCarrera', 'carrera');
         $form->get('idCarrera')->type = 'select';
         $form->get('idCarrera')->label = 'Carrera';
         $form->get('idCarrera')->selected = isset($_SESSION[EGRESADO][ACADEMICO]['idCarrera']) ?

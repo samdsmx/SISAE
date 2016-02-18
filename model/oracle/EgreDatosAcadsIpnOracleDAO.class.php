@@ -57,7 +57,13 @@ class EgreDatosAcadsIpnOracleDAO implements EgreDatosAcadsIpnDAO{
  	 * @param EgreDatosAcadsIpnOracle egreDatosAcadsIpn
  	 */
 	public function insert($egreDatosAcadsIpn){
-		$sql = 'INSERT INTO egre_datos_acads_ipn (ID_MOTIVO_INTERRUPCION, ID_ESTATUS_EGRE, ID_MOTIVO_NOTITULACION, ID_FORMA_TITULACION, ID_CARRERA, ID_EGRESADO, ID_UNIDAD_RESPONSABLE, ANIO_INGRESO, ANIO_EGRESO, BOLETA, PROMEDIO, VALIDADO_ECU, FECHA_REGISTRO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+	// Se ocupa la secuencia SEQ_DTSACADIPN_IDDTSACADIPN para el autoincremento de Datos_acad_ipn	
+                $sql = 'INSERT INTO egre_datos_acads_ipn ('
+                        . 'ID_DATO_ACAD_IPN, ID_MOTIVO_INTERRUPCION, ID_ESTATUS_EGRE, '
+                        . 'ID_MOTIVO_NOTITULACION, ID_FORMA_TITULACION, ID_CARRERA, '
+                        . 'ID_EGRESADO, ID_UNIDAD_RESPONSABLE, ANIO_INGRESO, '
+                        . 'ANIO_EGRESO, BOLETA, PROMEDIO, '
+                        . 'VALIDADO_ECU, FECHA_REGISTRO) VALUES (SEQ_DTSACADIPN_IDDTSACADIPN.NextVal, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  SYSTIMESTAMP)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($egreDatosAcadsIpn->idMotivoInterrupcion);
@@ -67,12 +73,11 @@ class EgreDatosAcadsIpnOracleDAO implements EgreDatosAcadsIpnDAO{
 		$sqlQuery->setNumber($egreDatosAcadsIpn->idCarrera);
 		$sqlQuery->setNumber($egreDatosAcadsIpn->idEgresado);
 		$sqlQuery->setNumber($egreDatosAcadsIpn->idUnidadResponsable);
-		$sqlQuery->set($egreDatosAcadsIpn->anioIngreso);
-		$sqlQuery->set($egreDatosAcadsIpn->anioEgreso);
+		$sqlQuery->setYear($egreDatosAcadsIpn->anioIngreso);
+		$sqlQuery->setYear($egreDatosAcadsIpn->anioEgreso);
 		$sqlQuery->set($egreDatosAcadsIpn->boleta);
 		$sqlQuery->set($egreDatosAcadsIpn->promedio);
-		$sqlQuery->setNumber($egreDatosAcadsIpn->validadoEcu);
-		$sqlQuery->set($egreDatosAcadsIpn->fechaRegistro);
+		$sqlQuery->setNumber($egreDatosAcadsIpn->validadoEcu);		
 
 		$id = $this->executeInsert($sqlQuery);	
 		$egreDatosAcadsIpn->idDatoAcadIpn = $id;

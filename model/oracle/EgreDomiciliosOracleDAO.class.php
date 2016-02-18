@@ -57,7 +57,8 @@ class EgreDomiciliosOracleDAO implements EgreDomiciliosDAO{
  	 * @param EgreDomiciliosOracle egreDomicilio
  	 */
 	public function insert($egreDomicilio){
-		$sql = 'INSERT INTO egre_domicilios (ID_ASENTAMIENTO, CALLE, NUM_EXT, NUM_INT) VALUES (?, ?, ?, ?)';
+	// Se utiliza la secuencia SEQ_DOM_IDDOM para el autoincrement de domicilio
+                $sql = 'INSERT INTO egre_domicilios (ID_DOMICILIO, ID_ASENTAMIENTO, CALLE, NUM_EXT, NUM_INT) VALUES (SEQ_DOM_IDDOM.NextVal, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($egreDomicilio->idAsentamiento);

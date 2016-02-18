@@ -57,7 +57,8 @@ class EgreUsuariosOracleDAO implements EgreUsuariosDAO{
  	 * @param EgreUsuariosOracle egreUsuario
  	 */
 	public function insert($egreUsuario){
-		$sql = 'INSERT INTO egre_usuarios (ID_ROL, USUARIO, CONTRASENIA, FOTO) VALUES (?, ?, ?, ?)';
+                //Se usa la secuencia de la tabla de usuarios SEQ_USRS_IDUSRS
+		$sql = 'INSERT INTO egre_usuarios (ID_USUARIO,ID_ROL, USUARIO, CONTRASENIA, FOTO) VALUES (SEQ_USRS_IDUSRS.NextVal, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($egreUsuario->idRol);

@@ -58,7 +58,8 @@ class EgreEgresadosOracleDAO implements EgreEgresadosDAO{
  	 * @param EgreEgresadosOracle egreEgresado
  	 */
 	public function insert($egreEgresado){
-		$sql = 'INSERT INTO egre_egresados (AP_PATERNO, AP_MATERNO, NOMBRE, CURP, ID_GENERO, ID_ESTADO_CIVIL, ID_GENTILICIO, RESIDE_MEXICO, ID_ESTADO_NAC, ID_USUARIO, FECHA_REGISTRO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+	// Se ocupa la secuencia SEQ_EGRE_IDEGRE para incrementar el id de egresado	
+            $sql = 'INSERT INTO egre_egresados (ID_EGRESADO, AP_PATERNO, AP_MATERNO, NOMBRE, CURP, ID_GENERO, ID_ESTADO_CIVIL, ID_GENTILICIO, RESIDE_MEXICO, ID_ESTADO_NAC, ID_USUARIO, FECHA_REGISTRO) VALUES (SEQ_EGRE_IDEGRE.NextVal, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSTIMESTAMP)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($egreEgresado->apPaterno);
@@ -71,7 +72,7 @@ class EgreEgresadosOracleDAO implements EgreEgresadosDAO{
 		$sqlQuery->setNumber($egreEgresado->resideMexico);
 		$sqlQuery->setNumber($egreEgresado->idEstadoNac);
 		$sqlQuery->setNumber($egreEgresado->idUsuario);
-		$sqlQuery->set($egreEgresado->fechaRegistro);
+		//$sqlQuery->set($egreEgresado->fechaRegistro);
 
                 var_dump($sqlQuery);
 		$id = $this->executeInsert($sqlQuery);	

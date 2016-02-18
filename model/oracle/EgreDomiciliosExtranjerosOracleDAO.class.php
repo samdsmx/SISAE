@@ -57,7 +57,7 @@ class EgreDomiciliosExtranjerosOracleDAO implements EgreDomiciliosExtranjerosDAO
  	 * @param EgreDomiciliosExtranjerosOracle egreDomiciliosExtranjero
  	 */
 	public function insert($egreDomiciliosExtranjero){
-		$sql = 'INSERT INTO egre_domicilios_extranjeros (ID_PAIS, DOMICILIO) VALUES (?, ?)';
+		$sql = 'INSERT INTO egre_domicilios_extranjeros (ID_DOMICILIO_EXT, ID_PAIS, DOMICILIO) VALUES (SEQ_DOMEXT_IDDOMEXT.NextVal, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($egreDomiciliosExtranjero->idPais);

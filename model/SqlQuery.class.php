@@ -39,6 +39,10 @@ class SqlQuery{
 //		$value = mysql_real_escape_string($value);
 		$this->params[$this->idx++] = "'".$value."'";
 	}
+        
+        public function setYear ($value){
+            $this->params[$this->idx++] = "TO_DATE ('".$value."', 'yyyy')";
+        }
 	
 
 	/**
