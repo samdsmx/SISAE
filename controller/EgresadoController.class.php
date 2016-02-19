@@ -134,6 +134,7 @@ class EgresadoController extends _BaseController {
             $domicilio = new EgreDomicilio();            
             ObjectMap::map($_SESSION[EGRESADO][DIRECCION], $domicilio);            
             DAOFactory::getDAOFactory()->getEgreDomiciliosDAO()->insert($domicilio);
+            //$domicilio->idDomicilio = DAOFactory::getDAOFactory()->getEgreDomiciliosDAO()->getLastID ();
             $aso = new EgreAsoEgreDomicilio ();
             $aso->idDomicilio = $domicilio->idDomicilio;
             $aso->idEgresado = $egresado->idEgresado;
@@ -210,12 +211,29 @@ class EgresadoController extends _BaseController {
         $form = new FormGenerator(new EgreDomicilio(), 'egresado/guardar/direccion', 'Continuar');
         $form->get ('idDomicilio')->visible = false;
         
-        $codigoPostal  = new FormElement ('codigoPostal');
-        $codigoPostal->isRequired = true;
-        $codigoPostal->label = 'Código Postal';
-        $codigoPostal->placeholder = 'Debe contener 5 dígitos';
+        ini_set('display_errors', 1); 
+        error_reporting(E_ALL);
+        $codigoPostal = DAOFactory::getDAOFactory()->getCipnCatCodigoPostalDAO();
         
-        $form->addInnerElement($codigoPostal, 1);
+        $element = new FormElement ('codigoPostal');
+        $element->type = 'select';
+        $element->options = $this->getOpciones($codigoPostal, 'idCodigoPostal', 'codigoPostal');
+        $form->addInnerElement($element, 1);
+        
+//        $form->get('idCodigoPostal')->label = 'Código Postal';
+//        $form->get('idCodigoPostal')->placeholder = 'Código Postal';
+//        $form->get('idCodigoPostal')->type = 'select';
+//        
+//        $form->get('idCodigoPostal')->selected = isset($_SESSION[EGRESADO][DIRECCION]['idCodigoPostal']) ?
+//                $_SESSION[EGRESADO][DIRECCION]['idCodigoPostal'] : "";
+        
+        
+//        $codigoPostal  = new FormElement ('codigoPostal');
+//        $codigoPostal->isRequired = true;
+//        $codigoPostal->label = 'Código Postal';
+//        $codigoPostal->placeholder = 'Debe contener 5 dígitos';
+        
+        //$form->addInnerElement($codigoPostal, 1);
                 
         return $form->build ();
     }

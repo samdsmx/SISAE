@@ -8,6 +8,13 @@
 class OracleDAOFactory extends DAOFactory{
 	
 	/**
+	 * @return CipnCatCodigoPostalDAO
+	 */
+	public  function getCipnCatCodigoPostalDAO(){
+		return new CipnCatCodigoPostalOracleExtDAO();
+	}
+        
+        /**
 	 * @return CipnCatEstadosDAO
 	 */
 	public  function getCipnCatEstadosDAO(){

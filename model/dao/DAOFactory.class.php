@@ -24,7 +24,7 @@ abstract class DAOFactory{
     }
     
 
-    
+        public abstract function getCipnCatCodigoPostalDAO();	
 	public abstract function getCipnCatEstadosDAO();		
 	public abstract function getCipnCatEstadosCivilesDAO();		
 	public abstract function getCipnCatGenerosDAO();

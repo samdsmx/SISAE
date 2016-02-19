@@ -16,3 +16,4 @@ define ('ID_UNIDAD_RESPONSABLE', 'ID_UNIDAD_RESPONSABLE');
 define ('INTENTOS', 'INTENTOS');
 define ('RESPONSABLE', 'responsable');
 define ('JSON_DATA', 'JSON_DATA');
+define ('MENSAJE_ERROR', 'MENSAJE_ERROR');
