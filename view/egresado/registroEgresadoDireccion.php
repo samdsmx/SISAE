@@ -27,3 +27,33 @@
         </ul>
     </nav>
 </div>
+<script>
+    $( document ).ready(function() {
+        var id = $("#codigoPostal").val();
+        cambiaValores (id);
+        //window.alert(id);
+    });
+    $("#codigoPostal").change(function() {
+        var id = $(this).val ();
+        cambiaValores (id); 
+        //window.alert(id);
+    });
+    function cambiaValores (id){
+        $.ajax({
+            url: "api/getAsentamientos/"+id,            
+        }).done(function(data) {
+            if (console && console.log) {
+//                console.log("Sample of data:", data.slice(0, 100));
+            }
+            var $el = $("#idAsentamiento");            
+            $el.empty(); // remove old options
+            var jsonData = JSON.parse(data);
+            
+            $.each(jsonData, function(i, obj) {
+                $el.append($("<option></option>")
+                   .attr("value", obj.idAsentamiento).text(obj.asentamiento));            
+                   console.log (obj);
+            });            
+        });
+    }
+</script>

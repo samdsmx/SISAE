@@ -273,5 +273,12 @@ class OracleDAOFactory extends DAOFactory{
         public  function getEgreUrNombresDAO(){
 		return new EgreUrNombresOracleExtDAO();
 	}
+        
+        /**
+	 * @return EgreCPAsentamientoDAO
+	 */
+        public  function getEgreCPAsentamientoDAO(){
+		return new EgreCPAsentamientoOracleExtDAO();
+	}
 }
 ?>

@@ -217,8 +217,16 @@ class EgresadoController extends _BaseController {
         
         $element = new FormElement ('codigoPostal');
         $element->type = 'select';
-        $element->options = $this->getOpciones($codigoPostal, 'idCodigoPostal', 'codigoPostal');
+        $element->options = $this->getOpcionesOrder($codigoPostal, 'idCodigoPostal', 'codigoPostal',  'codigo_Postal');
         $form->addInnerElement($element, 1);
+                
+        $asentamiento = DAOFactory::getDAOFactory()->getEgreCPAsentamientoDAO();
+        //$form->get('idAsentamiento')->options = $this->getOpcionesOrder($asentamiento, 'asentamiento', 'id_asentamiento', 'asentamiento');
+        $form->get('idAsentamiento')->label = 'Asentamiento / Colonia';
+        $form->get('idAsentamiento')->placeholder = 'Asentamiento';
+        $form->get('idAsentamiento')->type = 'select';
+        $form->get('idAsentamiento')->selected = isset($_SESSION[EGRESADO][DIRECCION]['idAsentamiento']) ?
+                $_SESSION[EGRESADO][DIRECCION]['idAsentamiento'] : "";
         
 //        $form->get('idCodigoPostal')->label = 'Código Postal';
 //        $form->get('idCodigoPostal')->placeholder = 'Código Postal';

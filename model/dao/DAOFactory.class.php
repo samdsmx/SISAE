@@ -62,5 +62,6 @@ abstract class DAOFactory{
 	public abstract function getEgreResponsablesUrDAO();
 	public abstract function getEgreUsuariosDAO();
         public abstract function getEgreUrNombresDAO();
+        public abstract function getEgreCPAsentamientoDAO();
 }
 ?>

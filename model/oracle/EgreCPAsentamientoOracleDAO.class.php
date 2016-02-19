@@ -1,20 +1,20 @@
 <?php
 /**
- * Class that operate on table 'cipn_cat_codigos_postales'. Database Oracle.
+ * Class that operate on view 'VM_CP_AS_MUN_EDO'. Database Oracle.
  *
  * @author: http://phpdao.com
  * @date: 2015-10-12 01:37
  */
-class CipnCatCodigoPostalOracleDAO implements CipnCatCodigoPostalDAO{
+class EgreCPAsentamientoOracleDAO implements EgreCPAsentamientoDAO{
 
 	/**
 	 * Get Domain object by primry key
 	 *
 	 * @param String $id primary key
-	 * @return CipnCatCodigoPostalOracle 
+	 * @return EgreCPAsentamientoOracle 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales WHERE ID_CODIGO_POSTAL = ?';
+		$sql = 'SELECT * FROM VM_CP_AS_MUN_EDO WHERE ID_CODIGO_POSTAL = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
@@ -24,7 +24,7 @@ class CipnCatCodigoPostalOracleDAO implements CipnCatCodigoPostalDAO{
 	 * Get all records from table
 	 */
 	public function queryAll(){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales';
+		$sql = 'SELECT * FROM VM_CP_AS_MUN_EDO';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -35,67 +35,85 @@ class CipnCatCodigoPostalOracleDAO implements CipnCatCodigoPostalDAO{
 	 * @param $orderColumn column name
 	 */
 	public function queryAllOrderBy($orderColumn){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales where estatus = 1 ORDER BY '.$orderColumn;
+		$sql = 'SELECT * FROM VM_CP_AS_MUN_EDO ORDER BY '.$orderColumn;
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
 	
 	public function queryByIDCODIGOPOSTAL($value){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales WHERE ID_CODIGO_POSTAL = ?';
+		$sql = 'SELECT * FROM VM_CP_AS_MUN_EDO WHERE ID_CODIGO_POSTAL = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByCODIGOPOSTAL($value){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales WHERE CODIGO_POSTAL = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($value);
-		return $this->getList($sqlQuery);
-	}
-        public function queryByIDMUNICIPIO($value){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales WHERE ID_MUNICIPIO = ?';
+		$sql = 'SELECT * FROM VM_CP_AS_MUN_EDO WHERE CODIGO_POSTAL = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
         
-        public function queryByIDUSUARIOTRAN($value){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales WHERE ID_USUARIO_TRAN = ?';
+         public function queryByIDASENTAMIENTO($value){
+		$sql = 'SELECT * FROM VM_CP_AS_MUN_EDO WHERE ID_ASENTAMIENTO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
-
-	public function queryByFECHATRAN($value){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_estados_civiles WHERE FECHA_TRAN = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->set($value);
-		return $this->getList($sqlQuery);
-	}
-
-	public function queryByESTATUS($value){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_estados_civiles WHERE ESTATUS = ?';
+        
+         public function queryByASENTAMIENTO($value){
+		$sql = 'SELECT * FROM VM_CP_AS_MUN_EDO WHERE ASENTAMIENTO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
-	
+        
+         public function queryByIDMUNICIPIO($value){
+		$sql = 'SELECT * FROM VM_CP_AS_MUN_EDO WHERE ID_MUNICIPIO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+        
+        public function queryByMUNICIPIO($value){
+		$sql = 'SELECT * FROM VM_CP_AS_MUN_EDO WHERE MUNICIPIO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+        
+         public function queryByIDESTADO($value){
+		$sql = 'SELECT * FROM VM_CP_AS_MUN_EDO WHERE ID_ESTADO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+        
+         public function queryByESTADO($value){
+		$sql = 'SELECT * FROM VM_CP_AS_MUN_EDO WHERE ESTADO = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+        
 	/**
 	 * Read row
 	 *
 	 * @return CipnCatCodigoPostalOracle 
 	 */
 	protected function readRow($row){
-		$cipnCatCodigoPostal = new CipnCatCodigoPostal();
+		$EgreCPAsentamiento = new EgreCPAsentamiento();
 		
-		$cipnCatCodigoPostal->idCodigoPostal = $row['ID_CODIGO_POSTAL'];
-		$cipnCatCodigoPostal->codigoPostal = $row['CODIGO_POSTAL'];
-                $cipnCatCodigoPostal->idMunicipio = $row['ID_MUNICIPIO'];
-                $cipnCatCodigoPostal->idUsuarioTran = $row['ID_USUARIO_TRAN'];
-                $cipnCatCodigoPostal->estatus = $row['ESTATUS'];
-
-		return $cipnCatCodigoPostal;
+		$EgreCPAsentamiento->idCodigoPostal = $row['ID_CODIGO_POSTAL'];
+		$EgreCPAsentamiento->codigoPostal = $row['CODIGO_POSTAL'];
+                $EgreCPAsentamiento->idAsentamiento = $row['ID_ASENTAMIENTO'];
+                $EgreCPAsentamiento->asentamiento = $row['ASENTAMIENTO'];
+                $EgreCPAsentamiento->idMunicipio = $row['ID_MUNICIPIO'];
+                $EgreCPAsentamiento->Municipio = $row['MUNICIPIO'];
+                $EgreCPAsentamiento->idEstado = $row['ID_ESTADO'];
+                $EgreCPAsentamiento->estado = $row['ESTADO'];
+                
+		return $EgreCPAsentamiento;
 	}
 	
 	protected function getList($sqlQuery){
