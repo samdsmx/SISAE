@@ -208,7 +208,7 @@ class OracleDAOFactory extends DAOFactory{
 	 */
 	public  function getEgreEgresadosDAO(){
             
-		return new EgreEgresadosOracleDAO();
+		return new EgreEgresadosOracleExtDAO();
 	}
 
 	/**

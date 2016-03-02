@@ -14,7 +14,7 @@ class CipnCatEstadosOracleDAO implements CipnCatEstadosDAO{
 	 * @return CipnCatEstadosOracle 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_estados WHERE ID_ESTADO = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_estados WHERE ID_ESTADO = ? where estatus = 1';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
@@ -35,7 +35,7 @@ class CipnCatEstadosOracleDAO implements CipnCatEstadosDAO{
 	 * @param $orderColumn column name
 	 */
 	public function queryAllOrderBy($orderColumn){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_estados ORDER BY '.$orderColumn;
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_estados where estatus = 1 ORDER BY '.$orderColumn;
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}

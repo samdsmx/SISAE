@@ -17,4 +17,8 @@ class ApiController extends _BaseController {
         
     }
     
+    function verificaCurp($curp){
+        $curp = DAOFactory::getDAOFactory()->getEgreEgresadosDAO()->getCurpEgre($idUr);
+    }
+    
 }
