@@ -63,10 +63,13 @@ class EgreDomiciliosExtranjerosOracleDAO implements EgreDomiciliosExtranjerosDAO
 		$sqlQuery->setNumber($egreDomiciliosExtranjero->idPais);
 		$sqlQuery->set($egreDomiciliosExtranjero->domicilio);
 
-		$id = $this->executeInsert($sqlQuery);	
-		$egreDomiciliosExtranjero->idDomicilioExt = $id;
-		return $id;
-	}
+		$this->executeInsert($sqlQuery);	
+		$sqlQuery = new SqlQuery ('SELECT MAX(ID_DOMICILIO_EXT) as ID from EGRE_DOMICILIOS_EXTRANJEROS');                
+                $result = $this->execute($sqlQuery);
+		$egreDomiciliosExtranjero->idDomicilioExt = $result[0]['ID'];                
+		return $egreDomiciliosExtranjero->idDomicilioExt;
+                
+              	}
 	
 	/**
  	 * Update record in table

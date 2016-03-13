@@ -3,25 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/dao/DAOFactory.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/oracle/CipnCatEstadosOracleDAO.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/dao/EgreCPAsentamientoDAO.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/oracle/OracleDAOFactory.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/view/egresado/registroEgresadoAcademico.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/oracle/ext/EgreCapacitacionesOracleExtDAO.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/oracle/ext/EgreCatCarrerasOracleExtDAO.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/oracle/ext/EgreCPAsentamientoOracleeXTDAO.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/dao/EgreCatCarrerasDAO.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/oracle/ext/EgreEgresadosOracleExtDAO.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/oracle/EgreContactosEgresadosOracleDAO.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/oracle/EgreCatCarrerasOracleDAO.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/controller/ApiController.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/dao/EgreEgresadosDAO.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/oracle/EgreEgresadosOracleDAO.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/view/egresado/registroEgresadoDireccion.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/controller/EgresadoController.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/dto/EgreCPAsentamiento.class.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/Apache%20Software%20Foundation/Apache2.2/htdocs/sisae/model/oracle/EgreCPAsentamientoOracleDAO.class.php</file>
+            <file>file:/C:/Apache2.2/htdocs/sisae/view/login.php</file>
+            <file>file:/C:/Apache2.2/htdocs/sisae/index.php</file>
         </group>
     </open-files>
 </project-private>

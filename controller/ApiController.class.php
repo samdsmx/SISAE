@@ -21,4 +21,8 @@ class ApiController extends _BaseController {
         $curp = DAOFactory::getDAOFactory()->getEgreEgresadosDAO()->getCurpEgre($idUr);
     }
     
+    function userExist ($correo){
+        $user = DAOFactory::getDAOFactory()->getEgreUsuariosDAO()->queryByUSUARIO($correo);        
+        print  json_encode ($user[0]->idUsuario);
+    }
 }

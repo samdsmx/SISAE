@@ -66,10 +66,14 @@ class EgreDomiciliosOracleDAO implements EgreDomiciliosDAO{
 		$sqlQuery->setNumber($egreDomicilio->numExt);
 		$sqlQuery->setNumber($egreDomicilio->numInt);
 
-		$id = $this->executeInsert($sqlQuery);	
-		$egreDomicilio->idDomicilio = $id;
-		return $id;
-	}
+		$this->executeInsert($sqlQuery);	
+                
+		$sqlQuery = new SqlQuery ('SELECT MAX(ID_DOMICILIO) as ID from EGRE_DOMICILIOS');                
+                $result = $this->execute($sqlQuery);
+		$egreDomicilio->idDomicilio = $result[0]['ID'];                
+		return $egreDomicilio->idDomicilio;
+                
+        }
 	
 	/**
  	 * Update record in table

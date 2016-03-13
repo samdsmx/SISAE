@@ -65,11 +65,12 @@ class EgreUsuariosOracleDAO implements EgreUsuariosDAO{
 		$sqlQuery->set($egreUsuario->usuario);
 		$sqlQuery->set($egreUsuario->contrasenia);
 		$sqlQuery->set($egreUsuario->foto);
-
-                var_dump ($sqlQuery);
-		$id = $this->executeInsert($sqlQuery);	
-		$egreUsuario->idUsuario = $id;
-		return $id;
+                
+		$this->executeInsert($sqlQuery);	
+                $sqlQuery = new SqlQuery ('SELECT MAX(ID_USUARIO) as ID from EGRE_USUARIOS');                
+                $result = $this->execute($sqlQuery);
+		$egreUsuario->idUsuario = $result[0]['ID'];                
+		return $egreUsuario->idUsuario;
 	}
 	
 	/**

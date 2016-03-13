@@ -6,6 +6,7 @@ class EgresadoController extends _BaseController {
     public function defaultAction() {
 
         $_SESSION[VISTA] = 'view/egresado/index.php';
+        $_SESSION[NOMBRE_VISTA] = '';
         include ('templates/base.php');
     }
     
@@ -103,13 +104,14 @@ class EgresadoController extends _BaseController {
 
         $egresado = new EgreEgresado ();
         ObjectMap::map($_SESSION[EGRESADO][PERSONAL], $egresado);
+        
 
         
         $academico = new EgreDatosAcadsIpn ();
         ObjectMap::map($_SESSION[EGRESADO][ACADEMICO], $academico);
                
         $usuario = new EgreUsuario ();
-        $usuario->contrasenia = $_SESSION[EGRESADO][PERSONAL]['password'];
+        $usuario->contrasenia = md5 ($_SESSION[EGRESADO][PERSONAL]['password']);
         $usuario->idRol = '1';
         $usuario->usuario = $_SESSION[EGRESADO][PERSONAL]['email'];
         $usuario->foto = ' ';
@@ -118,7 +120,7 @@ class EgresadoController extends _BaseController {
         //$dao = new EgreUsuariosOracleExtDAO ();
         DAOFactory::getDAOFactory()->getEgreUsuariosDAO()->insert($usuario);
          //$this->daoFactory.getEgreUsuariosDAO()->insert($usuario);
-        print 'llego aqui';
+//        print 'llego aqui';
                 
         $egresado->idUsuario = $usuario->idUsuario;
         
@@ -151,7 +153,9 @@ class EgresadoController extends _BaseController {
             DAOFactory::getDAOFactory()->getEgreAsoEgreDomExtDAO()->insert($aso);
             
         }
-        
+        unset ($_SESSION[EGRESADO][ACADEMICO]);
+        unset ($_SESSION[EGRESADO][PERSONAL]);
+        unset ($_SESSION[EGRESADO][DIRECCION]);
         header("Location: http://" . SERVER_URL . "egresado/registrado");
     }
     
@@ -165,8 +169,8 @@ class EgresadoController extends _BaseController {
 
     private function guardarPersonal() {
         $_SESSION[EGRESADO][PERSONAL] = $_POST;
-        var_dump ($_SESSION);
-//        header("Location: http://" . SERVER_URL . "egresado/agregar/direccion");
+//        var_dump ($_SESSION);
+        header("Location: http://" . SERVER_URL . "egresado/agregar/direccion");
     }
     
     private function guardarDireccion() {

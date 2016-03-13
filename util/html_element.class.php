@@ -102,6 +102,7 @@ class html_element
                 if ($this->selected){
                     $build.= ' selected';
                 }
+                $build .= ' autocomplete="off"';
 		//closing
 		if(!in_array($this->type,$this->self_closers))
 		{
