@@ -69,24 +69,41 @@ class AdminController extends _BaseController {
         $form->get('idResponsableUr')->visible = false;
         $form->get('idUsuario')->visible = false;
         
+        $form->get('nombre')->isRequired = true;
+        
+        $form->get('correo')->isRequired = true; 
+        $form->get('correo')->type = 'email';
+        
+        $form->get('extension')->isRequired = true;
+        
+//        $nombre = new FormElement('nombre');
+//        $nombre->isRequired = true;
+//        $form->addInnerElement($nombre, 3);
+        
+        
         $form->get('idUnidadResponsable')->type = 'select';
-        $form->get('idUnidadResponsable')->options = 
-                parent::getOpciones(DAOFactory::getDAOFactory()->getCipnCatUnidadesResponsablesDAO(), 'iDUNIDADRESPONSABLE', 'uNIDADRESPONSABLE');
+        $escuelas = DAOFactory::getDAOFactory()->getEgreUrNombresDAO();
+        $form->get('idUnidadResponsable')->options = $this->getOpcionesOrder($escuelas, 'idUnidadResponsable', 'nombreLargo', 'nombre_largo');
+//      $form->get('idUnidadResponsable')->options =   
+//                parent::getOpciones(DAOFactory::getDAOFactory()->getCipnCatUnidadesResponsablesDAO(), 'iDUNIDADRESPONSABLE', 'uNIDADRESPONSABLE');
+       
         
         $rol = new FormElement('idRol');
         $rol->label = 'Rol';
         $rol->type = 'select';
-        $rol->options = array(2=>'Escuela', 4=>'Red virtual');
+        $rol->options = array(2=>'Escuela', 4=>'Area Central');
         $form->addInnerElement($rol, 5);
         
         $usuario = new FormElement ('usuario');
         $usuario->label = 'Usuario';
+        $usuario->isRequired = true;
         $form->addInnerElement($usuario, 6);
         
         
         $usuario = new FormElement ('contrasenia');
         $usuario->type = 'password';
         $usuario->label = 'Contraseña';
+        $usuario->isRequired = true;
         $form->addInnerElement($usuario, 7);
         
         $_SESSION[FORMULARIO] = $form->build();

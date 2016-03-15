@@ -57,7 +57,7 @@ class EgreResponsablesUrOracleDAO implements EgreResponsablesUrDAO{
  	 * @param EgreResponsablesUrOracle egreResponsablesUr
  	 */
 	public function insert($egreResponsablesUr){
-		$sql = 'INSERT INTO egre_responsables_ur (ID_USUARIO, NOMBRE, CORREO, EXTENSION, ID_UNIDAD_RESPONSABLE) VALUES (?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO egre_responsables_ur (ID_RESPONSABLE_UR, ID_USUARIO, NOMBRE, CORREO, EXTENSION, ID_UNIDAD_RESPONSABLE) VALUES (SEQ_RESPUR_IDRESPUR.NextVal, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($egreResponsablesUr->idUsuario);
