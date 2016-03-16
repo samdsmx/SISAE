@@ -40,8 +40,9 @@ class _BaseController {
   }
   
   public function getOpciones($dao, $id, $descripcion) {
+      
         $elementos = $dao->queryAll();
-        
+      
         $opciones = array();
 
         foreach ($elementos as $elemento) {            

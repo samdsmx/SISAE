@@ -1,20 +1,20 @@
 <?php
 /**
- * Class that operate on table 'cipn_cat_codigos_postales'. Database Oracle.
+ * Class that operate on table 'cipn_cat_niveles_educativos'. Database Oracle.
  *
  * @author: http://phpdao.com
  * @date: 2015-10-12 01:37
  */
-class CipnCatCodigoPostalOracleDAO implements CipnCatCodigoPostalDAO{
+class CipnCatNivelEducativoOracleDAO implements CipnCatNivelEducativoDAO{
 
 	/**
 	 * Get Domain object by primry key
 	 *
 	 * @param String $id primary key
-	 * @return CipnCatCodigoPostalOracle 
+	 * @return CipnCatNivelEducativoOracle 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales WHERE ID_CODIGO_POSTAL = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_niveles_educativos WHERE ID_NIVEL_EDUCATIVO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
@@ -24,7 +24,7 @@ class CipnCatCodigoPostalOracleDAO implements CipnCatCodigoPostalDAO{
 	 * Get all records from table
 	 */
 	public function queryAll(){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_niveles_educativos';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -35,47 +35,47 @@ class CipnCatCodigoPostalOracleDAO implements CipnCatCodigoPostalDAO{
 	 * @param $orderColumn column name
 	 */
 	public function queryAllOrderBy($orderColumn){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales where estatus = 1 ORDER BY '.$orderColumn;
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_niveles_educativos where estatus = 1 ORDER BY '.$orderColumn;
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
 	
-	public function queryByIDCODIGOPOSTAL($value){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales WHERE ID_CODIGO_POSTAL = ?';
+	public function queryByIDNIVELEDUCATIVO($value){
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_niveles_educativos WHERE ID_NIVEL_EDUCATIVO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryByCODIGOPOSTAL($value){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales WHERE CODIGO_POSTAL = ?';
+	public function queryByACRONIMO($value){
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_niveles_educativos WHERE ACRONIMO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
-        public function queryByIDMUNICIPIO($value){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales WHERE ID_MUNICIPIO = ?';
+        public function queryByNIVELEDUCATIVO($value){
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_niveles_educativos WHERE NIVEL_EDUCATIVO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
         
         public function queryByIDUSUARIOTRAN($value){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales WHERE ID_USUARIO_TRAN = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_niveles_educativos WHERE ID_USUARIO_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByFECHATRAN($value){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales WHERE FECHA_TRAN = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_niveles_educativos WHERE FECHA_TRAN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByESTATUS($value){
-		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_codigos_postales WHERE ESTATUS = ?';
+		$sql = 'SELECT * FROM SC_CIPN.cipn_cat_niveles_educativos WHERE ESTATUS = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
@@ -87,15 +87,16 @@ class CipnCatCodigoPostalOracleDAO implements CipnCatCodigoPostalDAO{
 	 * @return CipnCatCodigoPostalOracle 
 	 */
 	protected function readRow($row){
-		$cipnCatCodigoPostal = new CipnCatCodigoPostal();
+		$cipnCatNivelEducativo = new CipnCatNivelEducativo();
 		
-		$cipnCatCodigoPostal->idCodigoPostal = $row['ID_CODIGO_POSTAL'];
-		$cipnCatCodigoPostal->codigoPostal = $row['CODIGO_POSTAL'];
-                $cipnCatCodigoPostal->idMunicipio = $row['ID_MUNICIPIO'];
-                $cipnCatCodigoPostal->idUsuarioTran = $row['ID_USUARIO_TRAN'];
-                $cipnCatCodigoPostal->estatus = $row['ESTATUS'];
+		$cipnCatNivelEducativo->idNivelEducativo = $row['ID_NIVEL_EDUCATIVO'];
+		$cipnCatNivelEducativo->acronimo = $row['ACRONIMO'];
+                $cipnCatNivelEducativo->nivelEducativo = $row['NIVEL_EDUCATIVO'];
+                $cipnCatNivelEducativo->idUsuarioTran = $row['ID_USUARIO_TRAN'];
+                $cipnCatNivelEducativo->fechaTran = $row['FECHA_TRAN'];
+                $cipnCatNivelEducativo->estatus = $row['ESTATUS'];
 
-		return $cipnCatCodigoPostal;
+		return $cipnCatNivelEducativo;
 	}
 	
 	protected function getList($sqlQuery){
@@ -110,7 +111,7 @@ class CipnCatCodigoPostalOracleDAO implements CipnCatCodigoPostalDAO{
 	/**
 	 * Get row
 	 *
-	 * @return CipnCatCodigosPostalesOracle 
+	 * @return CipnCatNivelEducativoOracle 
 	 */
 	protected function getRow($sqlQuery){
 		$tab = OracleQueryExecutor::execute($sqlQuery);

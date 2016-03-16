@@ -115,8 +115,7 @@ class EgresadoController extends _BaseController {
         $usuario->idRol = '1';
         $usuario->usuario = $_SESSION[EGRESADO][PERSONAL]['email'];
         $usuario->foto = ' ';
-        ini_set('display_errors', 1); 
-        error_reporting(E_ALL);
+        
         //$dao = new EgreUsuariosOracleExtDAO ();
         DAOFactory::getDAOFactory()->getEgreUsuariosDAO()->insert($usuario);
          //$this->daoFactory.getEgreUsuariosDAO()->insert($usuario);
