@@ -23,8 +23,8 @@ class AdminController extends _BaseController {
             parent::getOpciones(DAOFactory::getDAOFactory()->getEgreCatCarrerasDAO(), 'idCarrera', 'carrera');;
             
         $form->get ('unidadResponsable')->type = 'select';
-        $form->get ('unidadResponsable')->options = 
-            parent::getOpciones(DAOFactory::getDAOFactory()->getCipnCatUnidadesResponsablesDAO(), 'iDUNIDADRESPONSABLE', 'uNIDADRESPONSABLE');
+        $escuelas = DAOFactory::getDAOFactory()->getEgreUrNombresDAO();
+        $form->get ('unidadResponsable')->options = $this->getOpcionesOrder($escuelas, 'idUnidadResponsable', 'nombreLargo', 'nombre_largo');
         
         $_SESSION[NOMBRE_VISTA] = 'Asocia Carrera a UR';
         $_SESSION[FORMULARIO] = $form->build();
@@ -47,12 +47,14 @@ class AdminController extends _BaseController {
         $form->get ('idOfertaEducativa')->type = 'select';
         $form->get('idOfertaEducativa')->options = $this->getOpciones(DAOFactory::getDAOFactory()->getCipnCatOfertaEducativaDAO(), 'idOfertaEducativa', 'ofertaEducativa');
         //$form->get ('idOfertaEducativa')->options = array (1=>'Técnico', 2=>'Licenciatura o Ingeniería', 3=>'Especialidad', 4=>'Maestría', 5=>'Doctorado');
-              
+             
         $form->get('idNivelEducativo')->type = 'select';
         $form->get('idNivelEducativo')->label = 'Nivel Educativo';
         $form->get('idNivelEducativo')->options = $this->getOpciones(DAOFactory::getDAOFactory()->getCipnCatNivelEducativoDAO(), 'idNivelEducativo', 'nivelEducativo');
      
         //$form->get('idNivelEducativo')->options = array(1=>'Media Superior', 2=>'Superior', 3=>'Posgrado');
+        
+        $form->get('carrera')->isRequired = true; 
         
         $_SESSION[NOMBRE_VISTA] = 'Nueva carrera';
         $_SESSION[FORMULARIO] = $form->build();
