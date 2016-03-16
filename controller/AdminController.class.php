@@ -45,28 +45,13 @@ class AdminController extends _BaseController {
         $form = new FormGenerator(new EgreCatCarrera(), self::$guardaCarrera, 'Guardar');
         $form->get ('idCarrera')->visible = false;
         $form->get ('idOfertaEducativa')->type = 'select';
-        $form->get ('idOfertaEducativa')->options = array (1=>'Técnico', 2=>'Licenciatura o Ingeniería', 3=>'Especialidad', 4=>'Maestría', 5=>'Doctorado');
-        
-//        $op = DAOFactory::getDAOFactory()->getCipnCatNivelEducativoDAO();
-//        $form->get('idNivelEducativo')->options = $this->getOpciones($op, 'idNivelEducativo', 'nivelEducativo');
-
-//        
-////        $form->get('idNivelEducativo')->selected = isset($_SESSION[EGRESADO][ACADEMICO]['idNivelEducativo']) ?
-////                $_SESSION[EGRESADO][ACADEMICO]['idMotivoInterrupcion'] : "";
-//        var $idNivelEducativo;
-
-//		var $acronimo;
-//
-//		var $nivelEducativo;
-
-//        
-//        
+        $form->get('idOfertaEducativa')->options = $this->getOpciones(DAOFactory::getDAOFactory()->getCipnCatOfertaEducativaDAO(), 'idOfertaEducativa', 'ofertaEducativa');
+        //$form->get ('idOfertaEducativa')->options = array (1=>'Técnico', 2=>'Licenciatura o Ingeniería', 3=>'Especialidad', 4=>'Maestría', 5=>'Doctorado');
+              
         $form->get('idNivelEducativo')->type = 'select';
         $form->get('idNivelEducativo')->label = 'Nivel Educativo';
-     ini_set('display_errors', 1); 
-        error_reporting(E_ALL);
         $form->get('idNivelEducativo')->options = $this->getOpciones(DAOFactory::getDAOFactory()->getCipnCatNivelEducativoDAO(), 'idNivelEducativo', 'nivelEducativo');
-        //$form->get('idNivelEducativo')->options = $this->getOpciones(DAOFactory::getDAOFactory()->getEgreCatEstatusEgreDAO(), 'idEstatusEgre', 'estatus');
+     
         //$form->get('idNivelEducativo')->options = array(1=>'Media Superior', 2=>'Superior', 3=>'Posgrado');
         
         $_SESSION[NOMBRE_VISTA] = 'Nueva carrera';

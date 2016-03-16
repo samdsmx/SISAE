@@ -50,6 +50,14 @@ class OracleDAOFactory extends DAOFactory{
 		return new CipnCatNivelEducativoOracleExtDAO();
 	}
         
+        /**
+	 * @return CipnCatOfertaEducativaDAO
+	 */
+	public  function getCipnCatOfertaEducativaDAO(){
+                           
+		return new CipnCatOfertaEducativaOracleExtDAO();
+	}
+        
 	/**
 	 * @return CipnCatUnidadesResponsablesDAO
 	 */

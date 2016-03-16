@@ -30,6 +30,7 @@ abstract class DAOFactory{
 	public abstract function getCipnCatGenerosDAO();
 	public abstract function getCipnCatGentiliciosDAO();
         public abstract function getCipnCatNivelEducativoDAO();
+        public abstract function getCipnCatOfertaEducativaDAO();
 	public abstract function getCipnCatUnidadesResponsablesDAO();
 	public abstract function getEgreAsoCarrerasUrDAO();
 	public abstract function getEgreAsoEgreDomExtDAO();
