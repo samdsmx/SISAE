@@ -21,11 +21,13 @@ class LoginController {
 //        $usuarios = DAOFactory::getDAOFactory(DAOFactory::$ORACLE)->getEgreUsuariosDAO()->queryByUSUARIO($user);
         $usuario = $usuarios[0];        
         if ($usuario == null){
-            $this->errorLogin();                    
+            $this->errorLogin();          
+            return ;
         }
         
         if ($usuario->contrasenia == md5($pass)){
-            
+            $datosEgre = DAOFactory::getDAOFactory()->getEgreEgresadosDAO()->queryByIDUSUARIO($usuario->idUsuario);            
+            $_SESSION[EGRESADO] = serialize ($datosEgre[0]);
             $_SESSION[USUARIO] = serialize($usuario);
             print_r($_SESSION[USUARIO]);
             if ($usuario->idRol == 2){ //ESCUELA

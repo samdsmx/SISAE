@@ -30,7 +30,8 @@
                         
                         <input type="text" id="asunto" name="asunto" class="form-control" placeholder="Asunto del correo" class="col-md-6"/>
                         
-                    </div>
+                    </div>          
+                    
                     <div class="form-group">
                         <select id="carrera" name="carrera[]" data-bind="foreach:carreras " multiple>
                             <option data-bind="value:idCarrera, text:carrera ">  </option>
@@ -42,6 +43,7 @@
                         
                         <button id="btn_enviar" class="btn btn-success"> <i class="icon-send"></i> Enviar</button>
                     </div>                    
+                    
                     <input type="hidden" name="body" id="messageBody">
                     <input type="hidden" name="unidad" id="unidad" data-bind="value:responsable().idUnidadResponsable ">
                     <input type="hidden" name="remitente" id="unidad" data-bind="value:responsable().correo ">

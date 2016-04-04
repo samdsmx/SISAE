@@ -88,7 +88,19 @@ class EgreEgresadosOracleDAO implements EgreEgresadosDAO{
  	 * @param EgreEgresadosOracle egreEgresado
  	 */
 	public function update($egreEgresado){
-		$sql = 'UPDATE egre_egresados SET AP_PATERNO = ?, AP_MATERNO = ?, NOMBRE = ?, CURP = ?, ID_GENERO = ?, ID_ESTADO_CIVIL = ?, ID_GENTILICIO = ?, RESIDE_MEXICO = ?, ID_ESTADO_NAC = ?, ID_USUARIO = ?, FECHA_REGISTRO = ? WHERE ID_EGRESADO = ?';
+		$sql = 'UPDATE egre_egresados SET '
+                        . 'AP_PATERNO = ?, '
+                        . 'AP_MATERNO = ?, '
+                        . 'NOMBRE = ?, '
+                        . 'CURP = ?, '
+                        . 'ID_GENERO = ?, '
+                        . 'ID_ESTADO_CIVIL = ?, '
+                        . 'ID_GENTILICIO = ?, '
+                        . 'RESIDE_MEXICO = ?, '
+                        . 'ID_ESTADO_NAC = ?, '
+                        . 'ID_USUARIO = ?, '
+                        . 'FECHA_REGISTRO = ? '
+                        . 'WHERE ID_EGRESADO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($egreEgresado->apPaterno);
@@ -300,7 +312,7 @@ class EgreEgresadosOracleDAO implements EgreEgresadosDAO{
 	protected function getList($sqlQuery){
             
 		$tab = OracleQueryExecutor::execute($sqlQuery);                
-                var_dump ($tab);
+//                var_dump ($tab);
 		$ret = array();
 		for($i=0;$i<count($tab);$i++){
 			$ret[$i] = $this->readRow($tab[$i]);

@@ -90,7 +90,21 @@ class EgreDatosAcadsIpnOracleDAO implements EgreDatosAcadsIpnDAO{
  	 * @param EgreDatosAcadsIpnOracle egreDatosAcadsIpn
  	 */
 	public function update($egreDatosAcadsIpn){
-		$sql = 'UPDATE egre_datos_acads_ipn SET ID_MOTIVO_INTERRUPCION = ?, ID_ESTATUS_EGRE = ?, ID_MOTIVO_NOTITULACION = ?, ID_FORMA_TITULACION = ?, ID_CARRERA = ?, ID_EGRESADO = ?, ID_UNIDAD_RESPONSABLE = ?, ANIO_INGRESO = ?, ANIO_EGRESO = ?, BOLETA = ?, PROMEDIO = ?, VALIDADO_ECU = ?, FECHA_REGISTRO = ? WHERE ID_DATO_ACAD_IPN = ?';
+		$sql = 'UPDATE egre_datos_acads_ipn SET '
+                        . 'ID_MOTIVO_INTERRUPCION = ?, '
+                        . 'ID_ESTATUS_EGRE = ?, '
+                        . 'ID_MOTIVO_NOTITULACION = ?, '
+                        . 'ID_FORMA_TITULACION = ?, '
+                        . 'ID_CARRERA = ?, '
+                        . 'ID_EGRESADO = ?, '
+                        . 'ID_UNIDAD_RESPONSABLE = ?, '
+                        . 'ANIO_INGRESO = ?, '
+                        . 'ANIO_EGRESO = ?, '
+                        . 'BOLETA = ?, '
+                        . 'PROMEDIO = ?, '
+                        . 'VALIDADO_ECU = ?, '
+                        . 'FECHA_REGISTRO = ? '
+                        . 'WHERE ID_DATO_ACAD_IPN = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($egreDatosAcadsIpn->idMotivoInterrupcion);
@@ -100,8 +114,8 @@ class EgreDatosAcadsIpnOracleDAO implements EgreDatosAcadsIpnDAO{
 		$sqlQuery->setNumber($egreDatosAcadsIpn->idCarrera);
 		$sqlQuery->setNumber($egreDatosAcadsIpn->idEgresado);
 		$sqlQuery->setNumber($egreDatosAcadsIpn->idUnidadResponsable);
-		$sqlQuery->set($egreDatosAcadsIpn->anioIngreso);
-		$sqlQuery->set($egreDatosAcadsIpn->anioEgreso);
+		$sqlQuery->setYear($egreDatosAcadsIpn->anioIngreso);
+		$sqlQuery->setYear($egreDatosAcadsIpn->anioEgreso);
 		$sqlQuery->set($egreDatosAcadsIpn->boleta);
 		$sqlQuery->set($egreDatosAcadsIpn->promedio);
 		$sqlQuery->setNumber($egreDatosAcadsIpn->validadoEcu);
@@ -321,8 +335,8 @@ class EgreDatosAcadsIpnOracleDAO implements EgreDatosAcadsIpnDAO{
 		$egreDatosAcadsIpn->idCarrera = $row['ID_CARRERA'];
 		$egreDatosAcadsIpn->idEgresado = $row['ID_EGRESADO'];
 		$egreDatosAcadsIpn->idUnidadResponsable = $row['ID_UNIDAD_RESPONSABLE'];
-		$egreDatosAcadsIpn->anioIngreso = $row['ANIO_INGRESO'];
-		$egreDatosAcadsIpn->anioEgreso = $row['ANIO_EGRESO'];
+		$egreDatosAcadsIpn->anioIngreso = substr($row['ANIO_INGRESO'], 6, 4);
+		$egreDatosAcadsIpn->anioEgreso = substr($row['ANIO_EGRESO'], 6, 4);
 		$egreDatosAcadsIpn->boleta = $row['BOLETA'];
 		$egreDatosAcadsIpn->promedio = $row['PROMEDIO'];
 		$egreDatosAcadsIpn->validadoEcu = $row['VALIDADO_ECU'];

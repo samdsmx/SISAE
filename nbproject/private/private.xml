@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Apache2.2/htdocs/sisae/view/login.php</file>
-            <file>file:/C:/Apache2.2/htdocs/sisae/index.php</file>
+            <file>file:/C:/Apache2.2/htdocs/sisae/controller/ReportesController.class.php</file>
+            <file>file:/C:/Apache2.2/htdocs/sisae/view/reportes/reportes.php</file>
+            <file>file:/C:/Apache2.2/htdocs/sisae/.htaccess</file>
+            <file>file:/C:/Apache2.2/htdocs/sisae/controller/UnidadController.class.php</file>
         </group>
     </open-files>
 </project-private>

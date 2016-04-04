@@ -6,11 +6,72 @@ class EgresadoController extends _BaseController {
     public function defaultAction() {
 
         $_SESSION[VISTA] = 'view/egresado/index.php';
-        $_SESSION[NOMBRE_VISTA] = '';
-        include ('templates/base.php');
+        $usuario = unserialize($_SESSION[USUARIO]);
+        $_SESSION[NOMBRE_VISTA] = 'Bienvenido '.$usuario->usuario;
+        include ('templates/egresado.php');
     }
     
+    public function actualizaDatos (){
+        $_SESSION[VISTA] = 'view/egresado/actualizaDatos.php';
+        $_SESSION[NOMBRE_VISTA] = '';
+        $usuario = unserialize($_SESSION[USUARIO]);
+        
+        $datos = DAOFactory::getDAOFactory()->getEgreEgresadosDAO()->queryByIDUSUARIO($usuario->idUsuario);
+        $egresado = $datos[0];
+
+        include ('templates/egresado.php');
+    }
+        
     
+    public function updateDatos (){
+        
+        $datos = new EgreEgresado ();
+        ObjectMap::map($_POST, $datos);        
+        $dao = DAOFactory::getDAOFactory();
+        $dao->getEgreEgresadosDAO()->update($datos);
+        $_SESSION[VISTA] = 'view/egresado/datosGuardados.php';
+        include ('templates/egresado.php');
+    }
+    
+    public function actualizaDatosAcademicos (){
+        $_SESSION[VISTA] = 'view/egresado/actualizaDatosAcademicos.php';
+        $_SESSION[NOMBRE_VISTA] = '';
+        $usuario = unserialize($_SESSION[USUARIO]);
+        $datosEgre = DAOFactory::getDAOFactory()->getEgreEgresadosDAO()->queryByIDUSUARIO($usuario->idUsuario);
+        $egresado = $datosEgre[0];
+        $datosAcad = DAOFactory::getDAOFactory()->getEgreDatosAcadsIpnDAO()->queryByIDEGRESADO($egresado->idEgresado);
+        $academico = $datosAcad[0];
+        //Deshabilita todos los componentes del formulario
+        $disabled = ($academico->validadoEcu == 1)? 'disabled':'';
+        $urs = DAOFactory::getDAOFactory()->getEgreUrNombresDAO()->queryAll();
+
+        $carreras = DAOFactory::getDAOFactory()->getEgreCatCarrerasDAO()->queryAll();
+        $anios = [];
+        for ($i = 2016; $i>1935; $i--) 
+            $anios[] = $i;
+        
+        include ('templates/egresado.php');
+    }
+    
+    public function updateDatosAcademicos (){
+        $datos = new EgreDatosAcadsIpn ();
+        ObjectMap::map($_POST, $datos);        
+        $dao = DAOFactory::getDAOFactory();
+        $dao->getEgreDatosAcadsIpnDAO()->update($datos);
+        $_SESSION[VISTA] = 'view/egresado/datosGuardados.php';
+        include ('templates/egresado.php');
+    }
+    
+    public function actualizaDireccion (){
+        $dao = DAOFactory::getDAOFactory();
+        $egresado = unserialize($_SESSION[EGRESADO]);
+        $datos = $dao->getEgreAsoEgreDomiciliosDAO()->queryByIdEgresado($egresado->idEgresado);
+        
+        //TODO Se puede mejorar con un query
+        
+        $_SESSION[VISTA] = 'view/egresado/muestraDirecciones.php';
+        include ('templates/egresado.php');
+    }
     
     public function cerrar (){        
         session_destroy();
@@ -127,7 +188,7 @@ class EgresadoController extends _BaseController {
         
 
         $academico->idEgresado = $egresado->idEgresado;
-        
+        //TODO validar anio ingreso < anio egreso
         DAOFactory::getDAOFactory()->getEgreDatosAcadsIpnDAO()->insert($academico);
         
         
@@ -197,17 +258,18 @@ class EgresadoController extends _BaseController {
     }
 
     private function formularioDireccion() {
-        if (!isset($_SESSION[EGRESADO][PERSONAL]['resideMexico'])) {
-            $_SESSION[MENSAJE] = 'Antes de elegir una dirección, llena los datos personales';
-//            var_dump ($_SESSION[MENSAJE]);
-            header("Location: http://" . SERVER_URL . "egresado/agregar/personal");
-            exit ();
-        }        
-        if ($_SESSION[EGRESADO][PERSONAL]['resideMexico'] == 1) {
-            return $this->formularioDireccionMexico();
-        } else {
-            return $this->formularioDireccionExtranjero();
-        }
+//        if (!isset($_SESSION[EGRESADO][PERSONAL]['resideMexico'])) {
+//            $_SESSION[MENSAJE] = 'Antes de elegir una dirección, llena los datos personales';
+////            var_dump ($_SESSION[MENSAJE]);
+//            header("Location: http://" . SERVER_URL . "egresado/agregar/personal");
+//            exit ();
+//        }        
+        return $this->formularioDireccionMexico();
+//        if ($_SESSION[EGRESADO][PERSONAL]['resideMexico'] == 1) {
+//            return $this->formularioDireccionMexico();
+//        } else {
+//            return $this->formularioDireccionExtranjero();
+//        }
     }
 
     private function formularioDireccionMexico() {

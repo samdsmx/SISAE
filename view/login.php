@@ -75,5 +75,36 @@
             <a href="egresado/agregar">Registrate aquí</a>
         </div>
     </div>
-    
+   
+    <a href="http://localhost/reportico-4.4/run.php?execute_mode=EXECUTE&project=SISAE&xmlin=USU.xml" target="_blank">Visit our HTML tutorial</a>     
+   <?php
+//   echo 'Here';        
+//   require_once('http://localhost/reportico-4.4/reportico.php'); 
+//            $q = new reportico();
+//            $q->initial_project = "SISAE";
+//            $q->initial_project_password = "password";
+//            $q->initial_report = "USU.xml";
+//            $q->initial_execute_mode = "EXECUTE";
+//            $q->initial_output_format = "HTML";
+//            $q->access_mode = "REPORTOUTPUT";
+//            $q->embedded_report = true;
+//            $q->execute();
+          ?>  
+                           
+   <?php
+//            require_once('http://localhost/reportico-4.4/reportico.php'); 
+//            $q = new reportico();
+//            $q->initial_project_password = "password"; // If required
+//            $q->initial_sql = "SELECT USUARIO, ID_USUARIO FROM EGRE_USUARIOS";
+//            $q->initial_output_format = "HTML";
+//            $q->access_mode = "REPORTOUTPUT";
+//            $q->embedded_report = true;
+//            var_dump($q);
+//            $q->execute();
+          ?>                         
+                           
+                           
+                       
 </div>
+
+ 

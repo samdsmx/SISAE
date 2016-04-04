@@ -19,7 +19,9 @@ class OracleQueryExecutor {
         $stid = oci_parse($conn, $query);
         $r = oci_execute($stid);
         if (!$r) {
-            throw new Exception("SQL Error: -->" . $query . "<--" . oci_error($stid));
+            $e = oci_error($stid);   // Para errores de oci_connect errors, no pase un gestor
+            
+            throw new Exception("SQL Error: -->" . $query . "<--" . htmlentities($e['message']));
         }
         return $stid;
     }

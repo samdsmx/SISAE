@@ -57,7 +57,7 @@ class EgreCatCarrerasOracleDAO implements EgreCatCarrerasDAO{
  	 * @param EgreCatCarrerasOracle egreCatCarrera
  	 */
 	public function insert($egreCatCarrera){
-		$sql = 'INSERT INTO egre_cat_carreras (ID_OFERTA_EDUCATIVA, ID_NIVEL_EDUCATIVO, CARRERA) VALUES (?, ?, ?)';
+		$sql = 'INSERT INTO egre_cat_carreras (ID_CARRERA, ID_OFERTA_EDUCATIVA, ID_NIVEL_EDUCATIVO, CARRERA) VALUES (SEQ_CARRE_IDCARRE.NextVal,?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($egreCatCarrera->idOfertaEducativa);

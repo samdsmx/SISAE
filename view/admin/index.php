@@ -36,7 +36,7 @@ $responsable = unserialize($_SESSION[RESPONSABLE]);
                         <i class="fa fa-book fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">12</div>
+                        <div class="huge">&nbsp;</div>
                         <div>Administrar carreras</div>
                     </div>
                 </div>

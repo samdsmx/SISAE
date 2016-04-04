@@ -57,12 +57,12 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a class="menu-top-active" href="index.html">Menú</a></li>
+<!--                            <li><a class="menu-top-active" href="index.html">Menú</a></li>
                             <li><a href="ui.html">opción 1</a></li>
                             <li><a href="table.html">opción 2</a></li>
                             <li><a href="forms.html">opción 3</a></li>
                              <li><a href="login.html">opción 4</a></li>
-                            <li><a href="blank.html">opción 5</a></li>
+                            <li><a href="blank.html">opción 5</a></li>-->
 
                         </ul>
                     </div>

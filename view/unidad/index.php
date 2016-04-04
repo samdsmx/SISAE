@@ -85,7 +85,7 @@ $responsable = unserialize($_SESSION[RESPONSABLE]);
                     </div>
                 </div>
             </div>
-            <a href="#">
+            <a href="reportes/genero">
                 <div class="panel-footer">
                     <span class="pull-left">Ingresar</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
