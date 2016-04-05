@@ -75,8 +75,7 @@
             <a href="egresado/agregar">Registrate aquí</a>
         </div>
     </div>
-   
-    <a href="http://localhost/reportico-4.4/run.php?execute_mode=EXECUTE&project=SISAE&xmlin=USU.xml" target="_blank">Visit our HTML tutorial</a>     
+
    <?php
 //   echo 'Here';        
 //   require_once('http://localhost/reportico-4.4/reportico.php'); 

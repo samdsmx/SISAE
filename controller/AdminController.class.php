@@ -128,6 +128,10 @@ class AdminController extends _BaseController {
         $usuario->contrasenia = md5($usuario->contrasenia);
         DAOFactory::getDAOFactory()->getEgreUsuariosDAO()->insert($usuario);
         $responsable->idUsuario = $usuario->idUsuario;
+        //Si el rol del usuario es AC asigna cero a la unidad responsable
+        if ($usuario->idRol == 4) {
+            $responsable->idUnidadResponsable = 0;
+        }
         DAOFactory::getDAOFactory()->getEgreResponsablesUrDAO()->insert($responsable);        
         $_SESSION[MENSAJE] = 'Usuario guardado';
         parent::redirect(self::$index);        
