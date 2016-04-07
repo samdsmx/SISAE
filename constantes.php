@@ -17,3 +17,4 @@ define ('INTENTOS', 'INTENTOS');
 define ('RESPONSABLE', 'responsable');
 define ('JSON_DATA', 'JSON_DATA');
 define ('MENSAJE_ERROR', 'MENSAJE_ERROR');
+define ('DATOS', 'DATOS');

@@ -64,7 +64,7 @@ class EgresadoController extends _BaseController {
     
     public function actualizaDireccion (){
         $dao = DAOFactory::getDAOFactory();
-        $egresado = unserialize($_SESSION[EGRESADO]);
+        $egresado = unserialize($_SESSION[EGRESADO][DATOS]);
         $datos = $dao->getEgreAsoEgreDomiciliosDAO()->queryByIdEgresado($egresado->idEgresado);
         
         //TODO Se puede mejorar con un query
@@ -143,16 +143,18 @@ class EgresadoController extends _BaseController {
     }
 
     private function guardarEgresado() {
+        
 //        print (!isset($_SESSION[EGRESADO][PERSONAL]));
 //        print (isset($_SESSION[EGRESADO][PERSONAL]));
         //var_dump ($_SESSION);
+        
         if (!isset($_SESSION[EGRESADO][PERSONAL])) {
             $_SESSION[MENSAJE] = 'Te faltaron los datos personales.';
             header("Location: http://" . SERVER_URL . "egresado/agregar/personal");
             return;
         }
         if (!isset($_SESSION[EGRESADO][DIRECCION])) {
-            $_SESSION[MENSAJE] = 'Te faltaron los datos personales.';
+            $_SESSION[MENSAJE] = 'Te faltó agregar la dirección';
             header("Location: http://" . SERVER_URL . "egresado/agregar/direccion");
             return;
         }
@@ -191,6 +193,18 @@ class EgresadoController extends _BaseController {
         //TODO validar anio ingreso < anio egreso
         DAOFactory::getDAOFactory()->getEgreDatosAcadsIpnDAO()->insert($academico);
         
+        
+        /*if (!empty($_SESSION[EGRESADO][PERSONAL]['email'])){
+            $contacto = new EgreContactosEgresado();
+            ObjectMap::map($_SESSION[EGRESADO][PERSONAL], $contacto);
+            DAOFactory::getDAOFactory()->getEgreContactosEgresadosDAO()->insert($contacto);
+        } 
+        */
+        //isset($_SESSION[EGRESADO][PERSONAL]['email']
+        //$_SESSION[EGRESADO][PERSONAL]['telefonoFijo']
+        //$_SESSION[EGRESADO][PERSONAL]['telefonoMovil']
+                
+                
         
         if ($_SESSION[EGRESADO][PERSONAL]['resideMexico'] == 1){
             $domicilio = new EgreDomicilio();            
@@ -258,26 +272,26 @@ class EgresadoController extends _BaseController {
     }
 
     private function formularioDireccion() {
-//        if (!isset($_SESSION[EGRESADO][PERSONAL]['resideMexico'])) {
-//            $_SESSION[MENSAJE] = 'Antes de elegir una dirección, llena los datos personales';
-////            var_dump ($_SESSION[MENSAJE]);
-//            header("Location: http://" . SERVER_URL . "egresado/agregar/personal");
-//            exit ();
-//        }        
-        return $this->formularioDireccionMexico();
-//        if ($_SESSION[EGRESADO][PERSONAL]['resideMexico'] == 1) {
-//            return $this->formularioDireccionMexico();
-//        } else {
-//            return $this->formularioDireccionExtranjero();
-//        }
+        if (!isset($_SESSION[EGRESADO][PERSONAL]['resideMexico'])) {
+            $_SESSION[MENSAJE] = 'Antes de elegir una dirección, llena los datos personales';
+//            var_dump ($_SESSION[MENSAJE]);
+            header("Location: http://" . SERVER_URL . "egresado/agregar/personal");
+            exit ();
+        }        
+        
+        if ($_SESSION[EGRESADO][PERSONAL]['resideMexico'] == 1) {
+            return $this->formularioDireccionMexico();
+        } else {
+            return $this->formularioDireccionExtranjero();
+        }
     }
 
     private function formularioDireccionMexico() {
         $form = new FormGenerator(new EgreDomicilio(), 'egresado/guardar/direccion', 'Continuar');
         $form->get ('idDomicilio')->visible = false;
         
-        ini_set('display_errors', 1); 
-        error_reporting(E_ALL);
+        /*ini_set('display_errors', 1); 
+        error_reporting(E_ALL);*/
         $codigoPostal = DAOFactory::getDAOFactory()->getCipnCatCodigoPostalDAO();
         
         $element = new FormElement ('codigoPostal');

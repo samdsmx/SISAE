@@ -27,9 +27,9 @@ class LoginController {
         
         if ($usuario->contrasenia == md5($pass)){
             $datosEgre = DAOFactory::getDAOFactory()->getEgreEgresadosDAO()->queryByIDUSUARIO($usuario->idUsuario);            
-            $_SESSION[EGRESADO] = serialize ($datosEgre[0]);
+            $_SESSION[EGRESADO][DATOS] = serialize ($datosEgre[0]);
             $_SESSION[USUARIO] = serialize($usuario);
-            print_r($_SESSION[USUARIO]);
+            //print_r($_SESSION[USUARIO]);
             if ($usuario->idRol == 2){ //ESCUELA
                 $dao = DAOFactory::getDAOFactory();
                 $responsable = $dao->getEgreResponsablesUrDAO()->queryByIDUSUARIO($usuario->idUsuario);

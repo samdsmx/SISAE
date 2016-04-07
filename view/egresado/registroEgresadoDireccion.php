@@ -1,8 +1,10 @@
 <div class="col-lg-12">
 
     <?php print $_SESSION[FORMULARIO];
+    
     //TODO Cargar asentamiento de manera asíncrona dependiendo del código postal
     ?>
+
 
 </div>
 
@@ -38,6 +40,7 @@
         cambiaValores (id); 
         //window.alert(id);
     });
+    
     function cambiaValores (id){
         $.ajax({
             url: "api/getAsentamientos/"+id,            
