@@ -27,20 +27,19 @@
                 <small>El mensaje será enviado con el correo: <span data-bind="text:responsable().correo"></span></small>
                 <form class="form-horizontal" action="email/send" method="POST" id="formMail"> 
                     <div class="form-group">
-                        
                         <input type="text" id="asunto" name="asunto" class="form-control" placeholder="Asunto del correo" class="col-md-6"/>
-                        
                     </div>          
                     
                     <div class="form-group">
                         <select id="carrera" name="carrera[]" data-bind="foreach:carreras " multiple>
                             <option data-bind="value:idCarrera, text:carrera ">  </option>
                         </select>
-
+                   
                         <select id="generacion" name="generacion[]" data-bind="foreach:generaciones" multiple>
                             <option data-bind="value:$data, text:$data">  </option>
                         </select>
-                        
+                    </div>    
+                    <div class="form-group">    
                         <button id="btn_enviar" class="btn btn-success"> <i class="icon-send"></i> Enviar</button>
                     </div>                    
                     

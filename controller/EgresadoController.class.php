@@ -295,8 +295,8 @@ class EgresadoController extends _BaseController {
         $codigoPostal = DAOFactory::getDAOFactory()->getCipnCatCodigoPostalDAO();
         
         $element = new FormElement ('codigoPostal');
-        $element->type = 'select';
-        $element->options = $this->getOpcionesOrder($codigoPostal, 'idCodigoPostal', 'codigoPostal',  'codigo_Postal');
+        $element->type = 'text';
+        //$element->options = $this->getOpcionesOrder($codigoPostal, 'idCodigoPostal', 'codigoPostal',  'codigo_Postal');
         $form->addInnerElement($element, 1);
                 
         $asentamiento = DAOFactory::getDAOFactory()->getEgreCPAsentamientoDAO();
@@ -391,7 +391,7 @@ class EgresadoController extends _BaseController {
         $form->get('resideMexico')->label = 'Reside en México';
         $form->get('resideMexico')->placeholder = 'Reside en México';
         $form->get('resideMexico')->type = 'select';
-        $form->get('resideMexico')->options = array(1 => 'Si', 0 => 'No');
+        $form->get('resideMexico')->options = array(0 => 'No', 1 => 'Si',);
         $form->get('resideMexico')->selected = isset($_SESSION[EGRESADO][PERSONAL]['resideMexico']) ?
                 $_SESSION[EGRESADO][PERSONAL]['resideMexico'] : "";
 

@@ -103,7 +103,7 @@ class EgreResponsablesUrOracleDAO implements EgreResponsablesUrDAO{
 		$sql = 'SELECT * FROM egre_responsables_ur WHERE ID_USUARIO = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
-		return $this->getList($sqlQuery);
+                return $this->getList($sqlQuery);
 	}
 
 	public function queryByNOMBRE($value){

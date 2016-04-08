@@ -30,7 +30,7 @@ class EgreDatosAcadsIpnOracleExtDAO extends EgreDatosAcadsIpnOracleDAO{
     }
     
     public function queryCorreosXGeneracion ($idUnidad, $idCarrera, $anioEgreso){
-        $sql =    "SELECT * FROM sisae.correos_por_generacion "
+        $sql =    "SELECT * FROM VW_CORREOS_EGRESADOS "
                 . "WHERE ID_UNIDAD_RESPONSABLE = ? "
                 . "AND   ID_CARRERA = ? "
                 . "AND anio_egreso=?";

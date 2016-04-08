@@ -12,8 +12,10 @@ class EgreCatCarrerasOracleExtDAO extends EgreCatCarrerasOracleDAO{
                         WHERE U.ID_UNIDAD_RESPONSABLE = R.ID_UNIDAD_RESPONSABLE
                         AND R.ID_CARRERA = C.ID_CARRERA
                         AND U.ID_UNIDAD_RESPONSABLE = ?';
-		$sqlQuery = new SqlQuery($sql);
+		
+                $sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($idUr);
+                var_dump($idUr);
 		return $this->getList($sqlQuery);
         }
 }

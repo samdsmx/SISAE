@@ -35,7 +35,7 @@
         cambiaValores (id);
         //window.alert(id);
     });
-    $("#codigoPostal").change(function() {
+    $("#codigoPostal").focusout(function() {
         var id = $(this).val ();
         cambiaValores (id); 
         //window.alert(id);

@@ -34,7 +34,7 @@ class LoginController {
                 $dao = DAOFactory::getDAOFactory();
                 $responsable = $dao->getEgreResponsablesUrDAO()->queryByIDUSUARIO($usuario->idUsuario);
                 $_SESSION[RESPONSABLE] = serialize($responsable[0]);
-                $_SESSION[ID_UNIDAD_RESPONSABLE] = $responsable->idUnidadResponsable;
+                $_SESSION[ID_UNIDAD_RESPONSABLE] = $responsable[0]->idUnidadResponsable;
                 header("Location: http://" . SERVER_URL . "unidad");                
                 exit ();
             }

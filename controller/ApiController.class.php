@@ -14,9 +14,9 @@ class ApiController extends _BaseController {
         print json_encode($codigosPostales);
     }
     
-    function getAsentamientos($idCodigoPostal){
+    function getAsentamientos($CodigoPostal){
         
-        $asentamientos = DAOFactory::getDAOFactory()->getEgreCPAsentamientoDAO()->queryByIDCODIGOPOSTAL($idCodigoPostal);
+        $asentamientos = DAOFactory::getDAOFactory()->getEgreCPAsentamientoDAO()->queryByCODIGOPOSTAL($CodigoPostal);
         
         print json_encode($asentamientos);
         
