@@ -1,5 +1,5 @@
 <?php 
-define ('SERVER_URL', '148.204.14.29/sisae/');
+define ('SERVER_URL', '148.204.14.24/sisae/');
 define ('BASE_PATH', 'sisae/');
 define ('CONTENIDO', 'contenido');
 define ('VISTA', 'vista');

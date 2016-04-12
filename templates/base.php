@@ -75,7 +75,8 @@
     
      <!-- Page Content -->
      <div class="content-wrapper">
-        <div class="container">            
+        <div class="container">     
+
             <h2><?php print $_SESSION[NOMBRE_VISTA]; ?></h2>
             <?php
             if (isset($_SESSION[MENSAJE])){

@@ -38,6 +38,7 @@ spl_autoload_register('autoload');
  */
 function autoload($class) {
   global $paths;
+
   //$root = $_SERVER['DOCUMENT_ROOT'];
   $root = __DIR__;
   if (isset ($_SESSION['autoload_dir'])){

@@ -9,4 +9,4 @@ error_reporting(E_ALL);
 $controller = new SimpleFrontController();
 $controller->run();
 
-?>
+

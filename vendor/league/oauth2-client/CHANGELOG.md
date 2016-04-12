@@ -1,5 +1,27 @@
 # OAuth 2.0 Client Changelog
 
+## 1.3.0
+
+_Released: 2016-02-13_
+
+* Enable dynamic parameters being passed into the authorization URL
+* Minor documentation updates
+
+## 1.2.0
+
+_Released: 2016-01-23_
+
+* Add `resource_owner_id` to the JSON-serialized representation of the access token.
+* Minor documentation updates and improved test coverage.
+
+## 1.1.0
+
+_Released: 2015-11-13_
+
+* Add `ArrayAccessorTrait`, update `AbstractProvider` to utilize.
+* Use `expires` to serialize access tokens.
+* Documentation updates.
+
 ## 1.0.2
 
 _Released: 2015-09-22_

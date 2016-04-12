@@ -89,7 +89,8 @@ class AccessToken implements JsonSerializable
     /**
      * Check if a value is an expiration timestamp or second value.
      *
-     * @return boolean
+     * @param integer $value
+     * @return bool
      */
     protected function isExpirationTimestamp($value)
     {
@@ -185,7 +186,11 @@ class AccessToken implements JsonSerializable
         }
 
         if ($this->expires) {
-            $parameters['expires_in'] = $this->expires - time();
+            $parameters['expires'] = $this->expires;
+        }
+
+        if ($this->resourceOwnerId) {
+            $parameters['resource_owner_id'] = $this->resourceOwnerId;
         }
 
         return $parameters;
