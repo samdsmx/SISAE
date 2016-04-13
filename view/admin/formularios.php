@@ -19,5 +19,12 @@
         }
     }
 
-   
+    $( "#usuario" ).focusout(function() {
+        var _url = 'http://<?=SERVER_URL?>api/userExist/' +$('#usuario').val();
+        console.log(_url);
+        loadDoc (_url);
+    });
+    $( "#usuario" ).on('input', function() {
+        muestraError (false);
+    });
 </script>

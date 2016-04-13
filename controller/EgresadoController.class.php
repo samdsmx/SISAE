@@ -292,15 +292,21 @@ class EgresadoController extends _BaseController {
         
         /*ini_set('display_errors', 1); 
         error_reporting(E_ALL);*/
-        $codigoPostal = DAOFactory::getDAOFactory()->getCipnCatCodigoPostalDAO();
+        //$codigoPostal = DAOFactory::getDAOFactory()->getCipnCatCodigoPostalDAO();
         
         $element = new FormElement ('codigoPostal');
-        $element->type = 'text';
+        $element->type = 'number';
         //$element->options = $this->getOpcionesOrder($codigoPostal, 'idCodigoPostal', 'codigoPostal',  'codigo_Postal');
         $form->addInnerElement($element, 1);
-                
-        $asentamiento = DAOFactory::getDAOFactory()->getEgreCPAsentamientoDAO();
+         
+        $element = new FormElement ('municipio');
+        $element->label = 'Municipio - Estado';
+        $element->placeholder = 'Municipio - Estado';
+        $form->addInnerElement($element, 3);
+ 
+        //$asentamiento = DAOFactory::getDAOFactory()->getEgreCPAsentamientoDAO();
         //$form->get('idAsentamiento')->options = $this->getOpcionesOrder($asentamiento, 'asentamiento', 'id_asentamiento', 'asentamiento');
+        
         $form->get('idAsentamiento')->label = 'Asentamiento / Colonia';
         $form->get('idAsentamiento')->placeholder = 'Asentamiento';
         $form->get('idAsentamiento')->type = 'select';
