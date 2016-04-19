@@ -30,8 +30,8 @@
         console.log ('entro a cambiar clase '+flag);
         if (flag){            
             document.getElementById ('email').style.backgroundColor ='lightpink' ;
-            //document.getElementById ('mensaje-error').innerText = 'El correo ya existe';
-//            document.getElementById ('btnEnviar').disabled = true;
+            document.getElementById ('mensaje-error').innerText = 'El correo ya existe';
+            document.getElementById ('btnEnviar').disabled = true;
             $(".btn").prop("disabled", true);
             if (mostrando == false){
                 mostrando = true;
@@ -39,8 +39,8 @@
             }
         } else {
             document.getElementById ('email').style.backgroundColor ='white' ;
-            //document.getElementById ('mensaje-error').innerText = '';
-//            document.getElementById ('btnEnviar').disabled = false;
+            document.getElementById ('mensaje-error').innerText = '';
+            document.getElementById ('btnEnviar').disabled = false;
             $(".btn").prop("disabled", false);
             $("#msg").remove ();
             mostrando = false;

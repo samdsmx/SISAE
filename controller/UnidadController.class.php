@@ -7,7 +7,7 @@ class UnidadController extends _BaseController {
     public function defaultAction() {
         $this->esUsuarioLoggeado();
         $responsable = unserialize($_SESSION[RESPONSABLE]);
-        $_SESSION[NOMBRE_VISTA] = "Bienvenid@ " . $responsable->nombre;
+        //$_SESSION[NOMBRE_VISTA] = "Bienvenid@ " . $responsable->nombre;
         $_SESSION[VISTA] = 'view/unidad/index.php';
         include ('templates/unidad.php');
     }
@@ -17,6 +17,12 @@ class UnidadController extends _BaseController {
         $dao = DAOFactory::getDAOFactory()->getEgreDatosAcadsIpnDAO();
         $responsable = unserialize($_SESSION[RESPONSABLE]);
         $registros = $dao->queryNoValidados($responsable->idUnidadResponsable, $status);
+        if ($status == 0) {
+            $listado = 'no validados';
+        } else {
+            $listado = 'revisados';
+        }
+        $_SESSION[LISTADO] = $listado;
         $_SESSION[VISTA] = 'view/unidad/verEgresadosStatus.php';
         include_once 'templates/unidad.php';
     }
