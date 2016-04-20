@@ -32,7 +32,8 @@
 <script>
     $( document ).ready(function() {
         var id = $("#codigoPostal").val();
-        cambiaValores (id);
+        $("#municipio").prop('disabled', true);
+        //cambiaValores (id);
         //window.alert(id);
     });
     $("#codigoPostal").focusout(function() {
@@ -42,6 +43,7 @@
     });
     
     function cambiaValores (id){
+        
         $.ajax({
             url: "api/getAsentamientos/"+id,            
         }).done(function(data) {
@@ -52,11 +54,13 @@
             $el.empty(); // remove old options
             var jsonData = JSON.parse(data);
             
+            $("#municipio").val( jsonData[0].Municipio +" - "+ jsonData[0].estado);
+            
             $.each(jsonData, function(i, obj) {
                 $el.append($("<option></option>")
                    .attr("value", obj.idAsentamiento).text(obj.asentamiento));            
-                   console.log (obj);
-            });            
+                   console.log (obj);        
+            });         
         });
-    }
+ }
 </script>

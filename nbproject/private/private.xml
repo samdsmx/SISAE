@@ -10,8 +10,11 @@
             <file>file:/C:/Apache2.2/htdocs/sisae/templates/egresado.php</file>
             <file>file:/C:/Apache2.2/htdocs/sisae/model/oracle/OracleDAOFactory.class.php</file>
             <file>file:/C:/Apache2.2/htdocs/sisae/model/oracle/EgreAsoEgreDomiciliosOracleDAO.class.php</file>
+            <file>file:/C:/Apache2.2/htdocs/sisae/view/email.php</file>
             <file>file:/C:/Apache2.2/htdocs/sisae/view/egresado/actualizaDireccionMexico.php</file>
             <file>file:/C:/Apache2.2/htdocs/sisae/view/egresado/muestraDirecciones.php</file>
+            <file>file:/C:/Apache2.2/htdocs/sisae/controller/ApiController.class.php</file>
+            <file>file:/C:/Apache2.2/htdocs/sisae/model/oracle/EgreCPAsentamientoOracleDAO.class.php</file>
         </group>
     </open-files>
 </project-private>
